@@ -2509,18 +2509,34 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
   <sc-if value="{{ showLoginForm }}" hint-placeholder-val="{{ false }}">
   <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;background:#f4f3f0;z-index:60;padding:64px 28px 40px;overflow-y:auto;">
     <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
-      <div style="width:52px;height:52px;border-radius:16px;background:#1e3a5f;display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+      <div style="width:52px;height:52px;border-radius:16px;background:#1e3a5f;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fff" stroke-width="2" stroke-linecap="round"/><polyline points="9,22 9,12 15,12 15,22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div style="font-size:26px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:6px;">Welcome to Uplift</div>
-      <div style="font-size:14px;font-weight:500;color:#8b8f86;margin-bottom:32px;">Request access to get started. Your admin will approve your account.</div>
-      <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">First name</div>
-      <input value="{{ loginFirst }}" onInput="{{ onLoginFirst }}" placeholder="Nathan" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:14px;box-sizing:border-box;"/>
-      <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">Last name</div>
-      <input value="{{ loginLast }}" onInput="{{ onLoginLast }}" placeholder="Cohen" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:14px;box-sizing:border-box;"/>
-      <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">Phone number</div>
-      <input type="tel" value="{{ loginPhone }}" onInput="{{ onLoginPhone }}" placeholder="(860) 555-0100" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:28px;box-sizing:border-box;"/>
-      <button onClick="{{ onSubmitLogin }}" style="{{ loginBtnStyle }}">Request access</button>
+      <div style="font-size:26px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:20px;">Welcome to Uplift</div>
+      <div style="display:flex;background:#e8e6df;border-radius:13px;padding:3px;gap:2px;margin-bottom:24px;">
+        <button onClick="{{ setLoginTabLogin }}" style="{{ loginTabLoginStyle }}">Log In</button>
+        <button onClick="{{ setLoginTabSignup }}" style="{{ loginTabSignupStyle }}">Sign Up</button>
+      </div>
+      <sc-if value="{{ isLoginTabLogin }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">Username</div>
+        <input value="{{ loginUsername }}" onInput="{{ onLoginUsername }}" placeholder="nathan" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:14px;box-sizing:border-box;"/>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">Password</div>
+        <input type="password" value="{{ loginPassword }}" onInput="{{ onLoginPassword }}" placeholder="••••••••" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:6px;box-sizing:border-box;"/>
+        <sc-if value="{{ loginError }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:13px;font-weight:600;color:#c0392b;margin-bottom:6px;">{{ loginError }}</div>
+        </sc-if>
+        <button onClick="{{ onDoLogin }}" style="{{ loginBtnStyle }}margin-top:18px;">Log In</button>
+      </sc-if>
+      <sc-if value="{{ isLoginTabSignup }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:13px;font-weight:500;color:#8b8f86;margin-bottom:16px;">Request access to get started. Your admin will approve your account.</div>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">First name</div>
+        <input value="{{ loginFirst }}" onInput="{{ onLoginFirst }}" placeholder="Nathan" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:14px;box-sizing:border-box;"/>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">Last name</div>
+        <input value="{{ loginLast }}" onInput="{{ onLoginLast }}" placeholder="Cohen" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:14px;box-sizing:border-box;"/>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">Phone number</div>
+        <input type="tel" value="{{ loginPhone }}" onInput="{{ onLoginPhone }}" placeholder="(860) 555-0100" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:24px;box-sizing:border-box;"/>
+        <button onClick="{{ onSubmitLogin }}" style="{{ loginBtnStyle }}">Request access</button>
+      </sc-if>
     </div>
     <button onClick="{{ onLoginAsAdmin }}" style="margin-top:20px;width:100%;height:40px;background:none;border:none;cursor:pointer;color:#b3b6ac;font-family:'Manrope';font-size:13px;font-weight:600;">Sign in as Nathan (Admin demo)</button>
   </div>
@@ -2829,6 +2845,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
               <div onClick="{{ m.onClick }}" style="display:flex;align-items:center;gap:12px;padding:13px 15px;border-top:1px solid {{ m.sep }};cursor:{{ m.rowCursor }};">
                 <div style="{{ m.avatarStyle }}">{{ m.initials }}</div>
                 <div style="flex:1;min-width:0;"><div style="font-size:14.5px;font-weight:700;color:#1b1d1c;">{{ m.name }}</div><div style="font-size:12px;font-weight:600;color:#9a9d94;margin-top:1px;">{{ m.role }}</div></div>
+                <sc-if value="{{ m.disabledBadge }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:800;padding:3px 8px;border-radius:7px;color:#c0392b;background:#fbeae7;text-transform:uppercase;letter-spacing:.04em;margin-right:4px;">Disabled</span></sc-if>
                 <sc-if value="{{ m.editable }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;font-weight:700;color:#2f6bd6;">Edit</span><svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M1 1l5.5 6L1 13" stroke="#c2c5bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></sc-if>
                 <sc-if value="{{ m.showCount }}" hint-placeholder-val="{{ true }}"><div style="text-align:right;"><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1e3a5f;">{{ m.count }}</div><div style="font-size:10px;font-weight:600;color:#a7aaa0;text-transform:uppercase;letter-spacing:.04em;">active</div></div></sc-if>
               </div>
@@ -3197,6 +3214,13 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
           <div><div style="font-size:18px;font-weight:800;color:#1b1d1c;">{{ assignSheet.name }}</div><div style="font-size:12px;font-weight:600;color:#9a9d94;">{{ assignSheet.roleLabel }}</div></div>
         </div>
         <div style="font-size:13px;font-weight:500;color:#8b8f86;margin-bottom:16px;">{{ assignSheet.hint }}</div>
+        <sc-if value="{{ assignSheet.isPending }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Role</div>
+          <div style="display:flex;gap:8px;margin-bottom:18px;">
+            <button onClick="{{ setRoleManager }}" style="{{ assignSheet.roleMgrStyle }}">Manager</button>
+            <button onClick="{{ setRoleMaintenance }}" style="{{ assignSheet.roleMaintStyle }}">Maintenance Tech</button>
+          </div>
+        </sc-if>
         <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Properties</div>
         <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:24px;">
           <sc-for list="{{ assignSheet.propsList }}" as="p" hint-placeholder-count="4">
@@ -3207,6 +3231,9 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
           </sc-for>
         </div>
         <button onClick="{{ onSaveAssign }}" style="width:100%;height:50px;border-radius:14px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(30,58,95,.25);">Save</button>
+        <sc-if value="{{ assignSheet.canDisable }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ onToggleDisable }}" style="{{ assignSheet.disableBtnStyle }}">{{ assignSheet.disableBtnLabel }}</button>
+        </sc-if>
       </sc-if>
 
       <!-- ORDER A PART -->
@@ -3265,7 +3292,9 @@ class Component extends DCLogic {
     ];
     this.state={
       loggedIn: false, loginFirst:'', loginLast:'', loginPhone:'', loginSubmitted:false,
+      loginTab:'login', loginUsername:'', loginPassword:'', loginError:'', pendingApproveId:null,
       pendingUsers: (()=>{ try{ return JSON.parse(localStorage.getItem('uplift_pending')||'[]'); }catch(e){ return []; } })(),
+      disabledUsers: (()=>{ try{ return JSON.parse(localStorage.getItem('uplift_disabled')||'[]'); }catch(e){ return []; } })(),
       user:{ name:'Nathan', role:'Admin' },
       propertyId:'northwood',
       tab:'home', overlay:null, sheet:null,
@@ -3444,6 +3473,9 @@ class Component extends DCLogic {
       { name:'Priya', role:'Manager', prop:'sunset', sub:'Manager · Sunset Rock' },
       { name:'Tariq', role:'Maintenance', prop:'sunset', sub:'Maintenance · Sunset Rock' },
     ];
+    if(!localStorage.getItem('uplift_users')){
+      localStorage.setItem('uplift_users', JSON.stringify([{id:'nathan',firstName:'Nathan',lastName:'',username:'nathan',password:'uplift123',role:'Admin',properties:['northwood','bradley','sunset','woodbridge']}]));
+    }
   }
 
   // ---- helpers ----
@@ -3453,7 +3485,7 @@ class Component extends DCLogic {
   pct(p){ return p.tasks.length? Math.round(this.doneCount(p)/p.tasks.length*100):0; }
   curProp(){ return this.state.properties.find(p=>p.id===this.state.propertyId)||this.state.properties[0]; }
   pill(status){ const s=this.STATUS[status]; return { pillStyle:`display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:${s.fg};background:${s.bg};padding:4px 9px 4px 8px;border-radius:8px;`, pillDotStyle:`width:6px;height:6px;border-radius:50%;background:${s.dot};`, statusLabel:s.label }; }
-  avatar(name,size){ const p=this.PEOPLE[name]||{initials:'?',color:'#9a9d94'}; const sz=size||26; return { avatarStyle:`width:${sz}px;height:${sz}px;border-radius:50%;background:${p.color};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:${Math.round(sz*0.4)}px;flex-shrink:0;`, initials:p.initials, color:p.color }; }
+  avatar(name,size){ const p=this.PEOPLE[name]||{initials:(name||'').split(' ').filter(Boolean).map(w=>w[0].toUpperCase()).slice(0,2).join('')||'?',color:'#9a9d94'}; const sz=size||26; return { avatarStyle:`width:${sz}px;height:${sz}px;border-radius:50%;background:${p.color};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:${Math.round(sz*0.4)}px;flex-shrink:0;`, initials:p.initials, color:p.color }; }
   vendorAvatar(size){ const sz=size||26; return { avatarStyle:`width:${sz}px;height:${sz}px;border-radius:9px;background:#eef1ee;color:#5d6157;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:${Math.round(sz*0.45)}px;flex-shrink:0;`, initials:'⬡', color:'#5d6157' }; }
   actorAvatar(name,size){ return this.PEOPLE[name]? this.avatar(name,size) : this.vendorAvatar(size); }
   progFill(pct,color){ return `width:${pct}%;height:100%;border-radius:5px;background:${color||'#2f6bd6'};transition:width .3s ease;`; }
@@ -3470,7 +3502,32 @@ class Component extends DCLogic {
   personProps(name,role){ return role==='Maintenance'? this.techProps(name) : this.state.properties.filter(p=>p.managers.includes(name)).map(p=>p.id); }
   openPersonConfig(name,role){ this.setState({ sheet:'assign', editTech:name, editRole:role, etProps:[...this.personProps(name,role)] }); }
   toggleEtProp(id){ this.setState(s=>{ const has=s.etProps.includes(id); return { etProps: has? s.etProps.filter(x=>x!==id) : [...s.etProps,id] }; }); }
-  savePersonConfig(){ const st=this.state; const name=st.editTech, role=st.editRole; const props=st.etProps.filter(Boolean); if(!props.length){ this.flash('Check at least one property'); return; } const keyArr= role==='Maintenance'?'maintenance':'managers'; this.setState(s=>({ techConfig: role==='Maintenance'? {...s.techConfig, [name]:{type: props.length>1?'multi':'single', properties:props}} : s.techConfig, properties:s.properties.map(p=>{ const should=props.includes(p.id); const has=p[keyArr].includes(name); if(should&&!has) return {...p, [keyArr]:[...p[keyArr],name]}; if(!should&&has) return {...p, [keyArr]:p[keyArr].filter(x=>x!==name)}; return p; }), sheet:null, editTech:null })); this.flash(`${name}'s properties updated`); }
+  savePersonConfig(){
+    const st=this.state; const name=st.editTech, role=st.editRole;
+    const props=st.etProps.filter(Boolean); if(!props.length){ this.flash('Check at least one property'); return; }
+    const keyArr= role==='Maintenance'?'maintenance':'managers';
+    if(st.pendingApproveId){
+      const uid=st.pendingApproveId;
+      const u=st.pendingUsers.find(p=>p.id===uid);
+      if(u){
+        const nameParts=name.split(' '); const first=nameParts[0], last=nameParts.slice(1).join(' ');
+        const username=(first+(last?'.'+last:'')).toLowerCase();
+        const password='uplift'+Math.floor(1000+Math.random()*9000);
+        const newUser={id:uid, firstName:first, lastName:last, username, password, role, properties:props};
+        const existing=JSON.parse(localStorage.getItem('uplift_users')||'[]');
+        localStorage.setItem('uplift_users', JSON.stringify([...existing, newUser]));
+        const remaining=JSON.parse(localStorage.getItem('uplift_pending')||'[]').filter(p=>p.id!==uid);
+        localStorage.setItem('uplift_pending', JSON.stringify(remaining));
+        const colors=['#2f9e6a','#b8458f','#5a6acc','#d98324','#7b5bd6','#c0563f','#2f8f8f','#b07b2c'];
+        this.PEOPLE[name]={ initials:first.slice(0,1).toUpperCase()+(last?last.slice(0,1).toUpperCase():''), color:colors[first.charCodeAt(0)%colors.length], role: role==='Maintenance'?'Maintenance Tech':'Project Manager' };
+        this.setState(s=>({ techConfig: role==='Maintenance'? {...s.techConfig, [name]:{type: props.length>1?'multi':'single', properties:props}} : s.techConfig, properties:s.properties.map(p=>{ const should=props.includes(p.id); const has=p[keyArr].includes(name); if(should&&!has) return {...p, [keyArr]:[...p[keyArr],name]}; if(!should&&has) return {...p, [keyArr]:p[keyArr].filter(x=>x!==name)}; return p; }), sheet:null, editTech:null, pendingUsers:s.pendingUsers.filter(p=>p.id!==uid), pendingApproveId:null }));
+        this.flash(`${name} approved · ${username} / ${password}`);
+        return;
+      }
+    }
+    this.setState(s=>({ techConfig: role==='Maintenance'? {...s.techConfig, [name]:{type: props.length>1?'multi':'single', properties:props}} : s.techConfig, properties:s.properties.map(p=>{ const should=props.includes(p.id); const has=p[keyArr].includes(name); if(should&&!has) return {...p, [keyArr]:[...p[keyArr],name]}; if(!should&&has) return {...p, [keyArr]:p[keyArr].filter(x=>x!==name)}; return p; }), sheet:null, editTech:null }));
+    this.flash(`${name}'s properties updated`);
+  }
 
   addNote(propertyId, actor, text, projectId){
     this.setState(s=>({ notes:[{ id:'n'+Math.random().toString(36).slice(2), propertyId, actor, text, projectId, time:'now', timestamp: new Date().toISOString(), read:false }, ...s.notes] }));
@@ -3567,10 +3624,32 @@ class Component extends DCLogic {
   approveUser(uid){
     const u=this.state.pendingUsers.find(p=>p.id===uid);
     if(!u) return;
-    const remaining = JSON.parse(localStorage.getItem('uplift_pending')||'[]').filter(p=>p.id!==uid);
-    localStorage.setItem('uplift_pending', JSON.stringify(remaining));
-    this.setState(s=>({pendingUsers:s.pendingUsers.filter(p=>p.id!==uid)}));
-    this.flash(`${u.firstName} ${u.lastName} approved`);
+    this.setState({ sheet:'assign', editTech:`${u.firstName} ${u.lastName}`.trim(), editRole:'Maintenance', etProps:[], pendingApproveId:uid });
+  }
+  doLogin(){
+    const {loginUsername, loginPassword} = this.state;
+    if(!loginUsername.trim()||!loginPassword.trim()) return;
+    const users = JSON.parse(localStorage.getItem('uplift_users')||'[]');
+    const u = users.find(x=>x.username===loginUsername.trim()&&x.password===loginPassword.trim());
+    if(!u){ this.setState({loginError:'Invalid username or password'}); return; }
+    const name=u.firstName+(u.lastName?' '+u.lastName:'');
+    if(!this.PEOPLE[name]){
+      const colors=['#2f9e6a','#b8458f','#5a6acc','#d98324','#7b5bd6','#c0563f','#2f8f8f','#b07b2c'];
+      const initials=u.firstName.slice(0,1).toUpperCase()+(u.lastName?u.lastName.slice(0,1).toUpperCase():'');
+      this.PEOPLE[name]={ initials, color:colors[(u.firstName.charCodeAt(0)||0)%colors.length], role: u.role==='Maintenance'?'Maintenance Tech':'Project Manager' };
+    }
+    const propId=(u.properties&&u.properties[0])||this.state.properties[0].id;
+    const disabledList = JSON.parse(localStorage.getItem('uplift_disabled')||'[]');
+    if(disabledList.includes(name)){ this.setState({loginError:'Your account has been disabled. Contact your admin.'}); return; }
+    this.setState({loggedIn:true, user:{name, role:u.role}, propertyId:propId, loginError:''});
+  }
+  toggleDisableUser(name){
+    const existing=JSON.parse(localStorage.getItem('uplift_disabled')||'[]');
+    const isDisabled=existing.includes(name);
+    const updated=isDisabled?existing.filter(n=>n!==name):[...existing,name];
+    localStorage.setItem('uplift_disabled', JSON.stringify(updated));
+    this.setState(s=>({ disabledUsers: isDisabled?s.disabledUsers.filter(n=>n!==name):[...s.disabledUsers,name], sheet:null, editTech:null }));
+    this.flash(isDisabled?`${name} re-enabled`:`${name} access disabled`);
   }
   switchProperty(id){ this.setState({ propertyId:id, tab:'home', overlay:null, sheet:null, filterType:'All' }); }
   switchIdentity(p){ this.setState({ user:{name:p.name, role:p.role}, propertyId:p.prop, tab:'home', overlay:null, sheet:null, myWorkAll:true, boardWho:'All', filterType:'All', formManager:(this.state.properties.find(x=>x.id===p.prop)||{managers:['Valerie']}).managers.find(m=>m!=='Nathan')||'Nathan' }); this.flash(`Viewing as ${p.name}`); }
@@ -3585,14 +3664,28 @@ class Component extends DCLogic {
   renderVals(){
     const s=this.state, P=this.PEOPLE;
     if(!s.loggedIn){
-      const loginReady=s.loginFirst.trim()&&s.loginLast.trim()&&s.loginPhone.trim();
+      const isLoginTabLogin = s.loginTab !== 'signup';
+      const tabBtn=(act)=>`flex:1;height:38px;border:none;border-radius:10px;cursor:pointer;font-family:'Manrope';font-size:14px;font-weight:700;${act?'background:#fff;color:#1b1d1c;box-shadow:0 1px 3px rgba(20,20,20,.1);':'background:transparent;color:#8b8f86;'}`;
+      const loginReady = isLoginTabLogin
+        ? !!(s.loginUsername.trim()&&s.loginPassword.trim())
+        : !!(s.loginFirst.trim()&&s.loginLast.trim()&&s.loginPhone.trim());
       return {
         isLoggedIn:false, showLoginForm:!s.loginSubmitted, showPendingScreen:s.loginSubmitted,
+        isLoginTabLogin, isLoginTabSignup: !isLoginTabLogin,
+        setLoginTabLogin:()=>this.setState({loginTab:'login',loginError:''}),
+        setLoginTabSignup:()=>this.setState({loginTab:'signup'}),
+        loginTabLoginStyle:tabBtn(isLoginTabLogin),
+        loginTabSignupStyle:tabBtn(!isLoginTabLogin),
         loginFirst:s.loginFirst, loginLast:s.loginLast, loginPhone:s.loginPhone,
+        loginUsername:s.loginUsername, loginPassword:s.loginPassword,
+        loginError:s.loginError||'',
         onLoginFirst:(e)=>this.setState({loginFirst:e.target.value}),
         onLoginLast:(e)=>this.setState({loginLast:e.target.value}),
         onLoginPhone:(e)=>this.setState({loginPhone:e.target.value}),
+        onLoginUsername:(e)=>this.setState({loginUsername:e.target.value}),
+        onLoginPassword:(e)=>this.setState({loginPassword:e.target.value}),
         onSubmitLogin:()=>this.submitLogin(),
+        onDoLogin:()=>this.doLogin(),
         loginBtnStyle:`width:100%;height:50px;border-radius:14px;border:none;background:${loginReady?'#1e3a5f':'#c7c3b9'};color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:${loginReady?'pointer':'default'};`,
         onLoginAsAdmin:()=>this.setState({loggedIn:true}),
       };
@@ -3655,8 +3748,8 @@ class Component extends DCLogic {
     // team
     const countFor=(name)=>all.filter(p=>p.status!=='Complete'&&(p.manager===name||p.tasks.some(t=>t.who===name))).length;
     const vendorCount=(v)=>all.filter(p=>p.status!=='Complete'&&p.tasks.some(t=>t.vendor===v)).length;
-    const mkMember=(name,i)=>{ const a=this.avatar(name,38); const isOwner=name==='Nathan'; const mprops=this.state.properties.filter(p=>p.managers.includes(name)).map(p=>p.name); const sub= isOwner? 'Admin · Owner · all properties' : (mprops.length? `Manager · ${mprops.join(', ')}` : 'Manager · unassigned'); const canEdit=this.isAdmin()&&!isOwner; return { name, role:sub, avatarStyle:a.avatarStyle, initials:a.initials, count:countFor(name), sep:i===0?'transparent':'#f1efe9', onClick: canEdit? ()=>this.openPersonConfig(name,'Manager'):()=>{}, rowCursor: canEdit?'pointer':'default', editable:canEdit, showCount:!canEdit }; };
-    const mkTech=(name,i)=>{ const a=this.avatar(name,38); const type=this.techType(name); const tprops=this.techProps(name); const pnames=tprops.map(id=>(s.properties.find(p=>p.id===id)||{}).name).filter(Boolean); const sub= type==='multi'? `Multi-property · ${pnames.join(', ')}` : `${pnames[0]||'—'} only`; return { name, role:sub, avatarStyle:a.avatarStyle, initials:a.initials, count:countFor(name), sep:i===0?'transparent':'#f1efe9', onClick: this.isAdmin()? ()=>this.openPersonConfig(name,'Maintenance'):()=>{}, rowCursor: this.isAdmin()?'pointer':'default', editable:this.isAdmin(), showCount:!this.isAdmin() }; };
+    const mkMember=(name,i)=>{ const a=this.avatar(name,38); const isOwner=name==='Nathan'; const mprops=this.state.properties.filter(p=>p.managers.includes(name)).map(p=>p.name); const disabled=s.disabledUsers.includes(name); const sub= isOwner? 'Admin · Owner · all properties' : (mprops.length? `Manager · ${mprops.join(', ')}` : 'Manager · unassigned'); const canEdit=this.isAdmin()&&!isOwner; return { name, role:sub, avatarStyle:a.avatarStyle+(disabled?'opacity:.45;':''), initials:a.initials, count:countFor(name), sep:i===0?'transparent':'#f1efe9', onClick: canEdit? ()=>this.openPersonConfig(name,'Manager'):()=>{}, rowCursor: canEdit?'pointer':'default', editable:canEdit, showCount:!canEdit, disabled, disabledBadge:disabled }; };
+    const mkTech=(name,i)=>{ const a=this.avatar(name,38); const type=this.techType(name); const tprops=this.techProps(name); const pnames=tprops.map(id=>(s.properties.find(p=>p.id===id)||{}).name).filter(Boolean); const disabled=s.disabledUsers.includes(name); const sub= type==='multi'? `Multi-property · ${pnames.join(', ')}` : `${pnames[0]||'—'} only`; return { name, role:sub, avatarStyle:a.avatarStyle+(disabled?'opacity:.45;':''), initials:a.initials, count:countFor(name), sep:i===0?'transparent':'#f1efe9', onClick: this.isAdmin()? ()=>this.openPersonConfig(name,'Maintenance'):()=>{}, rowCursor: this.isAdmin()?'pointer':'default', editable:this.isAdmin(), showCount:!this.isAdmin(), disabled, disabledBadge:disabled }; };
     const vendorsUsed=[...new Set(all.flatMap(p=>p.tasks.map(t=>t.vendor).filter(Boolean)))];
     const vendorRoles={ 'Lima Painting':'Painting','Statewide Flooring':'Flooring','BrightHouse Cleaning':'Cleaning','Northeast Cabinetry':'Cabinetry','AquaFlow Plumbing':'Plumbing' };
     const teamGroups=[ { label:'Project Managers', members:prop.managers.map(mkMember) }, { label:'Maintenance', members:(prop.maintenance.length?prop.maintenance:['—']).map((n,i)=> n==='—'?{name:'No maintenance assigned',role:'—',avatarStyle:'width:38px;height:38px;border-radius:50%;background:#eee;flex-shrink:0;',initials:'',count:'',sep:'transparent',onClick:()=>{},rowCursor:'default',editable:false,showCount:false}:mkTech(n,i)) }, { label:'Vendors', members:(vendorsUsed.length?vendorsUsed:['—']).map((v,i)=> v==='—'?{name:'No vendors on active work',role:'—',avatarStyle:'width:38px;height:38px;border-radius:11px;background:#eef1ee;flex-shrink:0;',initials:'',count:'',sep:'transparent',onClick:()=>{},rowCursor:'default',editable:false,showCount:false}:({ name:v, role:vendorRoles[v]||'Vendor', avatarStyle:'width:38px;height:38px;border-radius:11px;background:#eef1ee;color:#5d6157;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0;', initials:'⬡', count:vendorCount(v), sep:i===0?'transparent':'#f1efe9', onClick:()=>{}, rowCursor:'default', editable:false, showCount:true })) } ];
@@ -3728,7 +3821,7 @@ class Component extends DCLogic {
 
     // assign properties sheet (managers + maintenance)
     let assignSheet=null;
-    if(s.sheet==='assign'&&s.editTech){ const a=this.avatar(s.editTech,44); const propsList=s.properties.map(p=>{ const sel=s.etProps.includes(p.id); return { name:p.name, meta:p.address, onClick:()=>this.toggleEtProp(p.id), boxStyle:`width:24px;height:24px;border-radius:7px;border:2px solid ${sel?'#1e3a5f':'#d6d3cb'};background:${sel?'#1e3a5f':'#fff'};flex-shrink:0;display:flex;align-items:center;justify-content:center;`, checked:sel, rowStyle:`display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;border-radius:13px;cursor:pointer;border:1.5px solid ${sel?'#1e3a5f':'#eae7df'};background:${sel?'#f3f6fb':'#fff'};text-align:left;` }; }); const cnt=s.etProps.length; assignSheet={ name:s.editTech, initials:a.initials, avatarStyle:a.avatarStyle, roleLabel: s.editRole==='Maintenance'?'Maintenance assignment':'Manager assignment', propsList, hint: s.editRole==='Maintenance'? (cnt>1?`Works across ${cnt} properties.`: (cnt===1?'Stationed at one property — gets the simplest view.':'Pick the properties they cover.')) : `Manages ${cnt||'no'} ${cnt===1?'property':'properties'}.` }; }
+    if(s.sheet==='assign'&&s.editTech){ const a=this.avatar(s.editTech,44); const propsList=s.properties.map(p=>{ const sel=s.etProps.includes(p.id); return { name:p.name, meta:p.address, onClick:()=>this.toggleEtProp(p.id), boxStyle:`width:24px;height:24px;border-radius:7px;border:2px solid ${sel?'#1e3a5f':'#d6d3cb'};background:${sel?'#1e3a5f':'#fff'};flex-shrink:0;display:flex;align-items:center;justify-content:center;`, checked:sel, rowStyle:`display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;border-radius:13px;cursor:pointer;border:1.5px solid ${sel?'#1e3a5f':'#eae7df'};background:${sel?'#f3f6fb':'#fff'};text-align:left;` }; }); const cnt=s.etProps.length; const roleBtnStyle=(r)=>`flex:1;height:44px;border-radius:12px;border:${s.editRole===r?'none':'1.5px solid #e6e3db'};background:${s.editRole===r?'#1e3a5f':'#fff'};color:${s.editRole===r?'#fff':'#74786f'};font-family:'Manrope';font-size:13px;font-weight:700;cursor:pointer;`; const isNameDisabled=s.disabledUsers.includes(s.editTech); const canDisable=!s.pendingApproveId&&s.editTech!=='Nathan'; assignSheet={ name:s.editTech, initials:a.initials, avatarStyle:a.avatarStyle, roleLabel: s.editRole==='Maintenance'?'Maintenance assignment':'Manager assignment', propsList, hint: s.editRole==='Maintenance'? (cnt>1?`Works across ${cnt} properties.`: (cnt===1?'Stationed at one property — gets the simplest view.':'Pick the properties they cover.')) : `Manages ${cnt||'no'} ${cnt===1?'property':'properties'}.`, isPending:!!s.pendingApproveId, roleMgrStyle:roleBtnStyle('Manager'), roleMaintStyle:roleBtnStyle('Maintenance'), canDisable, disableBtnLabel: isNameDisabled?'Re-enable access':'Disable access', disableBtnStyle:`width:100%;height:44px;border-radius:13px;border:1.5px solid ${isNameDisabled?'#2f9e6a':'#e0392b'};background:${isNameDisabled?'#edf8f3':'#fff5f4'};color:${isNameDisabled?'#1f8a5b':'#c0392b'};font-family:'Manrope';font-size:14px;font-weight:700;cursor:pointer;margin-top:10px;` }; }
 
     // sheet
     const sheet=s.sheet, open=!!sheet;
@@ -3771,7 +3864,7 @@ class Component extends DCLogic {
       isHome, isMyWork, isBoard, isMessages, isReviews, isTeam, isOrders, isDetail, isNotifications, isThread, isActivity, showTabs,
       showManagerTabs, showMaintTabs, showTeamTab, isMaintenance,
       myWork, myWorkPropChips, hasMyWorkChips: myWorkPropChips.length>0,
-      assignSheet, isSheetAssign:s.sheet==='assign', onSaveAssign:()=>this.savePersonConfig(),
+      assignSheet, isSheetAssign:s.sheet==='assign', onSaveAssign:()=>this.savePersonConfig(), setRoleManager:()=>this.setState({editRole:'Manager'}), setRoleMaintenance:()=>this.setState({editRole:'Maintenance'}), onToggleDisable:()=>this.toggleDisableUser(s.editTech),
       orderSheet, isSheetOrder:s.sheet==='order',
       setSrcLowes:()=>this.setState({orderSource:'lowes'}), setSrcAmazon:()=>this.setState({orderSource:'amazon'}),
       onOrderCustomName:(e)=>this.setState({orderCustomName:e.target.value}), onOrderCustomLink:(e)=>this.setState({orderCustomLink:e.target.value}),
