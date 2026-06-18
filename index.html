@@ -3030,7 +3030,12 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
             <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Assign to</div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;"><sc-for list="{{ woAssigneeChips }}" as="m" hint-placeholder-count="2"><button onClick="{{ m.onClick }}" style="{{ m.style }}"><span style="{{ m.avatarStyle }}">{{ m.initials }}</span>{{ m.name }}</button></sc-for></div>
             <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Needed by</div>
-            <input value="{{ formDue }}" onInput="{{ onDue }}" placeholder="Jun 19" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:24px;"/>
+            <input type="date" value="{{ formDue }}" onInput="{{ onDue }}" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:18px;"/>
+            <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Schedule window <span style="font-weight:500;text-transform:none;letter-spacing:0;">(optional)</span></div>
+            <div style="display:flex;gap:8px;margin-bottom:24px;">
+              <button onClick="{{ setWindowMorning }}" style="{{ windowMorningStyle }}">8:30 – 12:00 PM</button>
+              <button onClick="{{ setWindowAfternoon }}" style="{{ windowAfternoonStyle }}">12:30 – 4:00 PM</button>
+            </div>
             <button onClick="{{ onCreate }}" style="{{ woCreateStyle }}">{{ woCreateLabel }}</button>
           </sc-if>
 
@@ -3047,7 +3052,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
             <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Assign manager</div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;"><sc-for list="{{ formManagerChips }}" as="m" hint-placeholder-count="3"><button onClick="{{ m.onClick }}" style="{{ m.style }}"><span style="{{ m.avatarStyle }}">{{ m.initials }}</span>{{ m.name }}</button></sc-for></div>
             <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Target completion</div>
-            <input value="{{ formDue }}" onInput="{{ onDue }}" placeholder="Jun 30" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:18px;"/>
+            <input type="date" value="{{ formDue }}" onInput="{{ onDue }}" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:18px;"/>
             <button onClick="{{ onCreate }}" style="width:100%;height:50px;border-radius:14px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(30,58,95,.25);">Create unit {{ unitKindLabel }}</button>
             <button onClick="{{ setModeAddUnit }}" style="width:100%;height:40px;background:none;border:none;cursor:pointer;color:#2f6bd6;font-family:'Manrope';font-size:13px;font-weight:700;margin-top:10px;">+ Add a unit to inventory instead</button>
           </sc-if>
@@ -3062,7 +3067,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
             <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Assign manager</div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;"><sc-for list="{{ formManagerChips }}" as="m" hint-placeholder-count="3"><button onClick="{{ m.onClick }}" style="{{ m.style }}"><span style="{{ m.avatarStyle }}">{{ m.initials }}</span>{{ m.name }}</button></sc-for></div>
             <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Target completion</div>
-            <input value="{{ formDue }}" onInput="{{ onDue }}" placeholder="Jul 2" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:24px;"/>
+            <input type="date" value="{{ formDue }}" onInput="{{ onDue }}" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:24px;"/>
             <button onClick="{{ onCreate }}" style="width:100%;height:50px;border-radius:14px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(30,58,95,.25);">Create project in {{ propertyName }}</button>
           </sc-if>
         </sc-if>
@@ -3190,7 +3195,7 @@ class Component extends DCLogic {
       tab:'home', overlay:null, sheet:null,
       filterType:'All', boardWho:'All', boardSeg:'doing',
       createMode:'unit',
-      formType:'Unit Turn', formBuilding:'', formUnit:'', formManager:'Valerie', formDue:'',
+      formType:'Unit Turn', formBuilding:'', formUnit:'', formManager:'Valerie', formDue:'', formTimeWindow:'',
       apName:'', apAddress:'', apManager:'Valerie',
       chatInput:'',
       myWorkAll:true, myWorkSubject:'work_order',
@@ -3422,8 +3427,8 @@ class Component extends DCLogic {
       const title=(st.woTitle||'').trim(); if(!title){ this.flash('Describe the work order'); return; }
       const loc= st.formUnit? `${st.formBuilding}-${st.formUnit}` : (st.formBuilding||'General');
       const who= prop.maintenance.includes(st.formManager)? st.formManager : (prop.maintenance[0]||null);
-      const np={ id:newId(), propertyId:prop.id, category:'work_order', priority: st.woUrgent?'emergency':'normal', unit:loc, type:'Work Order', title, manager: prop.managers[0], status: st.woUrgent?'In Progress':'Not Started', due: st.formDue||'2026-06-30', tasks:[ mk(title, who, null, st.formDue) ], orders:[] };
-      this.setState(s=>({ projects:[np,...s.projects], sheet:null, tab:'home', subject:'work_order', overlay:null, woTitle:'', formBuilding:'', formUnit:'', formDue:'', woUrgent:false }));
+      const np={ id:newId(), propertyId:prop.id, category:'work_order', priority: st.woUrgent?'emergency':'normal', unit:loc, type:'Work Order', title, manager: prop.managers[0], status: st.woUrgent?'In Progress':'Not Started', due: st.formDue||'2026-06-30', timeWindow: st.formTimeWindow||null, tasks:[ mk(title, who, null, st.formDue) ], orders:[] };
+      this.setState(s=>({ projects:[np,...s.projects], sheet:null, tab:'home', subject:'work_order', overlay:null, woTitle:'', formBuilding:'', formUnit:'', formDue:'', formTimeWindow:'', woUrgent:false }));
       this.addNote(prop.id, st.user.name, `${st.woUrgent?'logged an EMERGENCY work order':'logged a work order'} — ${loc} · ${title}.`, np.id);
       this.flash(st.woUrgent?'Emergency work order created':'Work order created');
       return;
@@ -3693,6 +3698,10 @@ class Component extends DCLogic {
       formTypeChips, formManagerChips, apManagerChips,
       formBuilding:s.formBuilding, formUnit:s.formUnit, formDue:s.formDue,
       onBuilding:(e)=>this.setState({formBuilding:e.target.value}), onUnit:(e)=>this.setState({formUnit:e.target.value}), onDue:(e)=>this.setState({formDue:e.target.value}),
+      setWindowMorning:()=>this.setState(s=>({formTimeWindow:s.formTimeWindow==='morning'?'':'morning'})),
+      setWindowAfternoon:()=>this.setState(s=>({formTimeWindow:s.formTimeWindow==='afternoon'?'':'afternoon'})),
+      windowMorningStyle:(()=>{ const a=s.formTimeWindow==='morning'; return `flex:1;height:44px;border-radius:11px;border:${a?'none':'1.5px solid #e6e3db'};background:${a?'#1e3a5f':'#f8f7f4'};color:${a?'#fff':'#5a5d54'};font-family:'Manrope';font-size:13px;font-weight:700;cursor:pointer;`; })(),
+      windowAfternoonStyle:(()=>{ const a=s.formTimeWindow==='afternoon'; return `flex:1;height:44px;border-radius:11px;border:${a?'none':'1.5px solid #e6e3db'};background:${a?'#1e3a5f':'#f8f7f4'};color:${a?'#fff':'#5a5d54'};font-family:'Manrope';font-size:13px;font-weight:700;cursor:pointer;`; })(),
       onCreate:()=>this.createItem(), onAddUnit:()=>this.addUnit(),
       propertyList, propertyListSub, canAddProperty:this.isAdmin(),
       apName:s.apName, apAddress:s.apAddress, onApName:(e)=>this.setState({apName:e.target.value}), onApAddress:(e)=>this.setState({apAddress:e.target.value}), onCreateProperty:()=>this.createProperty(),
