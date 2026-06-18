@@ -2534,11 +2534,12 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
     </div>
     <div style="font-size:22px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:8px;">Request sent</div>
     <div style="font-size:14px;font-weight:500;color:#8b8f86;line-height:1.5;margin-bottom:32px;">Your admin has been notified and will approve your access shortly. You'll be able to log in once approved.</div>
-    <div style="width:100%;background:#fff;border-radius:14px;padding:16px 18px;text-align:left;border:1.5px solid #e6e3db;">
+    <div style="width:100%;background:#fff;border-radius:14px;padding:16px 18px;text-align:left;border:1.5px solid #e6e3db;margin-bottom:28px;">
       <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;">Submitted as</div>
       <div style="font-size:15px;font-weight:700;color:#1b1d1c;">{{ loginFirst }} {{ loginLast }}</div>
       <div style="font-size:13px;font-weight:500;color:#8b8f86;margin-top:2px;">{{ loginPhone }}</div>
     </div>
+    <button onClick="{{ onLoginAsAdmin }}" style="width:100%;height:44px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;color:#1e3a5f;font-family:'Manrope';font-size:13px;font-weight:700;cursor:pointer;">Sign in as Nathan (Admin) to approve</button>
   </div>
   </sc-if>
 
@@ -3264,7 +3265,7 @@ class Component extends DCLogic {
     ];
     this.state={
       loggedIn: false, loginFirst:'', loginLast:'', loginPhone:'', loginSubmitted:false,
-      pendingUsers:[],
+      pendingUsers: (()=>{ try{ return JSON.parse(localStorage.getItem('uplift_pending')||'[]'); }catch(e){ return []; } })(),
       user:{ name:'Nathan', role:'Admin' },
       propertyId:'northwood',
       tab:'home', overlay:null, sheet:null,
@@ -3559,11 +3560,15 @@ class Component extends DCLogic {
     const {loginFirst, loginLast, loginPhone} = this.state;
     if(!loginFirst.trim()||!loginLast.trim()||!loginPhone.trim()) return;
     const pending={id:'u'+Math.random().toString(36).slice(2), firstName:loginFirst.trim(), lastName:loginLast.trim(), phone:loginPhone.trim(), submittedAt:new Date().toISOString()};
+    const existing = JSON.parse(localStorage.getItem('uplift_pending')||'[]');
+    localStorage.setItem('uplift_pending', JSON.stringify([...existing, pending]));
     this.setState(s=>({pendingUsers:[...s.pendingUsers, pending], loginSubmitted:true}));
   }
   approveUser(uid){
     const u=this.state.pendingUsers.find(p=>p.id===uid);
     if(!u) return;
+    const remaining = JSON.parse(localStorage.getItem('uplift_pending')||'[]').filter(p=>p.id!==uid);
+    localStorage.setItem('uplift_pending', JSON.stringify(remaining));
     this.setState(s=>({pendingUsers:s.pendingUsers.filter(p=>p.id!==uid)}));
     this.flash(`${u.firstName} ${u.lastName} approved`);
   }
