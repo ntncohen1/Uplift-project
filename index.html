@@ -2505,6 +2505,43 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
     </div>
   </div>
 
+  <!-- ============ LOGIN ============ -->
+  <sc-if value="{{ showLoginForm }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;background:#f4f3f0;z-index:60;padding:64px 28px 40px;overflow-y:auto;">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+      <div style="width:52px;height:52px;border-radius:16px;background:#1e3a5f;display:flex;align-items:center;justify-content:center;margin-bottom:24px;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fff" stroke-width="2" stroke-linecap="round"/><polyline points="9,22 9,12 15,12 15,22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div style="font-size:26px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:6px;">Welcome to Uplift</div>
+      <div style="font-size:14px;font-weight:500;color:#8b8f86;margin-bottom:32px;">Request access to get started. Your admin will approve your account.</div>
+      <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">First name</div>
+      <input value="{{ loginFirst }}" onInput="{{ onLoginFirst }}" placeholder="Nathan" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:14px;box-sizing:border-box;"/>
+      <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">Last name</div>
+      <input value="{{ loginLast }}" onInput="{{ onLoginLast }}" placeholder="Cohen" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:14px;box-sizing:border-box;"/>
+      <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;">Phone number</div>
+      <input type="tel" value="{{ loginPhone }}" onInput="{{ onLoginPhone }}" placeholder="(860) 555-0100" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fff;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:28px;box-sizing:border-box;"/>
+      <button onClick="{{ onSubmitLogin }}" style="{{ loginBtnStyle }}">Request access</button>
+    </div>
+    <button onClick="{{ onLoginAsAdmin }}" style="margin-top:20px;width:100%;height:40px;background:none;border:none;cursor:pointer;color:#b3b6ac;font-family:'Manrope';font-size:13px;font-weight:600;">Sign in as Nathan (Admin demo)</button>
+  </div>
+  </sc-if>
+
+  <!-- ============ PENDING APPROVAL ============ -->
+  <sc-if value="{{ showPendingScreen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f4f3f0;z-index:60;padding:40px 28px;text-align:center;">
+    <div style="width:64px;height:64px;border-radius:20px;background:#f0f4ff;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#2f6bd6" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#2f6bd6" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <div style="font-size:22px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:8px;">Request sent</div>
+    <div style="font-size:14px;font-weight:500;color:#8b8f86;line-height:1.5;margin-bottom:32px;">Your admin has been notified and will approve your access shortly. You'll be able to log in once approved.</div>
+    <div style="width:100%;background:#fff;border-radius:14px;padding:16px 18px;text-align:left;border:1.5px solid #e6e3db;">
+      <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;">Submitted as</div>
+      <div style="font-size:15px;font-weight:700;color:#1b1d1c;">{{ loginFirst }} {{ loginLast }}</div>
+      <div style="font-size:13px;font-weight:500;color:#8b8f86;margin-top:2px;">{{ loginPhone }}</div>
+    </div>
+  </div>
+  </sc-if>
+
   <!-- ============ HOME ============ -->
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
   <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;animation:screenIn .25s ease;">
@@ -2557,7 +2594,7 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
 
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;">
         <span style="font-size:16px;font-weight:800;color:#1b1d1c;letter-spacing:-.01em;">Active projects</span>
-        <span style="font-size:12px;font-weight:600;color:#8b8f86;">{{ projectCount }}</span>
+        <div style="display:flex;align-items:center;gap:10px;"><button onClick="{{ openActivity }}" style="background:none;border:none;cursor:pointer;color:#2f6bd6;font-family:'Manrope';font-size:12px;font-weight:700;padding:0;">Activity ›</button><span style="font-size:12px;font-weight:600;color:#8b8f86;">{{ projectCount }}</span></div>
       </div>
       <div class="scroll" style="display:flex;gap:8px;overflow-x:auto;margin:0 -20px 14px;padding:0 20px 2px;">
         <sc-for list="{{ typeChips }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
@@ -2769,6 +2806,20 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
       <button onClick="{{ openIdentity }}" style="background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;"><div style="{{ userAvatarStyle }}">{{ userInitials }}</div></button>
     </div>
     <div class="scroll" style="flex:1;overflow-y:auto;padding:6px 20px 100px;">
+      <sc-if value="{{ hasPending }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;color:#e05a2b;letter-spacing:.07em;text-transform:uppercase;margin:0 4px 9px;">Pending approval</div>
+          <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 6px rgba(20,20,20,.05);">
+            <sc-for list="{{ pendingUsersList }}" as="pu" hint-placeholder-count="1">
+              <div style="display:flex;align-items:center;gap:12px;padding:13px 15px;border-top:1px solid #f5f3ef;">
+                <div style="width:38px;height:38px;border-radius:50%;background:#fde8e0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#e05a2b;flex-shrink:0;">?</div>
+                <div style="flex:1;min-width:0;"><div style="font-size:14.5px;font-weight:700;color:#1b1d1c;">{{ pu.name }}</div><div style="font-size:12px;font-weight:600;color:#9a9d94;margin-top:1px;">{{ pu.phone }} · {{ pu.timeDisplay }}</div></div>
+                <button onClick="{{ pu.onApprove }}" style="height:32px;padding:0 14px;border-radius:9px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0;">Approve</button>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
       <sc-for list="{{ teamGroups }}" as="g" hint-placeholder-count="3">
         <div style="margin-bottom:20px;">
           <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.07em;text-transform:uppercase;margin:0 4px 9px;">{{ g.label }}</div>
@@ -2929,6 +2980,28 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
           </div>
         </sc-for>
       </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ ACTIVITY LOG ============ -->
+  <sc-if value="{{ isActivity }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:#f4f3f0;display:flex;flex-direction:column;z-index:40;animation:overIn .22s ease;">
+    <div style="padding:56px 20px 12px;border-bottom:1px solid #ebe8e1;">
+      <div style="display:flex;align-items:center;justify-content:space-between;"><button onClick="{{ back }}" style="display:flex;align-items:center;gap:3px;background:none;border:none;cursor:pointer;color:#2f6bd6;font-family:'Manrope';font-size:15px;font-weight:600;padding:4px 0;"><svg width="11" height="18" viewBox="0 0 12 20" fill="none"><path d="M10 2L2 10l8 8" stroke="#2f6bd6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Back</button></div>
+      <div style="font-size:24px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-top:8px;">Activity</div>
+      <div style="font-size:13px;font-weight:500;color:#8b8f86;margin-top:2px;">Full history for {{ propertyName }}</div>
+    </div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:12px 0;">
+      <sc-for list="{{ activityLog }}" as="ev" hint-placeholder-count="6">
+        <div style="display:flex;gap:12px;padding:12px 20px;border-bottom:1px solid #f0ede6;">
+          <div style="width:32px;height:32px;border-radius:50%;background:#e8e5de;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#5a5d54;margin-top:1px;">{{ ev.actor[0] }}</div>
+          <div style="flex:1;min-width:0;">
+            <div style="font-size:13.5px;font-weight:600;color:#1b1d1c;line-height:1.4;"><span style="color:#2f6bd6;">{{ ev.actor }}</span> {{ ev.text }}</div>
+            <div style="font-size:11.5px;font-weight:500;color:#a7aaa0;margin-top:3px;">{{ ev.timeDisplay }}</div>
+          </div>
+        </div>
+      </sc-for>
     </div>
   </div>
   </sc-if>
@@ -3190,6 +3263,8 @@ class Component extends DCLogic {
       { cat:'Final', items:['Pest inspection','Final walkthrough','Move-in ready photos'] },
     ];
     this.state={
+      loggedIn: false, loginFirst:'', loginLast:'', loginPhone:'', loginSubmitted:false,
+      pendingUsers:[],
       user:{ name:'Nathan', role:'Admin' },
       propertyId:'northwood',
       tab:'home', overlay:null, sheet:null,
@@ -3397,7 +3472,15 @@ class Component extends DCLogic {
   savePersonConfig(){ const st=this.state; const name=st.editTech, role=st.editRole; const props=st.etProps.filter(Boolean); if(!props.length){ this.flash('Check at least one property'); return; } const keyArr= role==='Maintenance'?'maintenance':'managers'; this.setState(s=>({ techConfig: role==='Maintenance'? {...s.techConfig, [name]:{type: props.length>1?'multi':'single', properties:props}} : s.techConfig, properties:s.properties.map(p=>{ const should=props.includes(p.id); const has=p[keyArr].includes(name); if(should&&!has) return {...p, [keyArr]:[...p[keyArr],name]}; if(!should&&has) return {...p, [keyArr]:p[keyArr].filter(x=>x!==name)}; return p; }), sheet:null, editTech:null })); this.flash(`${name}'s properties updated`); }
 
   addNote(propertyId, actor, text, projectId){
-    this.setState(s=>({ notes:[{ id:'n'+Math.random().toString(36).slice(2), propertyId, actor, text, projectId, time:'now', read:false }, ...s.notes] }));
+    this.setState(s=>({ notes:[{ id:'n'+Math.random().toString(36).slice(2), propertyId, actor, text, projectId, time:'now', timestamp: new Date().toISOString(), read:false }, ...s.notes] }));
+  }
+  fmtTimestamp(iso){
+    if(!iso) return '';
+    const d=new Date(iso);
+    const months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const h=d.getHours(), m=d.getMinutes();
+    const ampm=h>=12?'PM':'AM', hr=h%12||12, min=m.toString().padStart(2,'0');
+    return `${months[d.getMonth()]} ${d.getDate()} at ${hr}:${min} ${ampm}`;
   }
   flash(msg){ this.setState({toast:msg}); clearTimeout(this._tt); this._tt=setTimeout(()=>this.setState({toast:null}),2200); }
 
@@ -3472,6 +3555,18 @@ class Component extends DCLogic {
     this.setState(s=>({ properties:[...s.properties, np], propertyId:id, sheet:null, tab:'home', overlay:null, apName:'', apAddress:'' }));
     this.flash(`${np.name} created`);
   }
+  submitLogin(){
+    const {loginFirst, loginLast, loginPhone} = this.state;
+    if(!loginFirst.trim()||!loginLast.trim()||!loginPhone.trim()) return;
+    const pending={id:'u'+Math.random().toString(36).slice(2), firstName:loginFirst.trim(), lastName:loginLast.trim(), phone:loginPhone.trim(), submittedAt:new Date().toISOString()};
+    this.setState(s=>({pendingUsers:[...s.pendingUsers, pending], loginSubmitted:true}));
+  }
+  approveUser(uid){
+    const u=this.state.pendingUsers.find(p=>p.id===uid);
+    if(!u) return;
+    this.setState(s=>({pendingUsers:s.pendingUsers.filter(p=>p.id!==uid)}));
+    this.flash(`${u.firstName} ${u.lastName} approved`);
+  }
   switchProperty(id){ this.setState({ propertyId:id, tab:'home', overlay:null, sheet:null, filterType:'All' }); }
   switchIdentity(p){ this.setState({ user:{name:p.name, role:p.role}, propertyId:p.prop, tab:'home', overlay:null, sheet:null, myWorkAll:true, boardWho:'All', filterType:'All', formManager:(this.state.properties.find(x=>x.id===p.prop)||{managers:['Valerie']}).managers.find(m=>m!=='Nathan')||'Nathan' }); this.flash(`Viewing as ${p.name}`); }
   sendChat(){
@@ -3484,6 +3579,19 @@ class Component extends DCLogic {
 
   renderVals(){
     const s=this.state, P=this.PEOPLE;
+    if(!s.loggedIn){
+      const loginReady=s.loginFirst.trim()&&s.loginLast.trim()&&s.loginPhone.trim();
+      return {
+        isLoggedIn:false, showLoginForm:!s.loginSubmitted, showPendingScreen:s.loginSubmitted,
+        loginFirst:s.loginFirst, loginLast:s.loginLast, loginPhone:s.loginPhone,
+        onLoginFirst:(e)=>this.setState({loginFirst:e.target.value}),
+        onLoginLast:(e)=>this.setState({loginLast:e.target.value}),
+        onLoginPhone:(e)=>this.setState({loginPhone:e.target.value}),
+        onSubmitLogin:()=>this.submitLogin(),
+        loginBtnStyle:`width:100%;height:50px;border-radius:14px;border:none;background:${loginReady?'#1e3a5f':'#c7c3b9'};color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:${loginReady?'pointer':'default'};`,
+        onLoginAsAdmin:()=>this.setState({loggedIn:true}),
+      };
+    }
     const overlay=s.overlay, prop=this.curProp();
     const isDetail=overlay&&overlay.type==='project';
     const isNotifications=overlay&&overlay.type==='notifications';
@@ -3640,8 +3748,22 @@ class Component extends DCLogic {
 
     const tc=(t)=> s.tab===t&&noOverlay?'#2f6bd6':'#a7aaa0';
 
+    const activityLog = s.notes.filter(n=>n.propertyId===s.propertyId).slice(0,20).map(n=>({
+      id:n.id, actor:n.actor||'System', text:n.text,
+      timeDisplay: n.timestamp ? this.fmtTimestamp(n.timestamp) : n.time,
+      projectId:n.projectId
+    }));
+    const pendingUsersList = s.pendingUsers.map(u=>({
+      id:u.id, name:`${u.firstName} ${u.lastName}`, phone:u.phone,
+      timeDisplay: this.fmtTimestamp(u.submittedAt),
+      onApprove:()=>this.approveUser(u.id)
+    }));
+    const hasPending = s.pendingUsers.length > 0;
+    const isActivity = overlay&&overlay.type==='activity';
+
     return {
-      isHome, isMyWork, isBoard, isMessages, isReviews, isTeam, isOrders, isDetail, isNotifications, isThread, showTabs,
+      isLoggedIn:true, showLoginForm:false, showPendingScreen:false,
+      isHome, isMyWork, isBoard, isMessages, isReviews, isTeam, isOrders, isDetail, isNotifications, isThread, isActivity, showTabs,
       showManagerTabs, showMaintTabs, showTeamTab, isMaintenance,
       myWork, myWorkPropChips, hasMyWorkChips: myWorkPropChips.length>0,
       assignSheet, isSheetAssign:s.sheet==='assign', onSaveAssign:()=>this.savePersonConfig(),
@@ -3706,6 +3828,8 @@ class Component extends DCLogic {
       propertyList, propertyListSub, canAddProperty:this.isAdmin(),
       apName:s.apName, apAddress:s.apAddress, onApName:(e)=>this.setState({apName:e.target.value}), onApAddress:(e)=>this.setState({apAddress:e.target.value}), onCreateProperty:()=>this.createProperty(),
       personas,
+      activityLog, hasPending, pendingUsersList,
+      openActivity:()=>this.setState({overlay:{type:'activity'}}),
       toastText:s.toast||'', toastStyle:`position:absolute;left:50%;bottom:118px;transform:translateX(-50%) translateY(${s.toast?'0':'12px'});z-index:95;background:#1b1d1c;color:#fff;font-size:13px;font-weight:600;padding:11px 20px;border-radius:13px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:all .25s ease;opacity:${s.toast?'1':'0'};pointer-events:none;white-space:nowrap;`,
     };
   }
