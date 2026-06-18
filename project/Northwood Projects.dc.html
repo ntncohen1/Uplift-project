@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail" data-bg-color="#1e3a5f">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#1e3a5f"/>
+    <rect x="468" y="180" width="264" height="440" rx="40" fill="#f4f3f0" stroke="#0f2944" stroke-width="6"/>
+    <rect x="500" y="232" width="120" height="18" rx="9" fill="#1b1d1c"/>
+    <rect x="500" y="266" width="200" height="12" rx="6" fill="#b3b6ac"/>
+    <rect x="500" y="312" width="200" height="60" rx="14" fill="#2f6bd6"/>
+    <g fill="none" stroke="#2f9e6a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M508 410l12 12 22-24"/>
+      <path d="M508 462l12 12 22-24"/>
+      <path d="M508 514l12 12 22-24"/>
+    </g>
+    <rect x="560" y="404" width="140" height="14" rx="7" fill="#3a3d38"/>
+    <rect x="560" y="456" width="140" height="14" rx="7" fill="#3a3d38"/>
+    <rect x="560" y="508" width="110" height="14" rx="7" fill="#cfd1c8"/>
+  </svg>
+</template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#dcdad3; font-family:'Manrope',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  .scroll::-webkit-scrollbar { width:0; height:0; }
+  .scroll { scrollbar-width:none; }
+  @keyframes screenIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes overIn { from { opacity:0; transform:translateX(14px); } to { opacity:1; transform:translateX(0); } }
+  image-slot { font-family:'Manrope',sans-serif !important; }
+  input::placeholder { color:#b3b6ac; }
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px;background:#dcdad3;">
+<div style="width:402px;height:872px;border-radius:50px;background:#f4f3f0;position:relative;overflow:hidden;box-shadow:0 50px 90px rgba(0,0,0,.22),0 0 0 1px rgba(0,0,0,.12),0 0 0 11px #14171b,0 0 0 13px #2a2e33;">
+
+  <!-- dynamic island -->
+  <div style="position:absolute;top:13px;left:50%;transform:translateX(-50%);width:122px;height:35px;border-radius:20px;background:#000;z-index:80;"></div>
+
+  <!-- status bar -->
+  <div style="position:absolute;top:0;left:0;right:0;height:54px;z-index:70;display:flex;align-items:center;justify-content:space-between;padding:16px 30px 0;">
+    <span style="font-size:15px;font-weight:700;color:#1b1d1c;letter-spacing:.02em;">9:41</span>
+    <div style="display:flex;align-items:center;gap:7px;">
+      <svg width="18" height="11" viewBox="0 0 18 11"><rect x="0" y="7" width="3" height="4" rx=".6" fill="#1b1d1c"/><rect x="4.5" y="5" width="3" height="6" rx=".6" fill="#1b1d1c"/><rect x="9" y="2.5" width="3" height="8.5" rx=".6" fill="#1b1d1c"/><rect x="13.5" y="0" width="3" height="11" rx=".6" fill="#1b1d1c"/></svg>
+      <svg width="22" height="11" viewBox="0 0 27 13"><rect x="0.5" y="0.5" width="23" height="12" rx="3.5" stroke="#1b1d1c" stroke-opacity=".35" fill="none"/><rect x="2" y="2" width="18" height="9" rx="2" fill="#1b1d1c"/><path d="M25 4.5V8.5C25.8 8.2 26.5 7.2 26.5 6.5C26.5 5.8 25.8 4.8 25 4.5Z" fill="#1b1d1c" fill-opacity=".5"/></svg>
+    </div>
+  </div>
+
+  <!-- ============ HOME ============ -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;animation:screenIn .25s ease;">
+    <div style="padding:58px 20px 12px;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="min-width:0;">
+          <div style="font-size:12px;font-weight:600;color:#8b8f86;">{{ greeting }}</div>
+          <button onClick="{{ openProperty }}" style="display:flex;align-items:center;gap:7px;background:none;border:none;padding:0;cursor:pointer;margin-top:2px;">
+            <span style="font-size:24px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;">{{ propertyName }}</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 10l5 5 5-5" stroke="#9a9d94" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:5px;">
+            <span style="{{ roleChipStyle }}">{{ roleLabel }}</span>
+            <span style="font-size:11.5px;font-weight:600;color:#a7aaa0;">{{ propertyAddress }}</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;flex-shrink:0;">
+          <sc-if value="{{ canCreate }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ openCreate }}" style="width:38px;height:38px;border-radius:50%;border:none;background:#2f6bd6;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(47,107,214,.32);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></button>
+          </sc-if>
+          <button onClick="{{ openNotifications }}" style="position:relative;width:38px;height:38px;border-radius:50%;border:none;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(20,20,20,.08);"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6 9.5a6 6 0 0112 0c0 4.5 2 5.5 2 5.5H4s2-1 2-5.5z" stroke="#3a3d38" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 19a2 2 0 004 0" stroke="#3a3d38" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <sc-if value="{{ hasUnread }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-3px;right:-3px;min-width:16px;height:16px;border-radius:9px;background:#d04a3a;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid #f4f3f0;">{{ unreadCount }}</span></sc-if>
+          </button>
+          <button onClick="{{ openIdentity }}" style="background:none;border:none;cursor:pointer;padding:0;"><div style="{{ userAvatarStyle }}">{{ userInitials }}</div></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:4px 20px 100px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div style="background:#fff;border-radius:16px;padding:13px 14px;box-shadow:0 1px 2px rgba(20,20,20,.04),0 1px 3px rgba(20,20,20,.05);">
+            <div style="display:flex;align-items:center;gap:7px;">
+              <div style="{{ s.dotStyle }}"></div>
+              <span style="font-size:11px;font-weight:700;color:#8b8f86;letter-spacing:.03em;text-transform:uppercase;">{{ s.label }}</span>
+            </div>
+            <div style="font-size:30px;font-weight:800;color:#1b1d1c;margin-top:6px;letter-spacing:-.02em;">{{ s.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:#1e3a5f;border-radius:18px;padding:17px 18px;margin-bottom:22px;box-shadow:0 6px 18px rgba(30,58,95,.22);">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:13px;font-weight:600;color:#a9c2e0;">Portfolio progress</span>
+          <span style="font-size:13px;font-weight:700;color:#fff;font-family:'IBM Plex Mono',monospace;">{{ portfolioPct }}%</span>
+        </div>
+        <div style="height:8px;border-radius:6px;background:rgba(255,255,255,.16);margin-top:11px;overflow:hidden;"><div style="{{ portfolioFillStyle }}"></div></div>
+        <div style="font-size:11.5px;color:#8fb0d4;margin-top:10px;font-weight:500;">{{ portfolioNote }}</div>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;">
+        <span style="font-size:16px;font-weight:800;color:#1b1d1c;letter-spacing:-.01em;">Active projects</span>
+        <span style="font-size:12px;font-weight:600;color:#8b8f86;">{{ projectCount }}</span>
+      </div>
+      <div class="scroll" style="display:flex;gap:8px;overflow-x:auto;margin:0 -20px 14px;padding:0 20px 2px;">
+        <sc-for list="{{ typeChips }}" as="c" hint-placeholder-count="5"><button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <sc-for list="{{ projectCards }}" as="p" hint-placeholder-count="5">
+          <div onClick="{{ p.onOpen }}" style="background:#fff;border-radius:18px;padding:15px;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 6px rgba(20,20,20,.05);cursor:pointer;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;">
+              <div style="display:flex;align-items:center;gap:9px;">
+                <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;color:#1b1d1c;letter-spacing:-.01em;">{{ p.unit }}</span>
+                <span style="font-size:11px;font-weight:600;color:#6b6f66;background:#f1efe9;padding:3px 8px;border-radius:7px;">{{ p.typeLabel }}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                <sc-if value="{{ p.urgent }}" hint-placeholder-val="{{ false }}"><span style="{{ p.priorityStyle }}">{{ p.priorityLabel }}</span></sc-if>
+                <span style="{{ p.pillStyle }}"><span style="{{ p.pillDotStyle }}"></span>{{ p.statusLabel }}</span>
+              </div>
+            </div>
+            <div style="font-size:14px;font-weight:600;color:#3a3d38;margin-bottom:12px;">{{ p.title }}</div>
+            <div style="height:6px;border-radius:5px;background:#eeece6;overflow:hidden;"><div style="{{ p.progFillStyle }}"></div></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:11px;">
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="{{ p.avatarStyle }}">{{ p.managerInitials }}</div>
+                <span style="font-size:12px;font-weight:600;color:#74786f;">{{ p.taskLabel }}</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:13px;">
+                <span style="display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:#9a9d94;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="#b3b6ac" stroke-width="2"/><circle cx="8.5" cy="10" r="1.8" fill="#b3b6ac"/><path d="M5 17l4.5-4 3 2.5L16 12l3 3" stroke="#b3b6ac" stroke-width="2" stroke-linejoin="round"/></svg>{{ p.photoCount }}</span>
+                <span style="{{ p.dueStyle }}">{{ p.dueLabel }}</span>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ MY WORK (maintenance) ============ -->
+  <sc-if value="{{ isMyWork }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;animation:screenIn .25s ease;">
+    <div style="padding:58px 20px 12px;">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+        <div style="min-width:0;">
+          <div style="font-size:12px;font-weight:600;color:#8b8f86;">{{ greeting }}</div>
+          <div style="font-size:24px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-top:2px;">My Work</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:5px;">
+            <span style="{{ roleChipStyle }}">{{ roleLabel }}</span>
+            <span style="font-size:11.5px;font-weight:600;color:#a7aaa0;">{{ myWork.subtitle }}</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:9px;flex-shrink:0;">
+          <button onClick="{{ openNotifications }}" style="position:relative;width:38px;height:38px;border-radius:50%;border:none;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(20,20,20,.08);"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6 9.5a6 6 0 0112 0c0 4.5 2 5.5 2 5.5H4s2-1 2-5.5z" stroke="#3a3d38" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 19a2 2 0 004 0" stroke="#3a3d38" stroke-width="1.8" stroke-linecap="round"/></svg><sc-if value="{{ hasUnread }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-3px;right:-3px;min-width:16px;height:16px;border-radius:9px;background:#d04a3a;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid #f4f3f0;">{{ unreadCount }}</span></sc-if></button>
+          <button onClick="{{ openIdentity }}" style="background:none;border:none;cursor:pointer;padding:0;"><div style="{{ userAvatarStyle }}">{{ userInitials }}</div></button>
+        </div>
+      </div>
+    </div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:4px 20px 100px;">
+      <sc-if value="{{ myWork.hasEmergency }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ myWork.openEmergency }}" style="display:flex;align-items:center;gap:11px;background:#c0392b;border-radius:16px;padding:13px 15px;margin-bottom:14px;cursor:pointer;box-shadow:0 6px 18px rgba(192,57,43,.28);">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l9.5 16.5H2.5L12 3z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4M12 16.5v.3" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+          <div style="flex:1;min-width:0;"><div style="font-size:10px;font-weight:800;color:#ffd9d3;letter-spacing:.08em;text-transform:uppercase;">{{ myWork.emergencyLabel }}</div><div style="font-size:13.5px;font-weight:700;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ myWork.emergencyText }}</div></div>
+          <svg width="9" height="15" viewBox="0 0 8 14" fill="none"><path d="M1 1l5.5 6L1 13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </sc-if>
+      <div style="display:flex;gap:9px;margin-bottom:16px;">
+        <sc-for list="{{ myWork.subjectCards }}" as="c" hint-placeholder-count="3">
+          <button onClick="{{ c.onClick }}" style="{{ c.style }}">
+            <div style="display:flex;align-items:center;justify-content:space-between;min-height:18px;"><span style="font-size:24px;font-weight:800;letter-spacing:-.02em;color:{{ c.numColor }};">{{ c.count }}</span><sc-if value="{{ c.flag }}" hint-placeholder-val="{{ false }}"><span style="{{ c.flagStyle }}">{{ c.flagText }}</span></sc-if></div>
+            <div style="font-size:11.5px;font-weight:700;color:{{ c.labelColor }};margin-top:4px;line-height:1.2;">{{ c.label }}</div>
+          </button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ hasMyWorkChips }}" hint-placeholder-val="{{ false }}">
+        <div class="scroll" style="display:flex;gap:8px;overflow-x:auto;margin:0 -20px 14px;padding:0 20px 2px;"><sc-for list="{{ myWorkPropChips }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for></div>
+      </sc-if>
+      <div style="display:flex;align-items:center;gap:9px;margin-bottom:11px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 12.5l4.5 4.5L20 6" stroke="#2f9e6a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:13px;font-weight:700;color:#3a3d38;">{{ myWork.summary }}</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <sc-for list="{{ myWork.units }}" as="u" hint-placeholder-count="3">
+          <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 6px rgba(20,20,20,.05);">
+            <div onClick="{{ u.onOpen }}" style="padding:15px 15px 12px;cursor:pointer;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+                <div style="display:flex;align-items:center;gap:9px;min-width:0;">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;color:#1b1d1c;">{{ u.unit }}</span>
+                  <span style="font-size:11px;font-weight:600;color:#6b6f66;background:#f1efe9;padding:3px 8px;border-radius:7px;">{{ u.typeLabel }}</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                  <sc-if value="{{ u.urgent }}" hint-placeholder-val="{{ false }}"><span style="{{ u.priorityStyle }}">{{ u.priorityLabel }}</span></sc-if>
+                  <span style="{{ u.pillStyle }}"><span style="{{ u.pillDotStyle }}"></span>{{ u.statusLabel }}</span>
+                </div>
+              </div>
+              <sc-if value="{{ u.showProp }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:5px;margin-bottom:8px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 20V9l8-5 8 5v11" stroke="#b3b6ac" stroke-width="2" stroke-linejoin="round"/></svg><span style="font-size:11.5px;font-weight:700;color:#9a9d94;">{{ u.propName }}</span></div></sc-if>
+              <div style="display:flex;align-items:center;gap:9px;"><div style="flex:1;height:6px;border-radius:5px;background:#eeece6;overflow:hidden;"><div style="{{ u.myFillStyle }}"></div></div><span style="font-size:11.5px;font-weight:700;color:#9a9d94;white-space:nowrap;">{{ u.myProgLabel }}</span></div>
+            </div>
+            <sc-if value="{{ u.blocked }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:8px;background:#fbeae7;padding:9px 15px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16.5v.5" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#c0392b" stroke-width="2"/></svg><span style="font-size:11.5px;font-weight:700;color:#a8332a;">{{ u.blockReason }}</span></div></sc-if>
+            <div>
+              <sc-for list="{{ u.rows }}" as="t" hint-placeholder-count="2">
+                <div style="display:flex;align-items:center;gap:12px;padding:11px 15px;border-top:1px solid #f3f1eb;">
+                  <button onClick="{{ t.onToggle }}" style="{{ t.checkStyle }}"><sc-if value="{{ t.done }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if></button>
+                  <span style="flex:1;min-width:0;font-size:14px;font-weight:700;color:#1b1d1c;{{ t.labelDecoration }}">{{ t.label }}</span>
+                  <span style="{{ t.dueStyle }}">{{ t.dueLabel }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+        <sc-if value="{{ myWork.empty }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center;padding:70px 24px;"><div style="width:56px;height:56px;border-radius:50%;background:#e6f4ec;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#1f8a5b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div style="font-size:15px;font-weight:700;color:#3a3d38;">Nothing assigned here</div><div style="font-size:12.5px;font-weight:500;color:#9a9d94;margin-top:4px;">You have no tasks on this property.</div></div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ BOARD ============ -->
+  <sc-if value="{{ isBoard }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;animation:screenIn .25s ease;">
+    <div style="padding:58px 20px 8px;display:flex;align-items:flex-start;justify-content:space-between;">
+      <div><div style="font-size:24px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;">Task Board</div><div style="font-size:12px;font-weight:600;color:#8b8f86;margin-top:2px;">{{ propertyName }}</div></div>
+      <div style="display:flex;align-items:center;gap:9px;flex-shrink:0;">
+        <sc-if value="{{ canCreate }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openCreate }}" style="width:38px;height:38px;border-radius:50%;border:none;background:#2f6bd6;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(47,107,214,.32);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg></button></sc-if>
+        <button onClick="{{ openNotifications }}" style="position:relative;width:38px;height:38px;border-radius:50%;border:none;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(20,20,20,.08);"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6 9.5a6 6 0 0112 0c0 4.5 2 5.5 2 5.5H4s2-1 2-5.5z" stroke="#3a3d38" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 19a2 2 0 004 0" stroke="#3a3d38" stroke-width="1.8" stroke-linecap="round"/></svg><sc-if value="{{ hasUnread }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-3px;right:-3px;min-width:16px;height:16px;border-radius:9px;background:#d04a3a;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid #f4f3f0;">{{ unreadCount }}</span></sc-if></button>
+        <button onClick="{{ openIdentity }}" style="background:none;border:none;cursor:pointer;padding:0;"><div style="{{ userAvatarStyle }}">{{ userInitials }}</div></button>
+      </div>
+    </div>
+    <div style="padding:4px 20px 2px;">
+      <div class="scroll" style="display:flex;gap:8px;overflow-x:auto;margin:0 -20px 10px;padding:0 20px 2px;"><sc-for list="{{ whoChips }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for></div>
+      <div style="display:flex;background:#e8e6df;border-radius:12px;padding:3px;gap:2px;"><sc-for list="{{ boardSegs }}" as="s" hint-placeholder-count="4"><button onClick="{{ s.onClick }}" style="{{ s.style }}"><span>{{ s.label }}</span><span style="{{ s.countStyle }}">{{ s.count }}</span></button></sc-for></div>
+    </div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:10px 20px 100px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <sc-for list="{{ boardCards }}" as="t" hint-placeholder-count="5">
+          <div onClick="{{ t.onOpen }}" style="background:#fff;border-radius:15px;padding:13px 14px;box-shadow:0 1px 2px rgba(20,20,20,.04),0 1px 3px rgba(20,20,20,.05);display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+            <button onClick="{{ t.onToggle }}" style="{{ t.checkStyle }}"><sc-if value="{{ t.done }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if></button>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:14.5px;font-weight:700;color:#1b1d1c;{{ t.labelDecoration }}">{{ t.label }}</div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:5px;"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;color:#74786f;">{{ t.unit }}</span><span style="width:3px;height:3px;border-radius:50%;background:#cfd1c8;"></span><span style="font-size:12px;font-weight:600;color:#9a9d94;">{{ t.typeLabel }}</span></div>
+              <div style="display:flex;align-items:center;gap:7px;margin-top:9px;"><div style="{{ t.assignStyle }}">{{ t.assignText }}</div><span style="{{ t.dueStyle }}">{{ t.dueLabel }}</span></div>
+            </div>
+          </div>
+        </sc-for>
+        <sc-if value="{{ boardEmpty }}" hint-placeholder-val="{{ false }}"><div style="text-align:center;padding:60px 20px;color:#a7aaa0;font-size:13px;font-weight:600;">Nothing here right now.</div></sc-if>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ MESSAGES ============ -->
+  <sc-if value="{{ isMessages }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;animation:screenIn .25s ease;">
+    <div style="padding:58px 20px 12px;display:flex;align-items:flex-start;justify-content:space-between;">
+      <div><div style="font-size:24px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;">Messages</div><div style="font-size:12px;font-weight:600;color:#8b8f86;margin-top:2px;">{{ propertyName }}</div></div>
+      <div style="display:flex;align-items:center;gap:9px;flex-shrink:0;">
+        <button onClick="{{ openNotifications }}" style="position:relative;width:38px;height:38px;border-radius:50%;border:none;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(20,20,20,.08);"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M6 9.5a6 6 0 0112 0c0 4.5 2 5.5 2 5.5H4s2-1 2-5.5z" stroke="#3a3d38" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 19a2 2 0 004 0" stroke="#3a3d38" stroke-width="1.8" stroke-linecap="round"/></svg><sc-if value="{{ hasUnread }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:-3px;right:-3px;min-width:16px;height:16px;border-radius:9px;background:#d04a3a;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid #f4f3f0;">{{ unreadCount }}</span></sc-if></button>
+        <button onClick="{{ openIdentity }}" style="background:none;border:none;cursor:pointer;padding:0;"><div style="{{ userAvatarStyle }}">{{ userInitials }}</div></button>
+      </div>
+    </div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:4px 20px 100px;">
+      <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 6px rgba(20,20,20,.05);">
+        <sc-for list="{{ threads }}" as="t" hint-placeholder-count="2">
+          <div onClick="{{ t.onOpen }}" style="display:flex;align-items:center;gap:13px;padding:14px 15px;border-top:1px solid {{ t.sep }};cursor:pointer;">
+            <div style="{{ t.iconStyle }}"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="#fff" stroke-width="1.9"/><path d="M3.5 18.5c0-2.8 2.4-4.5 5.5-4.5s5.5 1.7 5.5 4.5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/><path d="M16 7a2.8 2.8 0 011.8 5M17 13.6c2.2.5 3.5 2 3.5 4.1" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></div>
+            <div style="flex:1;min-width:0;">
+              <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:15px;font-weight:700;color:#1b1d1c;">{{ t.name }}</span><span style="font-size:11.5px;font-weight:600;color:#a7aaa0;flex-shrink:0;margin-left:8px;">{{ t.time }}</span></div>
+              <div style="display:flex;align-items:center;gap:8px;margin-top:3px;"><span style="font-size:12.5px;font-weight:500;color:#8b8f86;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;">{{ t.preview }}</span><sc-if value="{{ t.hasUnread }}" hint-placeholder-val="{{ false }}"><span style="width:9px;height:9px;border-radius:50%;background:#2f6bd6;flex-shrink:0;"></span></sc-if></div>
+              <div style="font-size:11px;font-weight:600;color:#b3b6ac;margin-top:3px;">{{ t.members }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ REVIEWS ============ -->
+  <sc-if value="{{ isReviews }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;animation:screenIn .25s ease;">
+    <div style="padding:58px 20px 12px;display:flex;align-items:flex-start;justify-content:space-between;">
+      <div><div style="font-size:24px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;">Reviews</div><div style="font-size:12px;font-weight:600;color:#8b8f86;margin-top:2px;">{{ reviewSub }}</div></div>
+      <button onClick="{{ openIdentity }}" style="background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;"><div style="{{ userAvatarStyle }}">{{ userInitials }}</div></button>
+    </div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:6px 20px 100px;">
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <sc-for list="{{ reviewCards }}" as="r" hint-placeholder-count="2">
+          <div style="background:#fff;border-radius:18px;padding:16px;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 8px rgba(20,20,20,.06);">
+            <div onClick="{{ r.onOpen }}" style="cursor:pointer;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;"><div style="display:flex;align-items:center;gap:9px;"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:16px;color:#1b1d1c;">{{ r.unit }}</span><span style="font-size:11px;font-weight:600;color:#6b6f66;background:#f1efe9;padding:3px 8px;border-radius:7px;">{{ r.typeLabel }}</span></div><span style="{{ r.pillStyle }}"><span style="{{ r.pillDotStyle }}"></span>In review</span></div>
+              <div style="font-size:14px;font-weight:600;color:#3a3d38;">{{ r.title }}</div>
+              <div style="display:flex;align-items:center;gap:7px;margin:10px 0 13px;"><div style="{{ r.avatarStyle }}">{{ r.byInitials }}</div><span style="font-size:12px;font-weight:600;color:#74786f;">Submitted by {{ r.by }} · {{ r.date }}</span></div>
+              <div style="display:flex;gap:9px;margin-bottom:14px;"><div style="flex:1;"><div style="font-size:10px;font-weight:700;color:#a7aaa0;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;">Before</div><div style="height:78px;border-radius:11px;background:repeating-linear-gradient(45deg,#efede7,#efede7 7px,#e7e4dc 7px,#e7e4dc 14px);"></div></div><div style="flex:1;"><div style="font-size:10px;font-weight:700;color:#a7aaa0;letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px;">After</div><div style="height:78px;border-radius:11px;background:repeating-linear-gradient(45deg,#e8efe9,#e8efe9 7px,#dde9e0 7px,#dde9e0 14px);"></div></div></div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#1f8a5b;margin-bottom:14px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#1f8a5b" stroke-width="2"/><path d="M8 12l2.5 2.5L16 9" stroke="#1f8a5b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ r.taskLabel }}</div>
+            </div>
+            <div style="display:flex;gap:9px;"><button onClick="{{ r.onReject }}" style="flex:1;height:42px;border-radius:12px;border:1.5px solid #e3e0d8;background:#fff;color:#7a4a3a;font-family:'Manrope';font-size:13.5px;font-weight:700;cursor:pointer;">Request changes</button><button onClick="{{ r.onApprove }}" style="flex:1;height:42px;border-radius:12px;border:none;background:#1f8a5b;color:#fff;font-family:'Manrope';font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(31,138,91,.28);">Approve work</button></div>
+          </div>
+        </sc-for>
+        <sc-if value="{{ reviewsEmpty }}" hint-placeholder-val="{{ false }}"><div style="text-align:center;padding:70px 24px;"><div style="width:56px;height:56px;border-radius:50%;background:#e6f4ec;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#1f8a5b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div style="font-size:15px;font-weight:700;color:#3a3d38;">All caught up</div><div style="font-size:12.5px;font-weight:500;color:#9a9d94;margin-top:4px;">No work is waiting on your review.</div></div></sc-if>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ TEAM ============ -->
+  <sc-if value="{{ isTeam }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;animation:screenIn .25s ease;">
+    <div style="padding:58px 20px 12px;display:flex;align-items:flex-start;justify-content:space-between;">
+      <div><div style="font-size:24px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;">Team</div><div style="font-size:12px;font-weight:600;color:#8b8f86;margin-top:2px;">{{ propertyName }} crew &amp; vendors</div></div>
+      <button onClick="{{ openIdentity }}" style="background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;"><div style="{{ userAvatarStyle }}">{{ userInitials }}</div></button>
+    </div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:6px 20px 100px;">
+      <sc-for list="{{ teamGroups }}" as="g" hint-placeholder-count="3">
+        <div style="margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.07em;text-transform:uppercase;margin:0 4px 9px;">{{ g.label }}</div>
+          <div style="background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 6px rgba(20,20,20,.05);">
+            <sc-for list="{{ g.members }}" as="m" hint-placeholder-count="3">
+              <div onClick="{{ m.onClick }}" style="display:flex;align-items:center;gap:12px;padding:13px 15px;border-top:1px solid {{ m.sep }};cursor:{{ m.rowCursor }};">
+                <div style="{{ m.avatarStyle }}">{{ m.initials }}</div>
+                <div style="flex:1;min-width:0;"><div style="font-size:14.5px;font-weight:700;color:#1b1d1c;">{{ m.name }}</div><div style="font-size:12px;font-weight:600;color:#9a9d94;margin-top:1px;">{{ m.role }}</div></div>
+                <sc-if value="{{ m.editable }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:5px;"><span style="font-size:11px;font-weight:700;color:#2f6bd6;">Edit</span><svg width="8" height="14" viewBox="0 0 8 14" fill="none"><path d="M1 1l5.5 6L1 13" stroke="#c2c5bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></sc-if>
+                <sc-if value="{{ m.showCount }}" hint-placeholder-val="{{ true }}"><div style="text-align:right;"><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1e3a5f;">{{ m.count }}</div><div style="font-size:10px;font-weight:600;color:#a7aaa0;text-transform:uppercase;letter-spacing:.04em;">active</div></div></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ ORDER LOG ============ -->
+  <sc-if value="{{ isOrders }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;animation:screenIn .25s ease;">
+    <div style="padding:58px 20px 10px;display:flex;align-items:flex-start;justify-content:space-between;">
+      <div><div style="font-size:24px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;">Order Log</div><div style="font-size:12px;font-weight:600;color:#8b8f86;margin-top:2px;">{{ orderLogSub }}</div></div>
+      <button onClick="{{ openIdentity }}" style="background:none;border:none;cursor:pointer;padding:0;flex-shrink:0;"><div style="{{ userAvatarStyle }}">{{ userInitials }}</div></button>
+    </div>
+    <div style="padding:6px 20px 4px;"><div style="display:flex;background:#e8e6df;border-radius:12px;padding:3px;gap:2px;"><sc-for list="{{ orderSegs }}" as="s" hint-placeholder-count="3"><button onClick="{{ s.onClick }}" style="{{ s.style }}"><span>{{ s.label }}</span><span style="{{ s.countStyle }}">{{ s.count }}</span></button></sc-for></div></div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:10px 20px 100px;">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <sc-for list="{{ orderLogItems }}" as="o" hint-placeholder-count="4">
+          <div style="background:#fff;border-radius:15px;padding:14px;box-shadow:0 1px 2px rgba(20,20,20,.04),0 1px 3px rgba(20,20,20,.05);">
+            <div style="display:flex;align-items:flex-start;gap:10px;">
+              <div style="flex:1;min-width:0;">
+                <div style="font-size:14.5px;font-weight:700;color:#1b1d1c;line-height:1.3;">{{ o.name }}</div>
+                <div style="display:flex;align-items:center;gap:7px;margin-top:6px;flex-wrap:wrap;">
+                  <span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;color:#74786f;">{{ o.unit }}</span>
+                  <span style="width:3px;height:3px;border-radius:50%;background:#cfd1c8;"></span>
+                  <span style="font-size:12px;font-weight:600;color:#9a9d94;">{{ o.forLabel }}</span>
+                </div>
+              </div>
+              <button onClick="{{ o.onAdvance }}" style="{{ o.statusStyle }}">{{ o.statusLabel }}</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:9px;margin-top:11px;">
+              <sc-if value="{{ o.hasSrc }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#5d6157;"><span style="width:8px;height:8px;border-radius:2px;background:{{ o.srcColor }};"></span>{{ o.srcName }}</span></sc-if>
+              <sc-if value="{{ o.hasLink }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#2f6bd6;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M10 14a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 10a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="#2f6bd6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Link saved</span></sc-if>
+              <span style="font-size:11.5px;font-weight:600;color:#b3b6ac;margin-left:auto;">{{ o.meta }}</span>
+              <button onClick="{{ o.onOpen }}" style="background:none;border:none;cursor:pointer;font-size:11.5px;font-weight:700;color:#2f6bd6;padding:0;">View unit ›</button>
+            </div>
+          </div>
+        </sc-for>
+        <sc-if value="{{ orderLogEmpty }}" hint-placeholder-val="{{ false }}"><div style="text-align:center;padding:64px 24px;color:#a7aaa0;font-size:13px;font-weight:600;">Nothing in this list.</div></sc-if>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ PROJECT DETAIL ============ -->
+  <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:#f4f3f0;display:flex;flex-direction:column;z-index:40;animation:overIn .22s ease;">
+    <div style="padding:56px 16px 12px;background:#f4f3f0;border-bottom:1px solid #ebe8e1;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <button onClick="{{ back }}" style="display:flex;align-items:center;gap:3px;background:none;border:none;cursor:pointer;color:#2f6bd6;font-family:'Manrope';font-size:15px;font-weight:600;padding:4px 0;"><svg width="11" height="18" viewBox="0 0 12 20" fill="none"><path d="M10 2L2 10l8 8" stroke="#2f6bd6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ d.backLabel }}</button>
+        <span style="{{ d.pillStyle }}"><span style="{{ d.pillDotStyle }}"></span>{{ d.statusLabel }}</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:11px;margin-top:11px;"><span style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:27px;color:#1b1d1c;letter-spacing:-.02em;">{{ d.unit }}</span><span style="font-size:12px;font-weight:600;color:#6b6f66;background:#ece9e2;padding:4px 10px;border-radius:8px;">{{ d.typeLabel }}</span></div>
+      <div style="font-size:14px;font-weight:600;color:#74786f;margin-top:5px;">{{ d.title }}</div>
+    </div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:16px 18px 40px;">
+      <sc-if value="{{ d.urgent }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:9px;background:#c0392b;border-radius:13px;padding:12px 14px;margin-bottom:16px;box-shadow:0 4px 14px rgba(192,57,43,.25);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3l9.5 16.5H2.5L12 3z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4M12 16.5v.3" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg><span style="font-size:12.5px;font-weight:700;color:#fff;">{{ d.priorityText }}</span></div></sc-if>
+      <sc-if value="{{ d.blocked }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:9px;background:#fbeae7;border-radius:13px;padding:12px 14px;margin-bottom:16px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16.5v.5" stroke="#c0392b" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="#c0392b" stroke-width="2"/></svg><span style="font-size:12.5px;font-weight:600;color:#a8332a;">{{ d.blockReason }}</span></div></sc-if>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;"><span style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.07em;text-transform:uppercase;">Photos</span><span style="font-size:11.5px;font-weight:600;color:#a7aaa0;">Drag a photo onto a slot</span></div>
+      <div style="display:flex;gap:10px;margin-bottom:22px;">
+        <div style="flex:1;"><div style="font-size:10px;font-weight:700;color:#a7aaa0;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;">Before</div><image-slot id="{{ d.beforeId }}" style="width:100%;height:128px;display:block;" shape="rounded" radius="13" placeholder="Add before photo"></image-slot></div>
+        <div style="flex:1;"><div style="font-size:10px;font-weight:700;color:#a7aaa0;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;">After</div><image-slot id="{{ d.afterId }}" style="width:100%;height:128px;display:block;" shape="rounded" radius="13" placeholder="Add after photo"></image-slot></div>
+      </div>
+
+      <div style="background:#fff;border-radius:16px;padding:16px;margin-bottom:22px;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 6px rgba(20,20,20,.05);">
+        <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13.5px;font-weight:700;color:#1b1d1c;">{{ d.taskLabel }} complete</span><span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:600;color:#1e3a5f;">{{ d.pct }}%</span></div>
+        <div style="height:7px;border-radius:5px;background:#eeece6;margin-top:11px;overflow:hidden;"><div style="{{ d.progFillStyle }}"></div></div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:13px;"><div style="{{ d.avatarStyle }}">{{ d.managerInitials }}</div><span style="font-size:12.5px;font-weight:600;color:#74786f;">{{ d.managerName }} · due {{ d.dueLabel }}</span></div>
+        <sc-if value="{{ d.canSubmit }}" hint-placeholder-val="{{ false }}"><button onClick="{{ d.onSubmit }}" style="width:100%;height:44px;border-radius:12px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:14px;font-weight:700;cursor:pointer;margin-top:15px;box-shadow:0 2px 10px rgba(30,58,95,.22);">Submit for manager review</button></sc-if>
+        <sc-if value="{{ d.showApprove }}" hint-placeholder-val="{{ false }}"><div style="display:flex;gap:9px;margin-top:15px;"><button onClick="{{ d.onReject }}" style="flex:1;height:44px;border-radius:12px;border:1.5px solid #e3e0d8;background:#fff;color:#7a4a3a;font-family:'Manrope';font-size:13.5px;font-weight:700;cursor:pointer;">Request changes</button><button onClick="{{ d.onApprove }}" style="flex:1;height:44px;border-radius:12px;border:none;background:#1f8a5b;color:#fff;font-family:'Manrope';font-size:13.5px;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(31,138,91,.28);">Approve work</button></div></sc-if>
+        <sc-if value="{{ d.awaitingNote }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:8px;margin-top:15px;background:#efeafd;border-radius:11px;padding:11px 13px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#6d4bd1" stroke-width="2"/><path d="M12 8v4l2.5 2" stroke="#6d4bd1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:12.5px;font-weight:600;color:#6d4bd1;">Awaiting {{ d.managerName }}'s review</span></div></sc-if>
+      </div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin:0 2px 10px;"><span style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.07em;text-transform:uppercase;">{{ d.tasksLabel }}</span><sc-if value="{{ d.isPunch }}" hint-placeholder-val="{{ false }}"><span style="font-size:11.5px;font-weight:600;color:#a7aaa0;">Walk &amp; check off</span></sc-if></div>
+
+      <sc-if value="{{ d.isPunch }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px;">
+          <sc-for list="{{ d.catGroups }}" as="g" hint-placeholder-count="5">
+            <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 6px rgba(20,20,20,.05);">
+              <button onClick="{{ g.onToggle }}" style="display:flex;align-items:center;gap:11px;width:100%;padding:13px 15px;background:none;border:none;cursor:pointer;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="{{ g.iconD }}" stroke="#5d6157" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span style="flex:1;min-width:0;text-align:left;font-size:14px;font-weight:800;color:#1b1d1c;">{{ g.cat }}</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:#74786f;">{{ g.doneLabel }}</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="{{ g.chevStyle }}"><path d="M9 6l6 6-6 6" stroke="#c2c5bc" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div style="height:3px;background:#f1efe9;"><div style="{{ g.fillStyle }}"></div></div>
+              <sc-if value="{{ g.expanded }}" hint-placeholder-val="{{ true }}">
+                <div>
+                  <sc-for list="{{ g.rows }}" as="t" hint-placeholder-count="3">
+                    <div>
+                      <div style="display:flex;align-items:center;gap:11px;padding:11px 15px;border-top:1px solid {{ t.sep }};">
+                        <button onClick="{{ t.onToggle }}" style="{{ t.checkStyle }}"><sc-if value="{{ t.done }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if></button>
+                        <span style="flex:1;min-width:0;font-size:13.5px;font-weight:600;color:#1b1d1c;{{ t.labelDecoration }}">{{ t.label }}</span>
+                        <button onClick="{{ t.onPhoto }}" style="width:30px;height:30px;border-radius:9px;border:none;background:#f4f3ef;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="2.5" stroke="{{ t.camColor }}" stroke-width="2"/><circle cx="12" cy="13" r="3.2" stroke="{{ t.camColor }}" stroke-width="2"/><path d="M8 6l1.5-2h5L16 6" stroke="{{ t.camColor }}" stroke-width="2" stroke-linejoin="round"/></svg></button>
+                        <sc-if value="{{ t.canOrder }}" hint-placeholder-val="{{ false }}"><button onClick="{{ t.onOrder }}" style="height:30px;padding:0 11px;border-radius:9px;border:1.5px solid #d8e2f3;background:#eef4fd;color:#2f6bd6;font-family:'Manrope';font-size:11.5px;font-weight:700;cursor:pointer;flex-shrink:0;display:flex;align-items:center;gap:4px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 5h10M9 12h10M9 19h10" stroke="#2f6bd6" stroke-width="2" stroke-linecap="round"/><path d="M4 4.5l1 1 1.5-2M4 11.5l1 1 1.5-2M4 18.5l1 1 1.5-2" stroke="#2f6bd6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Need</button></sc-if>
+                        <sc-if value="{{ t.ordered }}" hint-placeholder-val="{{ false }}"><span style="{{ t.orderPillStyle }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 5h10M9 12h10M9 19h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 4.5l1 1 1.5-2M4 11.5l1 1 1.5-2M4 18.5l1 1 1.5-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ t.orderStatus }}</span></sc-if>
+                      </div>
+                      <sc-if value="{{ t.photoExpanded }}" hint-placeholder-val="{{ false }}"><div style="padding:0 15px 13px 50px;"><image-slot id="{{ t.photoId }}" style="width:100%;height:120px;display:block;" shape="rounded" radius="11" placeholder="Add photo of this item"></image-slot></div></sc-if>
+                    </div>
+                  </sc-for>
+                </div>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ d.isFlat }}" hint-placeholder-val="{{ true }}">
+      <div style="background:#fff;border-radius:16px;overflow:hidden;margin-bottom:22px;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 6px rgba(20,20,20,.05);">
+        <sc-for list="{{ d.tasks }}" as="t" hint-placeholder-count="5">
+          <div style="display:flex;align-items:flex-start;gap:12px;padding:13px 15px;border-top:1px solid {{ t.sep }};">
+            <button onClick="{{ t.onToggle }}" style="{{ t.checkStyle }}"><sc-if value="{{ t.done }}" hint-placeholder-val="{{ false }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if></button>
+            <div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;color:#1b1d1c;{{ t.labelDecoration }}">{{ t.label }}</div><div style="display:flex;align-items:center;gap:7px;margin-top:6px;"><div style="{{ t.assignStyle }}">{{ t.assignText }}</div><span style="{{ t.dueStyle }}">{{ t.dueLabel }}</span></div></div>
+          </div>
+        </sc-for>
+      </div>
+      </sc-if>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin:0 2px 10px;"><span style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.07em;text-transform:uppercase;">Order log — this unit</span><span style="font-size:11.5px;font-weight:600;color:#a7aaa0;">Tap status to advance</span></div>
+      <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(20,20,20,.04),0 2px 6px rgba(20,20,20,.05);">
+        <sc-for list="{{ d.orders }}" as="o" hint-placeholder-count="3"><div style="display:flex;align-items:center;gap:12px;padding:13px 15px;border-top:1px solid {{ o.sep }};"><div style="flex:1;min-width:0;"><div style="font-size:14px;font-weight:700;color:#1b1d1c;">{{ o.name }}</div><div style="font-size:12px;font-weight:600;color:#9a9d94;margin-top:2px;">{{ o.meta }}</div></div><button onClick="{{ o.onCycle }}" style="{{ o.chipStyle }}">{{ o.statusLabel }}</button></div></sc-for>
+        <sc-if value="{{ d.ordersEmpty }}" hint-placeholder-val="{{ false }}"><div style="padding:18px 15px;font-size:12.5px;font-weight:600;color:#a7aaa0;text-align:center;">No items ordered yet.</div></sc-if>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ NOTIFICATIONS ============ -->
+  <sc-if value="{{ isNotifications }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:#f4f3f0;display:flex;flex-direction:column;z-index:40;animation:overIn .22s ease;">
+    <div style="padding:56px 16px 12px;border-bottom:1px solid #ebe8e1;">
+      <div style="display:flex;align-items:center;justify-content:space-between;"><button onClick="{{ back }}" style="display:flex;align-items:center;gap:3px;background:none;border:none;cursor:pointer;color:#2f6bd6;font-family:'Manrope';font-size:15px;font-weight:600;padding:4px 0;"><svg width="11" height="18" viewBox="0 0 12 20" fill="none"><path d="M10 2L2 10l8 8" stroke="#2f6bd6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Back</button></div>
+      <div style="font-size:24px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-top:8px;">Notifications</div>
+      <div style="font-size:12px;font-weight:600;color:#8b8f86;margin-top:2px;">{{ propertyName }} · sent to everyone on each project</div>
+    </div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:14px 18px 40px;">
+      <div style="display:flex;flex-direction:column;gap:11px;">
+        <sc-for list="{{ notes }}" as="n" hint-placeholder-count="5">
+          <div onClick="{{ n.onOpen }}" style="display:flex;gap:11px;align-items:flex-start;{{ n.cursor }}">
+            <div style="{{ n.avatarStyle }}">{{ n.initials }}</div>
+            <div style="flex:1;min-width:0;">
+              <div style="background:#fff;border-radius:5px 16px 16px 16px;padding:11px 14px;box-shadow:0 1px 2px rgba(20,20,20,.05);"><span style="font-size:13.5px;font-weight:800;color:#1b1d1c;">{{ n.actor }}</span> <span style="font-size:13.5px;font-weight:500;color:#3a3d38;line-height:1.45;">{{ n.text }}</span></div>
+              <div style="display:flex;align-items:center;gap:6px;margin:5px 0 0 4px;"><span style="font-size:11px;font-weight:600;color:#a7aaa0;">{{ n.time }}</span><sc-if value="{{ n.unread }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:800;color:#2f6bd6;background:#e9f0fc;padding:1px 6px;border-radius:6px;">NEW</span></sc-if></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ CHAT THREAD ============ -->
+  <sc-if value="{{ isThread }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:#eceae4;display:flex;flex-direction:column;z-index:40;animation:overIn .22s ease;">
+    <div style="padding:56px 16px 12px;background:rgba(244,243,240,.92);backdrop-filter:blur(12px);border-bottom:1px solid #e4e1da;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button onClick="{{ back }}" style="display:flex;align-items:center;background:none;border:none;cursor:pointer;color:#2f6bd6;padding:4px 2px;"><svg width="12" height="20" viewBox="0 0 12 20" fill="none"><path d="M10 2L2 10l8 8" stroke="#2f6bd6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div style="{{ chat.iconStyle }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="#fff" stroke-width="1.9"/><path d="M3.5 18.5c0-2.8 2.4-4.5 5.5-4.5s5.5 1.7 5.5 4.5" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/><path d="M16 7a2.8 2.8 0 011.8 5M17 13.6c2.2.5 3.5 2 3.5 4.1" stroke="#fff" stroke-width="1.9" stroke-linecap="round"/></svg></div>
+        <div style="flex:1;min-width:0;"><div style="font-size:16px;font-weight:800;color:#1b1d1c;">{{ chat.name }}</div><div style="font-size:11.5px;font-weight:600;color:#9a9d94;">{{ chat.members }}</div></div>
+      </div>
+    </div>
+    <div class="scroll" style="flex:1;overflow-y:auto;padding:16px 16px 14px;display:flex;flex-direction:column;gap:3px;">
+      <sc-for list="{{ chat.messages }}" as="m" hint-placeholder-count="4">
+        <div style="{{ m.rowStyle }}">
+          <sc-if value="{{ m.showAvatar }}" hint-placeholder-val="{{ false }}"><div style="{{ m.avatarStyle }}">{{ m.initials }}</div></sc-if>
+          <div style="max-width:75%;display:flex;flex-direction:column;{{ m.alignItems }}">
+            <sc-if value="{{ m.showName }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:700;color:{{ m.nameColor }};margin:0 0 3px 4px;">{{ m.from }}</span></sc-if>
+            <div style="{{ m.bubbleStyle }}">{{ m.text }}</div>
+            <span style="font-size:10px;font-weight:600;color:#b3b6ac;margin:3px 4px 0;">{{ m.time }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="padding:10px 14px 30px;background:rgba(244,243,240,.92);backdrop-filter:blur(12px);border-top:1px solid #e4e1da;display:flex;align-items:center;gap:9px;">
+      <input value="{{ chatInput }}" onInput="{{ onChatInput }}" onKeyDown="{{ onChatKey }}" placeholder="Message the team…" style="flex:1;height:42px;border-radius:21px;border:1.5px solid #e2dfd7;background:#fff;padding:0 16px;font-family:'Manrope';font-size:14px;font-weight:500;color:#1b1d1c;outline:none;"/>
+      <button onClick="{{ onSend }}" style="{{ sendStyle }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M4 12l16-7-7 16-2.5-6.5L4 12z" fill="#fff"/></svg></button>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ TAB BAR ============ -->
+  <sc-if value="{{ showManagerTabs }}" hint-placeholder-val="{{ true }}">
+  <div style="position:absolute;left:0;right:0;bottom:0;height:90px;z-index:55;background:linear-gradient(to top,#f4f3f0 58%,rgba(244,243,240,0));pointer-events:none;">
+    <div style="position:absolute;left:14px;right:14px;bottom:26px;height:60px;background:rgba(255,255,255,.86);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border-radius:22px;box-shadow:0 6px 20px rgba(20,20,20,.1),0 0 0 1px rgba(0,0,0,.04);display:flex;align-items:center;justify-content:space-around;padding:0 4px;pointer-events:auto;">
+      <button onClick="{{ goHome }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 8px;color:{{ tabHomeColor }};"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 11l8-6.5 8 6.5V20a1 1 0 01-1 1h-4v-6h-6v6H5a1 1 0 01-1-1v-9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span style="font-size:10px;font-weight:700;">Home</span></button>
+      <button onClick="{{ goBoard }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 8px;color:{{ tabBoardColor }};"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3.5" y="4" width="6" height="16" rx="1.5" stroke="currentColor" stroke-width="2"/><rect x="14.5" y="4" width="6" height="10" rx="1.5" stroke="currentColor" stroke-width="2"/></svg><span style="font-size:10px;font-weight:700;">Board</span></button>
+      <button onClick="{{ goMessages }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 8px;color:{{ tabMessagesColor }};position:relative;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6.5A2.5 2.5 0 016.5 4h11A2.5 2.5 0 0120 6.5v7a2.5 2.5 0 01-2.5 2.5H9l-4 4v-4H6.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span style="font-size:10px;font-weight:700;">Messages</span><sc-if value="{{ hasChatUnread }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:2px;right:10px;width:8px;height:8px;border-radius:50%;background:#2f6bd6;"></span></sc-if></button>
+      <sc-if value="{{ showReviewsTab }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goReviews }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 5px;color:{{ tabReviewsColor }};position:relative;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="2"/><path d="M8.5 12l2.5 2.5L16 9.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:9.5px;font-weight:700;">Reviews</span><sc-if value="{{ hasReviews }}" hint-placeholder-val="{{ false }}"><span style="position:absolute;top:0;right:2px;min-width:16px;height:16px;border-radius:9px;background:#d04a3a;color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0 4px;">{{ reviewBadge }}</span></sc-if></button></sc-if>
+      <button onClick="{{ goOrders }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 5px;color:{{ tabOrdersColor }};"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10 6h10M10 12h10M10 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 5.5l1.2 1.2L7.5 4M4 11.5l1.2 1.2L7.5 10M4 17.5l1.2 1.2L7.5 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:9.5px;font-weight:700;">Orders</span></button>
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ true }}"><button onClick="{{ goTeam }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 5px;color:{{ tabTeamColor }};"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 7.2A3 3 0 0118 13M17 14.4c2.4.5 4 2.4 4 4.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span style="font-size:9.5px;font-weight:700;">Team</span></button></sc-if>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ TAB BAR (maintenance) ============ -->
+  <sc-if value="{{ showMaintTabs }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;left:0;right:0;bottom:0;height:90px;z-index:55;background:linear-gradient(to top,#f4f3f0 58%,rgba(244,243,240,0));pointer-events:none;">
+    <div style="position:absolute;left:14px;right:14px;bottom:26px;height:60px;background:rgba(255,255,255,.86);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border-radius:22px;box-shadow:0 6px 20px rgba(20,20,20,.1),0 0 0 1px rgba(0,0,0,.04);display:flex;align-items:center;justify-content:space-around;padding:0 4px;pointer-events:auto;">
+      <button onClick="{{ goMyWork }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 16px;color:{{ tabMyWorkColor }};"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 4h6a1 1 0 011 1v1h1.5A1.5 1.5 0 0119 7.5v11A1.5 1.5 0 0117.5 20h-11A1.5 1.5 0 015 18.5v-11A1.5 1.5 0 016.5 6H8V5a1 1 0 011-1z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:10px;font-weight:700;">My Work</span></button>
+      <button onClick="{{ goMessages }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 14px;color:{{ tabMessagesColor }};"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 6.5A2.5 2.5 0 016.5 4h11A2.5 2.5 0 0120 6.5v7a2.5 2.5 0 01-2.5 2.5H9l-4 4v-4H6.5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span style="font-size:10px;font-weight:700;">Messages</span></button>
+      <button onClick="{{ goOrders }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 14px;color:{{ tabOrdersColor }};"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M10 6h10M10 12h10M10 18h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 5.5l1.2 1.2L7.5 4M4 11.5l1.2 1.2L7.5 10M4 17.5l1.2 1.2L7.5 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:10px;font-weight:700;">Orders</span></button>
+      <sc-if value="{{ isAdmin }}" hint-placeholder-val="{{ false }}"><button onClick="{{ goTeam }}" style="background:none;border:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 16px;color:{{ tabTeamColor }};"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M3.5 19c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 7.2A3 3 0 0118 13M17 14.4c2.4.5 4 2.4 4 4.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span style="font-size:10px;font-weight:700;">Team</span></button></sc-if>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ SHEET ============ -->
+  <div style="{{ scrimStyle }}" onClick="{{ closeSheet }}"></div>
+  <div style="{{ sheetStyle }}">
+    <div style="width:38px;height:5px;border-radius:3px;background:#dcd9d1;margin:10px auto 4px;"></div>
+    <div class="scroll" style="padding:8px 22px 28px;max-height:600px;overflow-y:auto;">
+
+      <!-- CREATE -->
+      <sc-if value="{{ isSheetCreate }}" hint-placeholder-val="{{ false }}">
+        <sc-if value="{{ isModeAddUnit }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ setModeUnitCreate }}" style="display:flex;align-items:center;gap:3px;background:none;border:none;cursor:pointer;color:#2f6bd6;font-family:'Manrope';font-size:14px;font-weight:600;padding:0 0 14px;"><svg width="10" height="16" viewBox="0 0 12 20" fill="none"><path d="M10 2L2 10l8 8" stroke="#2f6bd6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Back</button>
+          <div style="font-size:21px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:4px;">Add unit to inventory</div>
+          <div style="font-size:13px;font-weight:500;color:#8b8f86;margin-bottom:18px;line-height:1.5;">Adds a unit to {{ propertyName }}. You can then create turns, renos, and work orders against it.</div>
+          <div style="display:flex;gap:12px;margin-bottom:24px;">
+            <div style="flex:1;"><div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Building</div><input value="{{ formBuilding }}" onInput="{{ onBuilding }}" placeholder="223" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1b1d1c;outline:none;"/></div>
+            <div style="flex:1;"><div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Unit</div><input value="{{ formUnit }}" onInput="{{ onUnit }}" placeholder="1" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1b1d1c;outline:none;"/></div>
+          </div>
+          <button onClick="{{ onAddUnit }}" style="width:100%;height:50px;border-radius:14px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(30,58,95,.25);">Add unit</button>
+        </sc-if>
+
+        <sc-if value="{{ isModeCreateWork }}" hint-placeholder-val="{{ true }}">
+          <div style="font-size:21px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:14px;">Add new</div>
+          <div style="display:flex;background:#e8e6df;border-radius:12px;padding:3px;gap:2px;margin-bottom:20px;">
+            <button onClick="{{ setModeWo }}" style="{{ modeWoStyle }}">Work Order</button>
+            <button onClick="{{ setModeUnitCreate }}" style="{{ modeUnitStyle }}">Unit Turn</button>
+            <button onClick="{{ setModeProjectCreate }}" style="{{ modeProjectStyle }}">Project</button>
+          </div>
+
+          <sc-if value="{{ isModeWo }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ onToggleUrgent }}" style="{{ urgentToggleStyle }}">
+              <div style="display:flex;align-items:center;gap:9px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3l9.5 16.5H2.5L12 3z" stroke="{{ urgentIconColor }}" stroke-width="2" stroke-linejoin="round"/><path d="M12 10v4M12 16.5v.3" stroke="{{ urgentIconColor }}" stroke-width="2.2" stroke-linecap="round"/></svg><span style="font-size:14px;font-weight:700;color:{{ urgentTextColor }};">Emergency</span></div>
+              <div style="{{ urgentSwitchStyle }}"><div style="{{ urgentKnobStyle }}"></div></div>
+            </button>
+            <div style="font-size:11.5px;font-weight:500;color:#9a9d94;margin:8px 2px 18px;">Emergencies alert everyone on the property and pin to the top.</div>
+            <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">What needs fixing?</div>
+            <input value="{{ woTitle }}" onInput="{{ onWoTitle }}" placeholder="e.g. Water heater leak" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:18px;"/>
+            <div style="display:flex;gap:12px;margin-bottom:18px;">
+              <div style="flex:1;"><div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Building / area</div><input value="{{ formBuilding }}" onInput="{{ onBuilding }}" placeholder="241" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1b1d1c;outline:none;"/></div>
+              <div style="flex:1;"><div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Unit</div><input value="{{ formUnit }}" onInput="{{ onUnit }}" placeholder="2" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1b1d1c;outline:none;"/></div>
+            </div>
+            <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Assign to</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;"><sc-for list="{{ woAssigneeChips }}" as="m" hint-placeholder-count="2"><button onClick="{{ m.onClick }}" style="{{ m.style }}"><span style="{{ m.avatarStyle }}">{{ m.initials }}</span>{{ m.name }}</button></sc-for></div>
+            <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Needed by</div>
+            <input value="{{ formDue }}" onInput="{{ onDue }}" placeholder="Jun 19" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:24px;"/>
+            <button onClick="{{ onCreate }}" style="{{ woCreateStyle }}">{{ woCreateLabel }}</button>
+          </sc-if>
+
+          <sc-if value="{{ isModeUnit }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;background:#f1efe9;border-radius:11px;padding:3px;gap:2px;margin-bottom:8px;">
+              <button onClick="{{ setKindTurn }}" style="{{ kindTurnStyle }}">Turn</button>
+              <button onClick="{{ setKindReno }}" style="{{ kindRenoStyle }}">Reno</button>
+            </div>
+            <div style="font-size:11.5px;font-weight:500;color:#9a9d94;margin:0 2px 18px;">{{ unitKindHint }}</div>
+            <div style="display:flex;gap:12px;margin-bottom:18px;">
+              <div style="flex:1;"><div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Building</div><input value="{{ formBuilding }}" onInput="{{ onBuilding }}" placeholder="223" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1b1d1c;outline:none;"/></div>
+              <div style="flex:1;"><div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Unit</div><input value="{{ formUnit }}" onInput="{{ onUnit }}" placeholder="1" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1b1d1c;outline:none;"/></div>
+            </div>
+            <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Assign manager</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;"><sc-for list="{{ formManagerChips }}" as="m" hint-placeholder-count="3"><button onClick="{{ m.onClick }}" style="{{ m.style }}"><span style="{{ m.avatarStyle }}">{{ m.initials }}</span>{{ m.name }}</button></sc-for></div>
+            <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Target completion</div>
+            <input value="{{ formDue }}" onInput="{{ onDue }}" placeholder="Jun 30" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:18px;"/>
+            <button onClick="{{ onCreate }}" style="width:100%;height:50px;border-radius:14px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(30,58,95,.25);">Create unit {{ unitKindLabel }}</button>
+            <button onClick="{{ setModeAddUnit }}" style="width:100%;height:40px;background:none;border:none;cursor:pointer;color:#2f6bd6;font-family:'Manrope';font-size:13px;font-weight:700;margin-top:10px;">+ Add a unit to inventory instead</button>
+          </sc-if>
+
+          <sc-if value="{{ isModeProject }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Project type</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;"><sc-for list="{{ projTypeChips }}" as="c" hint-placeholder-count="3"><button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for></div>
+            <div style="display:flex;gap:12px;margin-bottom:18px;">
+              <div style="flex:1;"><div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Building / area</div><input value="{{ formBuilding }}" onInput="{{ onBuilding }}" placeholder="245" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1b1d1c;outline:none;"/></div>
+              <div style="flex:1;"><div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Unit (opt)</div><input value="{{ formUnit }}" onInput="{{ onUnit }}" placeholder="—" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#1b1d1c;outline:none;"/></div>
+            </div>
+            <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Assign manager</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;"><sc-for list="{{ formManagerChips }}" as="m" hint-placeholder-count="3"><button onClick="{{ m.onClick }}" style="{{ m.style }}"><span style="{{ m.avatarStyle }}">{{ m.initials }}</span>{{ m.name }}</button></sc-for></div>
+            <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Target completion</div>
+            <input value="{{ formDue }}" onInput="{{ onDue }}" placeholder="Jul 2" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:24px;"/>
+            <button onClick="{{ onCreate }}" style="width:100%;height:50px;border-radius:14px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(30,58,95,.25);">Create project in {{ propertyName }}</button>
+          </sc-if>
+        </sc-if>
+      </sc-if>
+
+      <!-- PROPERTY SWITCHER -->
+      <sc-if value="{{ isSheetProperty }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:21px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:4px;">Properties</div>
+        <div style="font-size:12.5px;font-weight:500;color:#8b8f86;margin-bottom:18px;">{{ propertyListSub }}</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px;">
+          <sc-for list="{{ propertyList }}" as="pr" hint-placeholder-count="3">
+            <button onClick="{{ pr.onClick }}" style="{{ pr.style }}">
+              <div style="flex:1;min-width:0;text-align:left;"><div style="font-size:15px;font-weight:800;color:#1b1d1c;">{{ pr.name }}</div><div style="font-size:11.5px;font-weight:600;color:#9a9d94;margin-top:2px;">{{ pr.meta }}</div></div>
+              <sc-if value="{{ pr.current }}" hint-placeholder-val="{{ false }}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" fill="#2f6bd6"/><path d="M8 12l2.5 2.5L16 9.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if>
+            </button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ canAddProperty }}" hint-placeholder-val="{{ false }}"><button onClick="{{ openAddProperty }}" style="width:100%;height:48px;border-radius:13px;border:1.5px dashed #c7c3b9;background:#fbfaf8;color:#1e3a5f;font-family:'Manrope';font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#1e3a5f" stroke-width="2.4" stroke-linecap="round"/></svg>Add property</button></sc-if>
+      </sc-if>
+
+      <!-- ADD PROPERTY -->
+      <sc-if value="{{ isSheetAddProperty }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:21px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:4px;">Add property</div>
+        <div style="font-size:12.5px;font-weight:500;color:#8b8f86;margin-bottom:18px;">Admin only · you'll be assigned as owner.</div>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Property name</div>
+        <input value="{{ apName }}" onInput="{{ onApName }}" placeholder="Maple Ridge" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:15px;font-weight:700;color:#1b1d1c;outline:none;margin-bottom:18px;"/>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Address</div>
+        <input value="{{ apAddress }}" onInput="{{ onApAddress }}" placeholder="100 Main St · Hartford, CT" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:14px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:18px;"/>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Lead manager</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;"><sc-for list="{{ apManagerChips }}" as="m" hint-placeholder-count="4"><button onClick="{{ m.onClick }}" style="{{ m.style }}"><span style="{{ m.avatarStyle }}">{{ m.initials }}</span>{{ m.name }}</button></sc-for></div>
+        <button onClick="{{ onCreateProperty }}" style="width:100%;height:50px;border-radius:14px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(30,58,95,.25);">Create property</button>
+      </sc-if>
+
+      <!-- IDENTITY -->
+      <sc-if value="{{ isSheetIdentity }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:21px;font-weight:800;color:#1b1d1c;letter-spacing:-.02em;margin-bottom:4px;">Switch account</div>
+        <div style="font-size:12.5px;font-weight:500;color:#8b8f86;margin-bottom:18px;">Demo — preview the app as each role.</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <sc-for list="{{ personas }}" as="u" hint-placeholder-count="4">
+            <button onClick="{{ u.onClick }}" style="{{ u.style }}">
+              <div style="{{ u.avatarStyle }}">{{ u.initials }}</div>
+              <div style="flex:1;min-width:0;text-align:left;"><div style="font-size:14.5px;font-weight:800;color:#1b1d1c;">{{ u.name }}</div><div style="font-size:11.5px;font-weight:600;color:#9a9d94;margin-top:1px;">{{ u.sub }}</div></div>
+              <span style="{{ u.badgeStyle }}">{{ u.roleLabel }}</span>
+            </button>
+          </sc-for>
+        </div>
+      </sc-if>
+
+      <!-- ASSIGN PROPERTIES (admin) -->
+      <sc-if value="{{ isSheetAssign }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+          <div style="{{ assignSheet.avatarStyle }}">{{ assignSheet.initials }}</div>
+          <div><div style="font-size:18px;font-weight:800;color:#1b1d1c;">{{ assignSheet.name }}</div><div style="font-size:12px;font-weight:600;color:#9a9d94;">{{ assignSheet.roleLabel }}</div></div>
+        </div>
+        <div style="font-size:13px;font-weight:500;color:#8b8f86;margin-bottom:16px;">{{ assignSheet.hint }}</div>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Properties</div>
+        <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:24px;">
+          <sc-for list="{{ assignSheet.propsList }}" as="p" hint-placeholder-count="4">
+            <button onClick="{{ p.onClick }}" style="{{ p.rowStyle }}">
+              <div style="{{ p.boxStyle }}"><sc-if value="{{ p.checked }}" hint-placeholder-val="{{ false }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if></div>
+              <div style="flex:1;min-width:0;"><div style="font-size:14.5px;font-weight:700;color:#1b1d1c;">{{ p.name }}</div><div style="font-size:11.5px;font-weight:600;color:#9a9d94;margin-top:1px;">{{ p.meta }}</div></div>
+            </button>
+          </sc-for>
+        </div>
+        <button onClick="{{ onSaveAssign }}" style="width:100%;height:50px;border-radius:14px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(30,58,95,.25);">Save</button>
+      </sc-if>
+
+      <!-- ORDER A PART -->
+      <sc-if value="{{ isSheetOrder }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;">Add to order log</div>
+        <div style="font-size:19px;font-weight:800;color:#1b1d1c;letter-spacing:-.01em;margin-bottom:3px;">{{ orderSheet.label }}</div>
+        <div style="font-size:12.5px;font-weight:600;color:#9a9d94;margin-bottom:14px;">{{ orderSheet.cat }} · {{ propertyName }}</div>
+        <div style="display:flex;align-items:center;gap:8px;background:#eef4fd;border-radius:11px;padding:10px 13px;margin-bottom:18px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#2f6bd6" stroke-width="2"/><path d="M12 8v4l2.5 2" stroke="#2f6bd6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:12px;font-weight:600;color:#2f6bd6;line-height:1.4;">Logs what's needed — it doesn't place an order. A manager handles purchasing.</span></div>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Where to buy</div>
+        <div style="display:flex;background:#e8e6df;border-radius:12px;padding:3px;gap:2px;margin-bottom:18px;">
+          <button onClick="{{ setSrcLowes }}" style="{{ orderSheet.lowesStyle }}"><span style="width:8px;height:8px;border-radius:2px;background:#004990;"></span>Lowe's</button>
+          <button onClick="{{ setSrcAmazon }}" style="{{ orderSheet.amazonStyle }}"><span style="width:8px;height:8px;border-radius:2px;background:#ff9900;"></span>Amazon</button>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Pick from catalog</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">
+          <sc-for list="{{ orderSheet.catalog }}" as="c" hint-placeholder-count="4">
+            <button onClick="{{ c.onClick }}" style="{{ c.rowStyle }}">
+              <div style="flex:1;min-width:0;text-align:left;"><div style="font-size:13.5px;font-weight:700;color:#1b1d1c;line-height:1.3;">{{ c.name }}</div></div>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:{{ c.priceColor }};flex-shrink:0;">{{ c.price }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="font-size:11px;font-weight:700;color:#9a9d94;letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px;">Or add a specific item</div>
+        <input value="{{ orderSheet.customName }}" onInput="{{ onOrderCustomName }}" placeholder="Item name" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:14px;font-weight:600;color:#1b1d1c;outline:none;margin-bottom:9px;"/>
+        <input value="{{ orderSheet.customLink }}" onInput="{{ onOrderCustomLink }}" placeholder="Paste Lowe's / Amazon link (optional)" style="width:100%;height:46px;border-radius:12px;border:1.5px solid #e6e3db;background:#fbfaf8;padding:0 14px;font-family:'Manrope';font-size:13px;font-weight:500;color:#1b1d1c;outline:none;margin-bottom:18px;"/>
+        <button onClick="{{ onPlaceCustom }}" style="width:100%;height:50px;border-radius:14px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;box-shadow:0 4px 14px rgba(30,58,95,.25);">Add to order log</button>
+      </sc-if>
+
+    </div>
+  </div>
+
+  <!-- toast -->
+  <div style="{{ toastStyle }}">{{ toastText }}</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:482,&quot;height&quot;:952}}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    const T=(s,st,who,vendor,due)=>({ id:Math.random().toString(36).slice(2), label:s, state:st, who, vendor:vendor||null, due });
+    const O=(name,meta,status)=>({ name, meta, status });
+    this.PUNCH=[
+      { cat:'Cleaning', items:['Full unit deep clean','Appliances cleaned inside & out','Cabinets & drawers wiped','Windows, sills & tracks'] },
+      { cat:'Paint', items:['Walls patched & painted','Ceilings','Trim & baseboards','Doors & frames'] },
+      { cat:'Flooring', items:['Carpet replaced / cleaned','Hard floor (LVP) installed','Tile & grout','Transitions & thresholds'] },
+      { cat:'Kitchen', items:['Appliances tested','Countertops','Cabinet doors & hardware','Sink & faucet','Garbage disposal'] },
+      { cat:'Bathroom', items:['Vanity & countertop','Toilet runs clean & seals','Tub / shower & surround','Re-caulk & seal','Mirror & fixtures'] },
+      { cat:'Electrical', items:['Outlets & switches','Light fixtures & bulbs','Smoke & CO detectors','Breaker panel labeled'] },
+      { cat:'Plumbing', items:['Faucets & aerators','Shutoffs & supply lines','Drains clear','Water heater check'] },
+      { cat:'HVAC', items:['Filter replaced','Vents & returns','Thermostat tested'] },
+      { cat:'Doors & Windows', items:['Locks rekeyed','Door hardware','Blinds','Window screens','Weatherstripping'] },
+      { cat:'Keys & Access', items:['Unit rekey','Mailbox key','Amenity fobs'] },
+      { cat:'Final', items:['Pest inspection','Final walkthrough','Move-in ready photos'] },
+    ];
+    this.state={
+      user:{ name:'Nathan', role:'Admin' },
+      propertyId:'northwood',
+      tab:'home', overlay:null, sheet:null,
+      filterType:'All', boardWho:'All', boardSeg:'doing',
+      createMode:'unit',
+      formType:'Unit Turn', formBuilding:'', formUnit:'', formManager:'Valerie', formDue:'',
+      apName:'', apAddress:'', apManager:'Valerie',
+      chatInput:'',
+      myWorkAll:true, myWorkSubject:'work_order',
+      subject:'work_order',
+      editTech:null, editRole:'Maintenance', etProps:[],
+      orderLogSeg:'Needed',
+      woUrgent:false, unitKind:'turn', woTitle:'', projType:'Common Area',
+      collapsedCats:{}, expandedPhotos:{}, orderItem:null, orderSource:'lowes', orderCustomName:'', orderCustomLink:'',
+      toast:null,
+      techConfig:{
+        'Beni':{ type:'multi', properties:['northwood','bradley'] },
+        'Angel':{ type:'multi', properties:['northwood','woodbridge'] },
+        'Diego':{ type:'single', properties:['bradley'] },
+        'Tariq':{ type:'single', properties:['sunset'] },
+      },
+      properties:[
+        { id:'northwood', name:'Northwood Heights', address:'215–265 Lowrey Pl · Newington, CT', managers:['Nathan','Valerie','Andrey'], maintenance:['Beni','Angel'], units:64 },
+        { id:'bradley', name:'Bradley Court', address:'10 S. Elm St · Windsor Locks, CT', managers:['Nathan','Marcus'], maintenance:['Diego','Beni'], units:48 },
+        { id:'sunset', name:'Sunset Rock', address:'126 New Britain Ave · Plainville, CT', managers:['Nathan','Priya'], maintenance:['Tariq'], units:52 },
+        { id:'woodbridge', name:'Woodbridge Heights', address:'83 Main St · Newington, CT', managers:['Nathan','Valerie'], maintenance:['Angel'], units:36 },
+      ],
+      projects:[
+        { id:'p1', propertyId:'northwood', category:'unit', unitKind:'turn', unit:'223-1', type:'Unit Turn', title:'Full unit turn', manager:'Valerie', status:'In Progress', due:'2026-06-24',
+          tasks:(function(self){ return self.genPunch({ who:'Beni', due:'2026-06-22', done:['Cleaning|Appliances cleaned inside & out','Paint|Walls patched & painted','Paint|Ceilings','Paint|Trim & baseboards','Bathroom|Vanity & countertop','Bathroom|Toilet runs clean & seals','Electrical|Outlets & switches','Electrical|Smoke & CO detectors','HVAC|Filter replaced','HVAC|Vents & returns','Keys & Access|Unit rekey','Doors & Windows|Door hardware'] }); })(this),
+          orders:[ O('LVP flooring — Coastal Oak','320 sqft · Statewide','Ordered'), O('Cabinet pulls, matte black','Qty 12','Needed') ] },
+        { id:'p2', propertyId:'northwood', unit:'237-3', type:'Unit Reno', title:'Kitchen & bath renovation', manager:'Nathan', status:'Review', due:'2026-06-20', by:'Beni', byDate:'Jun 16',
+          tasks:[ T('Demo kitchen','done','Beni',false,'2026-06-08'), T('Cabinet install','done',null,'Northeast Cabinetry','2026-06-12'), T('Countertop install','done',null,'Northeast Cabinetry','2026-06-14'), T('Tile backsplash','done','Angel',false,'2026-06-15'), T('Paint','done',null,'Lima Painting','2026-06-16'), T('Final clean','done',null,'BrightHouse Cleaning','2026-06-16') ],
+          orders:[ O('Shaker cabinets, white','Full kitchen','Received'), O('Quartz countertop','Calacatta','Received'), O('Subway tile','60 sqft','Received') ] },
+        { id:'p3', propertyId:'northwood', unit:'251-2', type:'Unit Turn', title:'Standard turn', manager:'Andrey', status:'Blocked', due:'2026-06-16', blockReason:'Carpet backordered — ETA Jun 23',
+          tasks:[ T('Trash-out','done','Angel',false,'2026-06-14'), T('Replace carpet','todo',null,'Statewide Flooring','2026-06-23'), T('Paint touch-up','doing','Beni',false,'2026-06-20'), T('Deep clean','todo',null,'BrightHouse Cleaning','2026-06-24') ],
+          orders:[ O('Carpet — greige plush','2 bedrooms','Ordered'), O('Paint, eggshell white','2 gal','Received') ] },
+        { id:'p4', propertyId:'northwood', unit:'219-4', type:'Interior', title:'Repaint & punch list', manager:'Valerie', status:'In Progress', due:'2026-06-21',
+          tasks:[ T('Patch & sand walls','done','Beni',false,'2026-06-13'), T('Prime & paint','doing',null,'Lima Painting','2026-06-19'), T('Replace outlet covers','todo','Angel',false,'2026-06-20'), T('Touch-up & clean','todo','Angel',false,'2026-06-21') ],
+          orders:[ O('Paint, eggshell greige','4 gal','Received'), O('Outlet & switch covers','Set of 18','Needed') ] },
+        { id:'p5', propertyId:'northwood', unit:'245 · Common', type:'Common Area', title:'Hallway & lobby refresh', manager:'Nathan', status:'In Progress', due:'2026-07-02',
+          tasks:[ T('New hallway carpet','doing',null,'Statewide Flooring','2026-06-25'), T('Repaint corridors','todo',null,'Lima Painting','2026-06-28'), T('Replace lobby lighting','todo','Beni',false,'2026-06-30'), T('Deep clean common areas','todo',null,'BrightHouse Cleaning','2026-07-01') ],
+          orders:[ O('Commercial carpet tile','Hallways, 3 floors','Ordered'), O('LED lobby fixtures','Qty 6','Needed') ] },
+        { id:'p6', propertyId:'northwood', unit:'261 · Exterior', type:'Exterior', title:'Trim paint & siding repair', manager:'Andrey', status:'Not Started', due:'2026-07-10',
+          tasks:[ T('Pressure wash exterior','todo','Angel',false,'2026-07-01'), T('Siding repair','todo',null,'Lima Painting','2026-07-04'), T('Trim & door paint','todo',null,'Lima Painting','2026-07-08') ],
+          orders:[ O('Exterior paint','12 gal','Needed'), O('Fiber-cement siding','3 panels','Needed') ] },
+        { id:'p7', propertyId:'northwood', unit:'229-1', type:'Unit Turn', title:'Quick turn', manager:'Valerie', status:'Complete', due:'2026-06-10',
+          tasks:[ T('Trash-out','done','Beni',false,'2026-06-06'), T('Paint touch-up','done',null,'Lima Painting','2026-06-08'), T('Clean','done',null,'BrightHouse Cleaning','2026-06-09') ],
+          orders:[ O('Paint, eggshell white','2 gal','Received') ] },
+        { id:'p8', propertyId:'northwood', unit:'257-2', type:'Unit Turn', title:'Full turn', manager:'Nathan', status:'In Progress', due:'2026-06-28',
+          tasks:[ T('Trash-out','done','Beni',false,'2026-06-16'), T('Patch & paint','todo',null,'Lima Painting','2026-06-22'), T('Install flooring','todo',null,'Statewide Flooring','2026-06-24'), T('Appliance swap','todo','Angel',false,'2026-06-25'), T('Deep clean','todo',null,'BrightHouse Cleaning','2026-06-26') ],
+          orders:[ O('Range & dishwasher','Qty 2','Ordered'), O('LVP flooring — Coastal Oak','520 sqft','Needed'), O('Paint, eggshell white','3 gal','Received') ] },
+        { id:'p9', propertyId:'northwood', unit:'233-4', type:'Interior', title:'Bathroom remodel', manager:'Valerie', status:'Review', due:'2026-06-18', by:'Angel', byDate:'Jun 15',
+          tasks:[ T('Demo bathroom','done','Beni',false,'2026-06-10'), T('Plumbing rough-in','done',null,'AquaFlow Plumbing','2026-06-12'), T('Tile & vanity','done',null,'Statewide Flooring','2026-06-14'), T('Paint & seal','done','Angel',false,'2026-06-15') ],
+          orders:[ O('Vanity, 30" oak','Qty 1','Received'), O('Floor & wall tile','90 sqft','Received') ] },
+        // Bradley Court
+        { id:'b1', propertyId:'bradley', unit:'14-3', type:'Unit Turn', title:'Standard turn', manager:'Marcus', status:'In Progress', due:'2026-06-23',
+          tasks:[ T('Trash-out','done','Diego',false,'2026-06-13'), T('Patch & paint','doing',null,'Lima Painting','2026-06-20'), T('Punch list & touch-up','doing','Diego',false,'2026-06-22'), T('Install flooring','todo',null,'Statewide Flooring','2026-06-22'), T('Deep clean','todo',null,'BrightHouse Cleaning','2026-06-23') ],
+          orders:[ O('LVP flooring — Ash','300 sqft','Ordered'), O('Paint, eggshell white','3 gal','Received') ] },
+        { id:'b2', propertyId:'bradley', unit:'22-1', type:'Interior', title:'Interior repaint', manager:'Marcus', status:'Review', due:'2026-06-19', by:'Diego', byDate:'Jun 16',
+          tasks:[ T('Patch & sand','done','Diego',false,'2026-06-12'), T('Prime & paint','done',null,'Lima Painting','2026-06-15'), T('Touch-up & clean','done',null,'BrightHouse Cleaning','2026-06-16') ],
+          orders:[ O('Paint, eggshell greige','4 gal','Received') ] },
+        { id:'b3', propertyId:'bradley', unit:'Clubhouse · Common', type:'Common Area', title:'Clubhouse refresh', manager:'Nathan', status:'In Progress', due:'2026-07-05',
+          tasks:[ T('Prep & protect clubhouse','doing','Beni',false,'2026-06-26'), T('New flooring','doing',null,'Statewide Flooring','2026-06-28'), T('Repaint interior','todo',null,'Lima Painting','2026-07-02'), T('Deep clean','todo',null,'BrightHouse Cleaning','2026-07-04') ],
+          orders:[ O('Luxury vinyl plank','900 sqft','Ordered'), O('Paint, satin','8 gal','Needed') ] },
+        // Sunset Rock
+        { id:'s1', propertyId:'sunset', unit:'7-2', type:'Unit Turn', title:'Standard turn', manager:'Priya', status:'Blocked', due:'2026-06-17', blockReason:'Appliance delivery delayed — ETA Sat Jun 20',
+          tasks:[ T('Trash-out','done','Tariq',false,'2026-06-12'), T('Patch & paint','doing',null,'Lima Painting','2026-06-18'), T('Appliance swap','todo','Tariq',false,'2026-06-20'), T('Deep clean','todo',null,'BrightHouse Cleaning','2026-06-21') ],
+          orders:[ O('Range & fridge','Qty 2','Ordered'), O('Paint, eggshell white','3 gal','Received') ] },
+        { id:'s2', propertyId:'sunset', unit:'31-4', type:'Unit Reno', title:'Kitchen renovation', manager:'Priya', status:'In Progress', due:'2026-07-01',
+          tasks:[ T('Demo kitchen','done','Tariq',false,'2026-06-14'), T('Cabinet install','doing',null,'Northeast Cabinetry','2026-06-24'), T('Countertop install','todo',null,'Northeast Cabinetry','2026-06-27'), T('Paint','todo',null,'Lima Painting','2026-06-29'), T('Final clean','todo',null,'BrightHouse Cleaning','2026-07-01') ],
+          orders:[ O('Shaker cabinets, navy','Full kitchen','Ordered'), O('Quartz countertop','White','Needed') ] },
+        { id:'s3', propertyId:'sunset', unit:'Pool Deck · Exterior', type:'Exterior', title:'Pool deck resurface', manager:'Nathan', status:'Not Started', due:'2026-07-12',
+          tasks:[ T('Pressure wash','todo','Tariq',false,'2026-07-02'), T('Resurface deck','todo',null,'Statewide Flooring','2026-07-08'), T('Seal & stripe','todo','Tariq',false,'2026-07-11') ],
+          orders:[ O('Deck resurfacing kit','1,200 sqft','Needed') ] },
+        // Woodbridge Heights
+        { id:'w1', propertyId:'woodbridge', unit:'5-1', type:'Unit Turn', title:'Full turn', manager:'Valerie', status:'In Progress', due:'2026-06-26',
+          tasks:[ T('Trash-out','done','Angel',false,'2026-06-15'), T('Replace fixtures & punch list','doing','Angel',false,'2026-06-24'), T('Patch & paint','doing',null,'Lima Painting','2026-06-22'), T('Install flooring','todo',null,'Statewide Flooring','2026-06-24'), T('Deep clean','todo',null,'BrightHouse Cleaning','2026-06-26') ],
+          orders:[ O('LVP flooring — Oak','400 sqft','Ordered'), O('Paint, eggshell white','3 gal','Received') ] },
+        // Work orders
+        { id:'wo1', propertyId:'northwood', category:'work_order', priority:'emergency', unit:'241-2', type:'Work Order', title:'Water heater leak — flooding utility closet', manager:'Valerie', status:'In Progress', due:'2026-06-18',
+          tasks:[ T('Shut off water & contain leak','done','Beni',false,'2026-06-18'), T('Replace water heater','doing','Angel',false,'2026-06-18'), T('Dry out & check for damage','todo','Beni',false,'2026-06-19') ], orders:[ O('40-gal water heater','Qty 1 · rush','Ordered') ] },
+        { id:'wo2', propertyId:'northwood', category:'work_order', priority:'urgent', unit:'233-1', type:'Work Order', title:'A/C not cooling', manager:'Nathan', status:'Not Started', due:'2026-06-19',
+          tasks:[ T('Diagnose HVAC unit','todo','Beni',false,'2026-06-19') ], orders:[] },
+        { id:'wo3', propertyId:'northwood', category:'work_order', priority:'normal', unit:'245 · Hall', type:'Work Order', title:'Hallway lights out — 3rd floor', manager:'Nathan', status:'In Progress', due:'2026-06-20',
+          tasks:[ T('Replace ballast & bulbs','doing','Angel',false,'2026-06-20') ], orders:[ O('LED tubes','Qty 8','Received') ] },
+        { id:'wo4', propertyId:'northwood', category:'work_order', priority:'normal', unit:'219-3', type:'Work Order', title:'Garbage disposal jammed', manager:'Valerie', status:'Not Started', due:'2026-06-21',
+          tasks:[ T('Clear or replace disposal','todo','Beni',false,'2026-06-21') ], orders:[] },
+        { id:'wo5', propertyId:'bradley', category:'work_order', priority:'urgent', unit:'Gate · Entry', type:'Work Order', title:'Front gate motor failure', manager:'Marcus', status:'In Progress', due:'2026-06-19',
+          tasks:[ T('Inspect gate motor','doing','Diego',false,'2026-06-19'), T('Replace controller board','todo','Diego',false,'2026-06-21') ], orders:[ O('Gate controller board','Qty 1','Ordered') ] },
+        { id:'wo6', propertyId:'bradley', category:'work_order', priority:'normal', unit:'14-2', type:'Work Order', title:'Running toilet', manager:'Marcus', status:'Not Started', due:'2026-06-22',
+          tasks:[ T('Replace flapper & fill valve','todo','Diego',false,'2026-06-22') ], orders:[] },
+        { id:'wo7', propertyId:'sunset', category:'work_order', priority:'emergency', unit:'7-1', type:'Work Order', title:'Burst pipe under kitchen sink', manager:'Priya', status:'In Progress', due:'2026-06-18',
+          tasks:[ T('Stop leak & dry out','done','Tariq',false,'2026-06-18'), T('Replace P-trap & supply line','doing','Tariq',false,'2026-06-18') ], orders:[ O('P-trap & supply kit','Qty 1','Received') ] },
+        { id:'wo8', propertyId:'woodbridge', category:'work_order', priority:'normal', unit:'5-2', type:'Work Order', title:'Smoke detector chirping', manager:'Valerie', status:'Not Started', due:'2026-06-23',
+          tasks:[ T('Replace detector & battery','todo','Angel',false,'2026-06-23') ], orders:[] },
+      ],
+      chats:{
+        'northwood:all':[ {from:'Valerie',text:'Morning team — 223-1 flooring slipped to Thursday. Let’s knock out the 219-4 punch list today.',time:'8:12 AM'}, {from:'Beni',text:'On it. Starting the outlet covers at 219-4 now.',time:'8:15 AM'}, {from:'Angel',text:'233-4 vanity is set and sealed — ready for review.',time:'9:02 AM'} ],
+        'northwood:mgr':[ {from:'Nathan',text:'Let’s clear 237-3 and 233-4 reviews today so we can list them Monday.',time:'7:48 AM'}, {from:'Valerie',text:'233-4 approved. 237-3 is yours, Nathan.',time:'9:20 AM'} ],
+        'bradley:all':[ {from:'Marcus',text:'14-3 paint goes on tomorrow — Diego, can you finish the trash-out today?',time:'10:01 AM'}, {from:'Diego',text:'Done, unit’s clear.',time:'11:30 AM'} ],
+        'bradley:mgr':[ {from:'Nathan',text:'Clubhouse flooring is the priority this week.',time:'9:15 AM'} ],
+        'sunset:all':[ {from:'Priya',text:'7-2 is blocked on the appliance delivery (Sat). Focus on 31-4 cabinets.',time:'8:40 AM'}, {from:'Tariq',text:'Copy. Demo’s done, cabinets start today.',time:'8:52 AM'} ],
+        'sunset:mgr':[ {from:'Priya',text:'Pool deck bids are in — sending over for approval.',time:'1:10 PM'} ],
+        'woodbridge:all':[ {from:'Valerie',text:'5-1 turn is moving well, paint tomorrow.',time:'2:05 PM'} ],
+        'woodbridge:mgr':[ {from:'Valerie',text:'Only one active turn here right now — low priority.',time:'2:06 PM'} ],
+      },
+      notes:[
+        {id:'n1', propertyId:'northwood', actor:'Valerie', text:'approved the work on 223-1 — wait no, 233-4 · Bathroom remodel.', time:'9m ago', projectId:'p9', read:false},
+        {id:'n2', propertyId:'northwood', actor:'Angel', text:'submitted 233-4 · Bathroom remodel for your review.', time:'1h ago', projectId:'p9', read:false},
+        {id:'n3', propertyId:'northwood', actor:'Beni', text:'completed “Trash-out” on 257-2 · Full turn.', time:'2h ago', projectId:'p8', read:true},
+        {id:'n4', propertyId:'northwood', actor:'Lima Painting', text:'started “Patch & paint walls” on 223-1 · Full unit turn.', time:'3h ago', projectId:'p1', read:true},
+        {id:'n5', propertyId:'northwood', actor:'Andrey', text:'flagged 251-2 · Standard turn as blocked — carpet backordered.', time:'Yesterday', projectId:'p3', read:true},
+        {id:'n6', propertyId:'bradley', actor:'Diego', text:'submitted 22-1 · Interior repaint for review.', time:'1h ago', projectId:'b2', read:false},
+        {id:'n7', propertyId:'bradley', actor:'Marcus', text:'created Clubhouse · Common area refresh.', time:'4h ago', projectId:'b3', read:true},
+        {id:'n8', propertyId:'sunset', actor:'Priya', text:'flagged 7-2 · Standard turn as blocked — appliance delivery.', time:'2h ago', projectId:'s1', read:false},
+        {id:'n9', propertyId:'woodbridge', actor:'Valerie', text:'created 5-1 · Full turn.', time:'Yesterday', projectId:'w1', read:true},
+      ],
+    };
+    // fix the cheeky seeded note text
+    this.state.notes[0].text='approved the work on 233-4 · Bathroom remodel.';
+    this.TODAY=new Date('2026-06-17T12:00:00');
+    this.MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    this.PEOPLE={
+      'Nathan':{ initials:'NA', color:'#2f6bd6', role:'Admin · Owner' },
+      'Valerie':{ initials:'VR', color:'#b8458f', role:'Project Manager' },
+      'Andrey':{ initials:'AN', color:'#2f9e6a', role:'Project Manager' },
+      'Marcus':{ initials:'MC', color:'#c0563f', role:'Project Manager' },
+      'Priya':{ initials:'PR', color:'#2f8f8f', role:'Project Manager' },
+      'Beni':{ initials:'BE', color:'#d98324', role:'Maintenance Tech' },
+      'Angel':{ initials:'AG', color:'#7b5bd6', role:'Maintenance Tech' },
+      'Diego':{ initials:'DG', color:'#b07b2c', role:'Maintenance Tech' },
+      'Tariq':{ initials:'TQ', color:'#5a6acc', role:'Maintenance Tech' },
+    };
+    this.STATUS={
+      'Not Started':{ label:'Not started', fg:'#6b7280', bg:'#eef0ed', dot:'#9aa0a6' },
+      'In Progress':{ label:'In progress', fg:'#2f6bd6', bg:'#e9f0fc', dot:'#2f6bd6' },
+      'Review':{ label:'In review', fg:'#6d4bd1', bg:'#efeafd', dot:'#7b5bd6' },
+      'Complete':{ label:'Complete', fg:'#1f8a5b', bg:'#e6f4ec', dot:'#2f9e6a' },
+      'Blocked':{ label:'Blocked', fg:'#c0392b', bg:'#fbeae7', dot:'#d04a3a' },
+    };
+    this.ORDER={ 'Needed':{ fg:'#c0392b', bg:'#fbeae7' }, 'Ordered':{ fg:'#b8770a', bg:'#fbf1de' }, 'Received':{ fg:'#1f8a5b', bg:'#e6f4ec' } };
+    this.PRIORITY={ emergency:{ label:'Emergency', fg:'#fff', bg:'#c0392b' }, urgent:{ label:'Urgent', fg:'#b35309', bg:'#fbe9d6' }, normal:null };
+    this.CATS={ work_order:{ label:'Work Orders', short:'Work order', title:'Open work orders' }, unit:{ label:'Unit Turns', short:'Unit turn', title:'Unit turns' }, project:{ label:'Projects', short:'Project', title:'Projects' } };
+    this.CATICON={ 'Cleaning':'M5 11h14M7 11V7a2 2 0 012-2h6a2 2 0 012 2v4M8 11v8m8-8v8', 'Paint':'M5 4h11v6H5zM16 6h2a1 1 0 011 1v3a1 1 0 01-1 1h-6M10 12v3a1 1 0 001 1h0a1 1 0 011 1v3', 'Flooring':'M3 6h18M3 12h18M3 18h18M9 6v12M15 6v12', 'Kitchen':'M6 3v7a2 2 0 002 2h0V3M8 12v9M17 3c-1.5 0-2.5 2-2.5 5s1 4 2.5 4 2.5-1 2.5-4-1-5-2.5-5zM17 12v9', 'Bathroom':'M5 12V6a2 2 0 012-2h0a2 2 0 012 2M4 12h16v2a4 4 0 01-4 4H8a4 4 0 01-4-4z', 'Electrical':'M13 3L5 13h6l-1 8 8-11h-6z', 'Plumbing':'M9 3v5a3 3 0 003 3h2a3 3 0 013 3v6M9 6h0', 'HVAC':'M4 6h16v8H4zM7 17v3m5-3v3m5-3v3', 'Doors & Windows':'M6 3h12v18H6zM14 12h.5', 'Keys & Access':'M14 7a4 4 0 11-3 3.9V11l-3 3 2 2M11 11l-5 5', 'Final':'M5 13l4 4L19 7' };
+    // Preloaded ordering catalog — swap in real SKUs/links later
+    this.CATALOG=[
+      { name:'Moen single-handle kitchen faucet, chrome', cat:'Kitchen', lowes:{price:'$129', link:'lowes.com/...'}, amazon:{price:'$118', link:'amazon.com/...'} },
+      { name:'Garbage disposal, 1/2 HP', cat:'Kitchen', lowes:{price:'$99', link:'lowes.com/...'}, amazon:{price:'$92', link:'amazon.com/...'} },
+      { name:'Cabinet pulls, matte black (10-pk)', cat:'Kitchen', lowes:{price:'$24', link:'lowes.com/...'}, amazon:{price:'$19', link:'amazon.com/...'} },
+      { name:'24" vanity, white shaker', cat:'Bathroom', lowes:{price:'$189', link:'lowes.com/...'}, amazon:{price:'$176', link:'amazon.com/...'} },
+      { name:'Toilet, elongated 1.28 GPF', cat:'Bathroom', lowes:{price:'$148', link:'lowes.com/...'}, amazon:{price:'$139', link:'amazon.com/...'} },
+      { name:'Tub/shower faucet trim kit', cat:'Bathroom', lowes:{price:'$79', link:'lowes.com/...'}, amazon:{price:'$69', link:'amazon.com/...'} },
+      { name:'Silicone caulk, white (3-pk)', cat:'Bathroom', lowes:{price:'$14', link:'lowes.com/...'}, amazon:{price:'$12', link:'amazon.com/...'} },
+      { name:'Interior paint, eggshell white (1 gal)', cat:'Paint', lowes:{price:'$32', link:'lowes.com/...'}, amazon:{price:'$36', link:'amazon.com/...'} },
+      { name:'LVP flooring — Coastal Oak (case)', cat:'Flooring', lowes:{price:'$54', link:'lowes.com/...'}, amazon:{price:'$58', link:'amazon.com/...'} },
+      { name:'Carpet, greige plush (sq yd)', cat:'Flooring', lowes:{price:'$18', link:'lowes.com/...'}, amazon:{price:'—', link:''} },
+      { name:'Outlet & switch covers (18-pk)', cat:'Electrical', lowes:{price:'$16', link:'lowes.com/...'}, amazon:{price:'$13', link:'amazon.com/...'} },
+      { name:'LED bulbs, soft white (8-pk)', cat:'Electrical', lowes:{price:'$22', link:'lowes.com/...'}, amazon:{price:'$18', link:'amazon.com/...'} },
+      { name:'Smoke & CO detector combo', cat:'Electrical', lowes:{price:'$39', link:'lowes.com/...'}, amazon:{price:'$34', link:'amazon.com/...'} },
+      { name:'Faucet aerator kit', cat:'Plumbing', lowes:{price:'$9', link:'lowes.com/...'}, amazon:{price:'$7', link:'amazon.com/...'} },
+      { name:'Toilet supply line, braided', cat:'Plumbing', lowes:{price:'$8', link:'lowes.com/...'}, amazon:{price:'$6', link:'amazon.com/...'} },
+      { name:'HVAC filter, 16x25x1 (6-pk)', cat:'HVAC', lowes:{price:'$28', link:'lowes.com/...'}, amazon:{price:'$24', link:'amazon.com/...'} },
+      { name:'Programmable thermostat', cat:'HVAC', lowes:{price:'$49', link:'lowes.com/...'}, amazon:{price:'$44', link:'amazon.com/...'} },
+      { name:'Re-key kit / lockset, satin nickel', cat:'Doors & Windows', lowes:{price:'$34', link:'lowes.com/...'}, amazon:{price:'$29', link:'amazon.com/...'} },
+      { name:'Cordless mini blinds, white', cat:'Doors & Windows', lowes:{price:'$12', link:'lowes.com/...'}, amazon:{price:'$15', link:'amazon.com/...'} },
+      { name:'Window screen, adjustable', cat:'Doors & Windows', lowes:{price:'$11', link:'lowes.com/...'}, amazon:{price:'$10', link:'amazon.com/...'} },
+    ];
+    this.PERSONAS=[
+      { name:'Nathan', role:'Admin', prop:'northwood', sub:'Admin · all properties' },
+      { name:'Valerie', role:'Manager', prop:'northwood', sub:'Manager · Northwood Heights' },
+      { name:'Andrey', role:'Manager', prop:'northwood', sub:'Manager · Northwood Heights' },
+      { name:'Beni', role:'Maintenance', prop:'northwood', sub:'Maintenance · Northwood Heights' },
+      { name:'Marcus', role:'Manager', prop:'bradley', sub:'Manager · Bradley Court' },
+      { name:'Diego', role:'Maintenance', prop:'bradley', sub:'Maintenance · Bradley Court' },
+      { name:'Priya', role:'Manager', prop:'sunset', sub:'Manager · Sunset Rock' },
+      { name:'Tariq', role:'Maintenance', prop:'sunset', sub:'Maintenance · Sunset Rock' },
+    ];
+  }
+
+  // ---- helpers ----
+  fmtDue(iso){ const d=new Date(iso+'T12:00:00'); return this.MONTHS[d.getMonth()]+' '+d.getDate(); }
+  isOverdue(iso){ return new Date(iso+'T12:00:00') < this.TODAY; }
+  doneCount(p){ return p.tasks.filter(t=>t.state==='done').length; }
+  pct(p){ return p.tasks.length? Math.round(this.doneCount(p)/p.tasks.length*100):0; }
+  curProp(){ return this.state.properties.find(p=>p.id===this.state.propertyId)||this.state.properties[0]; }
+  pill(status){ const s=this.STATUS[status]; return { pillStyle:`display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:${s.fg};background:${s.bg};padding:4px 9px 4px 8px;border-radius:8px;`, pillDotStyle:`width:6px;height:6px;border-radius:50%;background:${s.dot};`, statusLabel:s.label }; }
+  avatar(name,size){ const p=this.PEOPLE[name]||{initials:'?',color:'#9a9d94'}; const sz=size||26; return { avatarStyle:`width:${sz}px;height:${sz}px;border-radius:50%;background:${p.color};color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:${Math.round(sz*0.4)}px;flex-shrink:0;`, initials:p.initials, color:p.color }; }
+  vendorAvatar(size){ const sz=size||26; return { avatarStyle:`width:${sz}px;height:${sz}px;border-radius:9px;background:#eef1ee;color:#5d6157;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:${Math.round(sz*0.45)}px;flex-shrink:0;`, initials:'⬡', color:'#5d6157' }; }
+  actorAvatar(name,size){ return this.PEOPLE[name]? this.avatar(name,size) : this.vendorAvatar(size); }
+  progFill(pct,color){ return `width:${pct}%;height:100%;border-radius:5px;background:${color||'#2f6bd6'};transition:width .3s ease;`; }
+  checkStyle(done){ return done? `width:24px;height:24px;border-radius:50%;border:none;background:#2f9e6a;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;` : `width:24px;height:24px;border-radius:50%;border:2px solid #d6d3cb;background:#fff;cursor:pointer;flex-shrink:0;`; }
+  canCreate(){ const r=this.state.user.role; return r==='Admin'||r==='Manager'; }
+  canApprove(){ const r=this.state.user.role; return r==='Admin'||r==='Manager'; }
+  isAdmin(){ return this.state.user.role==='Admin'; }
+  isMaint(){ return this.state.user.role==='Maintenance'; }
+  catOf(p){ if(p.category) return p.category; if(p.type==='Unit Turn'||p.type==='Unit Reno') return 'unit'; if(p.type==='Work Order') return 'work_order'; return 'project'; }
+  priOf(p){ return p.priority||'normal'; }
+  isEmergency(p){ return this.priOf(p)==='emergency'&&p.status!=='Complete'; }
+  techType(name){ return this.techProps(name).length>1?'multi':'single'; }
+  techProps(name){ const c=this.state.techConfig[name]; if(c&&c.properties.length) return c.properties; return this.state.properties.filter(p=>p.maintenance.includes(name)).map(p=>p.id); }
+  personProps(name,role){ return role==='Maintenance'? this.techProps(name) : this.state.properties.filter(p=>p.managers.includes(name)).map(p=>p.id); }
+  openPersonConfig(name,role){ this.setState({ sheet:'assign', editTech:name, editRole:role, etProps:[...this.personProps(name,role)] }); }
+  toggleEtProp(id){ this.setState(s=>{ const has=s.etProps.includes(id); return { etProps: has? s.etProps.filter(x=>x!==id) : [...s.etProps,id] }; }); }
+  savePersonConfig(){ const st=this.state; const name=st.editTech, role=st.editRole; const props=st.etProps.filter(Boolean); if(!props.length){ this.flash('Check at least one property'); return; } const keyArr= role==='Maintenance'?'maintenance':'managers'; this.setState(s=>({ techConfig: role==='Maintenance'? {...s.techConfig, [name]:{type: props.length>1?'multi':'single', properties:props}} : s.techConfig, properties:s.properties.map(p=>{ const should=props.includes(p.id); const has=p[keyArr].includes(name); if(should&&!has) return {...p, [keyArr]:[...p[keyArr],name]}; if(!should&&has) return {...p, [keyArr]:p[keyArr].filter(x=>x!==name)}; return p; }), sheet:null, editTech:null })); this.flash(`${name}'s properties updated`); }
+
+  addNote(propertyId, actor, text, projectId){
+    this.setState(s=>({ notes:[{ id:'n'+Math.random().toString(36).slice(2), propertyId, actor, text, projectId, time:'now', read:false }, ...s.notes] }));
+  }
+  flash(msg){ this.setState({toast:msg}); clearTimeout(this._tt); this._tt=setTimeout(()=>this.setState({toast:null}),2200); }
+
+  toggleTask(pid,tid){
+    let evt=null;
+    this.setState(s=>({ projects:s.projects.map(p=>{ if(p.id!==pid) return p; return {...p, tasks:p.tasks.map(t=>{ if(t.id!==tid) return t; const nd=t.state!=='done'; if(nd) evt={actor:t.who||t.vendor, label:t.label, unit:p.unit, title:p.title, prop:p.propertyId}; return {...t, state: nd?'done':'todo'}; })}; }) }));
+    if(evt) this.addNote(evt.prop, evt.actor, `completed “${evt.label}” on ${evt.unit} · ${evt.title}.`, pid);
+  }
+  cycleOrder(pid,idx){ const ord=['Needed','Ordered','Received']; this.setState(s=>({ projects:s.projects.map(p=>{ if(p.id!==pid) return p; return {...p, orders:p.orders.map((o,i)=> i===idx? {...o, status: ord[(ord.indexOf(o.status)+1)%3]} : o)}; }) })); }
+  genPunch(preset){ const out=[]; this.PUNCH.forEach(g=>g.items.forEach(label=>{ const k=g.cat+'|'+label; const done=preset&&preset.done&&preset.done.includes(k); out.push({ id:Math.random().toString(36).slice(2), label, cat:g.cat, state: done?'done':'todo', who:(preset&&preset.who)||null, vendor:null, due:(preset&&preset.due)||'2026-07-15', orderId:null }); })); return out; }
+  toggleCat(key){ this.setState(s=>{ const c={...(s.collapsedCats||{})}; c[key]=!c[key]; return {collapsedCats:c}; }); }
+  togglePhoto(taskId){ this.setState(s=>{ const e={...(s.expandedPhotos||{})}; e[taskId]=!e[taskId]; return {expandedPhotos:e}; }); }
+  openOrder(pid,taskId,label,cat){ this.setState({ sheet:'order', orderItem:{pid,taskId,label,cat}, orderSource:'lowes', orderCustomName:'', orderCustomLink:'' }); }
+  placeOrder(name, meta, link){ const st=this.state; const oi=st.orderItem; if(!oi) return; const p=st.projects.find(x=>x.id===oi.pid); const oid=Math.random().toString(36).slice(2); this.setState(s=>({ projects:s.projects.map(x=>{ if(x.id!==oi.pid) return x; return {...x, orders:[...x.orders, {id:oid, name, meta, status:'Needed', source:st.orderSource, link:link||'', forTask:oi.taskId, forLabel:oi.label, by:st.user.name}], tasks:x.tasks.map(t=> t.id===oi.taskId? {...t, orderId:oid}:t)}; }), sheet:null, orderItem:null })); if(p){ this.addNote(p.propertyId, st.user.name, `logged a needed item — ${name} for ${p.unit} · ${oi.label}.`, p.id); } this.flash('Added to order log'); }
+  advanceOrder(pid,oid){ const ord=['Needed','Ordered','Received']; this.setState(s=>({ projects:s.projects.map(p=>{ if(p.id!==pid) return p; return {...p, orders:p.orders.map(o=> o.id===oid? {...o, status: ord[(ord.indexOf(o.status)+1)%3]}:o)}; }) })); }
+  setStatus(pid,status,verb){
+    const p=this.state.projects.find(x=>x.id===pid);
+    this.setState(s=>({ projects:s.projects.map(x=> x.id===pid? {...x,status, by: status==='Review'? s.user.name : x.by, byDate: status==='Review'? 'Today' : x.byDate }:x), overlay: (verb==='approved'||verb==='sent back')? null : s.overlay }));
+    if(p){ this.addNote(p.propertyId, this.state.user.name, `${verb} ${p.unit} · ${p.title}.`, pid); this.flash(`${p.unit} ${verb}`); }
+  }
+
+  createItem(){
+    const st=this.state; const prop=this.curProp(); const mode=st.createMode;
+    const newId=()=>'p'+Math.random().toString(36).slice(2);
+    const mk=(label,who,vendor,due)=>({ id:Math.random().toString(36).slice(2), label, state:'todo', who:who||null, vendor:vendor||null, due:due||'2026-07-15' });
+    if(mode==='wo'){
+      const title=(st.woTitle||'').trim(); if(!title){ this.flash('Describe the work order'); return; }
+      const loc= st.formUnit? `${st.formBuilding}-${st.formUnit}` : (st.formBuilding||'General');
+      const who= prop.maintenance.includes(st.formManager)? st.formManager : (prop.maintenance[0]||null);
+      const np={ id:newId(), propertyId:prop.id, category:'work_order', priority: st.woUrgent?'emergency':'normal', unit:loc, type:'Work Order', title, manager: prop.managers[0], status: st.woUrgent?'In Progress':'Not Started', due: st.formDue||'2026-06-30', tasks:[ mk(title, who, null, st.formDue) ], orders:[] };
+      this.setState(s=>({ projects:[np,...s.projects], sheet:null, tab:'home', subject:'work_order', overlay:null, woTitle:'', formBuilding:'', formUnit:'', formDue:'', woUrgent:false }));
+      this.addNote(prop.id, st.user.name, `${st.woUrgent?'logged an EMERGENCY work order':'logged a work order'} — ${loc} · ${title}.`, np.id);
+      this.flash(st.woUrgent?'Emergency work order created':'Work order created');
+      return;
+    }
+    if(mode==='unit'){
+      if(!st.formBuilding){ this.flash('Add a building number first'); return; }
+      const unit= st.formUnit? `${st.formBuilding}-${st.formUnit}` : st.formBuilding;
+      const reno= st.unitKind==='reno';
+      const mgr= prop.managers.includes(st.formManager)? st.formManager : prop.managers[0];
+      let tasks;
+      if(reno){ tasks=['Demo','Rough-in','Install finishes','Paint','Final clean'].map((l,i)=>mk(l, i===0?(prop.maintenance[0]||null):null, null, st.formDue)); }
+      else { tasks=this.genPunch({ who: prop.maintenance[0]||null, due: st.formDue||'2026-07-15' }); }
+      const np={ id:newId(), propertyId:prop.id, category:'unit', unitKind:st.unitKind, unit, type: reno?'Unit Reno':'Unit Turn', title: reno?'Unit renovation':'Unit turn', manager:mgr, status:'Not Started', due: st.formDue||'2026-07-15', tasks, orders:[] };
+      this.setState(s=>({ projects:[np,...s.projects], sheet:null, tab:'home', subject:'unit', overlay:null, formBuilding:'', formUnit:'', formDue:'' }));
+      this.addNote(prop.id, st.user.name, `created ${unit} · ${np.title}.`, np.id);
+      this.flash(`${unit} created`);
+      return;
+    }
+    if(!st.formBuilding){ this.flash('Add a building or area first'); return; }
+    const unit= st.formUnit? `${st.formBuilding}-${st.formUnit}` : st.formBuilding;
+    const tpl={ 'Common Area':['Assess & scope','Repairs','Repaint','Deep clean'], 'Exterior':['Pressure wash','Repairs','Paint trim & doors'], 'Interior':['Patch & sand','Prime & paint','Punch list','Clean'] };
+    const mgr= prop.managers.includes(st.formManager)? st.formManager : prop.managers[0];
+    const tasks=(tpl[st.projType]||['Scope work','Complete work','Final review']).map((l,i)=>mk(l, i===0?(prop.maintenance[0]||null):null, null, st.formDue));
+    const np={ id:newId(), propertyId:prop.id, category:'project', unit, type:st.projType, title:`New ${st.projType.toLowerCase()}`, manager:mgr, status:'Not Started', due: st.formDue||'2026-07-15', tasks, orders:[] };
+    this.setState(s=>({ projects:[np,...s.projects], sheet:null, tab:'home', subject:'project', overlay:null, formBuilding:'', formUnit:'', formDue:'' }));
+    this.addNote(prop.id, st.user.name, `created ${unit} · ${np.title}.`, np.id);
+    this.flash(`${unit} created`);
+  }
+  addUnit(){
+    const st=this.state; const prop=this.curProp();
+    if(!st.formBuilding){ this.flash('Add a building number first'); return; }
+    const unit= st.formUnit? `${st.formBuilding}-${st.formUnit}` : st.formBuilding;
+    this.setState(s=>({ properties:s.properties.map(p=> p.id===prop.id? {...p, units:p.units+1}:p), sheet:null, formBuilding:'', formUnit:'' }));
+    this.flash(`Unit ${unit} added to ${prop.name}`);
+  }
+  createProperty(){
+    const st=this.state;
+    if(!st.apName){ this.flash('Name the property first'); return; }
+    const id='prop'+Math.random().toString(36).slice(2);
+    const np={ id, name:st.apName, address:st.apAddress||'Address pending', managers:['Nathan', st.apManager].filter((v,i,a)=>a.indexOf(v)===i), maintenance:[], units:0 };
+    this.setState(s=>({ properties:[...s.properties, np], propertyId:id, sheet:null, tab:'home', overlay:null, apName:'', apAddress:'' }));
+    this.flash(`${np.name} created`);
+  }
+  switchProperty(id){ this.setState({ propertyId:id, tab:'home', overlay:null, sheet:null, filterType:'All' }); }
+  switchIdentity(p){ this.setState({ user:{name:p.name, role:p.role}, propertyId:p.prop, tab:'home', overlay:null, sheet:null, myWorkAll:true, boardWho:'All', filterType:'All', formManager:(this.state.properties.find(x=>x.id===p.prop)||{managers:['Valerie']}).managers.find(m=>m!=='Nathan')||'Nathan' }); this.flash(`Viewing as ${p.name}`); }
+  sendChat(){
+    const st=this.state; const ov=st.overlay; if(!ov||ov.type!=='thread') return;
+    const txt=(st.chatInput||'').trim(); if(!txt) return;
+    const key=`${st.propertyId}:${ov.id}`;
+    const now=new Date(); let h=now.getHours(); const m=String(now.getMinutes()).padStart(2,'0'); const ap=h>=12?'PM':'AM'; h=h%12||12;
+    this.setState(s=>({ chats:{...s.chats, [key]:[...(s.chats[key]||[]), {from:s.user.name, text:txt, time:`${h}:${m} ${ap}`}]}, chatInput:'' }));
+  }
+
+  renderVals(){
+    const s=this.state, P=this.PEOPLE;
+    const overlay=s.overlay, prop=this.curProp();
+    const isDetail=overlay&&overlay.type==='project';
+    const isNotifications=overlay&&overlay.type==='notifications';
+    const isThread=overlay&&overlay.type==='thread';
+    const noOverlay=!overlay;
+    const isMaintenance=s.user.role==='Maintenance';
+    const isMyWork=isMaintenance&&s.tab==='home'&&noOverlay;
+    const isHome=!isMaintenance&&s.tab==='home'&&noOverlay, isBoard=s.tab==='board'&&noOverlay, isMessages=s.tab==='messages'&&noOverlay, isReviews=s.tab==='reviews'&&noOverlay, isTeam=s.tab==='team'&&noOverlay, isOrders=s.tab==='orders'&&noOverlay;
+    const showTabs=noOverlay;
+    const myType=isMaintenance?this.techType(s.user.name):null;
+    const myPropIds=isMaintenance?this.techProps(s.user.name):[];
+    const showMaintTabs=showTabs&&isMaintenance, showManagerTabs=showTabs&&!isMaintenance, showTeamTab=myType==='multi';
+    const canCreate=this.canCreate(), canApprove=this.canApprove(), showReviewsTab=canApprove&&!isMaintenance;
+
+    // scope projects to property
+    const all=s.projects.filter(p=>p.propertyId===s.propertyId);
+
+    // user / role
+    const uo=this.avatar(s.user.name,42);
+    const roleColors={ Admin:{fg:'#1e3a5f',bg:'#e7ecf3'}, Manager:{fg:'#2f6bd6',bg:'#e9f0fc'}, Maintenance:{fg:'#b8770a',bg:'#fbf1de'} };
+    const rc=roleColors[s.user.role]||roleColors.Manager;
+
+    // stats
+    const active=all.filter(p=>p.status!=='Complete').length;
+    const inReview=all.filter(p=>p.status==='Review').length;
+    const overdue=all.filter(p=>p.status!=='Complete'&&this.isOverdue(p.due)).length;
+    const complete=all.filter(p=>p.status==='Complete').length;
+    const stats=[ {label:'Active',value:active,dotStyle:'width:8px;height:8px;border-radius:50%;background:#2f6bd6;'}, {label:'In review',value:inReview,dotStyle:'width:8px;height:8px;border-radius:50%;background:#7b5bd6;'}, {label:'Overdue',value:overdue,dotStyle:'width:8px;height:8px;border-radius:50%;background:#d04a3a;'}, {label:'Done',value:complete,dotStyle:'width:8px;height:8px;border-radius:50%;background:#2f9e6a;'} ];
+    const activeP=all.filter(p=>p.status!=='Complete');
+    const portfolioPct=activeP.length? Math.round(activeP.reduce((a,p)=>a+this.pct(p),0)/activeP.length):0;
+
+    // type chips
+    const chip=(label,act,onClick)=>({ label, onClick, style:`flex-shrink:0;height:34px;padding:0 15px;border-radius:11px;border:none;cursor:pointer;font-family:'Manrope';font-size:13px;font-weight:700;white-space:nowrap;${act?'background:#1e3a5f;color:#fff;':'background:#fff;color:#74786f;box-shadow:0 1px 2px rgba(20,20,20,.05);'}` });
+    const priPill=(p)=>{ const pr=this.priOf(p); if(pr==='normal'||p.status==='Complete') return {urgent:false,priorityLabel:'',priorityStyle:''}; const m=this.PRIORITY[pr]; return { urgent:true, priorityLabel:m.label, priorityStyle:`display:inline-flex;align-items:center;font-size:10px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:${m.fg};background:${m.bg};padding:3px 7px;border-radius:7px;` }; };
+    const types=['All','Work Order','Unit Turn','Unit Reno','Common Area','Exterior','Interior'];
+    const typeChips=types.map(t=>chip(t, s.filterType===t, ()=>this.setState({filterType:t})));
+    const filtered=all.filter(p=> s.filterType==='All'? true : p.type===s.filterType);
+    const projectCards=filtered.map(p=>{ const a=this.avatar(p.manager,26); const pl=this.pill(p.status); const pc=this.pct(p); const od=this.isOverdue(p.due)&&p.status!=='Complete'; return { id:p.id, unit:p.unit, typeLabel:p.type, title:p.title, ...pl, ...priPill(p), managerInitials:a.initials, avatarStyle:a.avatarStyle, taskLabel:`${this.doneCount(p)}/${p.tasks.length} tasks`, progFillStyle:this.progFill(pc,this.STATUS[p.status].dot), dueLabel:(p.status==='Complete'?'Done':'Due '+this.fmtDue(p.due)), dueStyle:`font-size:12px;font-weight:700;color:${od?'#d04a3a':'#9a9d94'};`, photoCount:(p.id.charCodeAt(1)%5)+2, onOpen:()=>this.setState({overlay:{type:'project',id:p.id}}) }; });
+
+    // board
+    const flat=[]; all.forEach(p=>p.tasks.forEach(t=>{ if(t.vendor||(t.who&&(P[t.who]&&P[t.who].role.indexOf('Maintenance')===0))) flat.push({p,t}); }));
+    const fl2=flat.filter(({t})=> s.boardWho==='All'?true : s.boardWho==='Vendors'? !!t.vendor : t.who===s.boardWho);
+    const counts={todo:0,doing:0,review:0,done:0}; fl2.forEach(({t})=>counts[t.state]=(counts[t.state]||0)+1);
+    const boardSegs=[['todo','To do'],['doing','In progress'],['review','Review'],['done','Done']].map(([k,label])=>{ const sel=s.boardSeg===k; return { label, count:counts[k]||0, onClick:()=>this.setState({boardSeg:k}), style:`flex:1;height:36px;border:none;border-radius:9px;cursor:pointer;font-family:'Manrope';font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:5px;${sel?'background:#fff;color:#1b1d1c;box-shadow:0 1px 3px rgba(20,20,20,.1);':'background:transparent;color:#8b8f86;'}`, countStyle:`font-size:10px;font-weight:800;padding:1px 6px;border-radius:7px;${sel?'background:#eaf0fb;color:#2f6bd6;':'background:rgba(0,0,0,.05);color:#9a9d94;'}` }; });
+    const whoOpts=['All'].concat(prop.maintenance).concat(['Vendors']);
+    const whoChips=whoOpts.map(w=>chip(w,s.boardWho===w,()=>this.setState({boardWho:w})));
+    const boardCards=fl2.filter(({t})=>t.state===s.boardSeg).map(({p,t})=>{ const done=t.state==='done'; const od=this.isOverdue(t.due)&&!done; let assignStyle,assignText; if(t.vendor){ assignStyle='display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#5d6157;background:#f1efe9;padding:3px 9px 3px 8px;border-radius:7px;'; assignText='⬡ '+t.vendor; } else { assignStyle='display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#74786f;background:#f4f3ef;padding:3px 9px;border-radius:7px;'; assignText=t.who; } return { key:p.id+t.id, label:t.label, unit:p.unit, typeLabel:p.type, done, checkStyle:this.checkStyle(done), labelDecoration:done?'text-decoration:line-through;color:#a7aaa0;':'', assignStyle, assignText, dueLabel:this.fmtDue(t.due), dueStyle:`font-size:11.5px;font-weight:700;color:${od?'#d04a3a':'#a7aaa0'};margin-left:auto;`, onToggle:(e)=>{e.stopPropagation();this.toggleTask(p.id,t.id);}, onOpen:()=>this.setState({overlay:{type:'project',id:p.id}}) }; });
+    const boardEmpty=boardCards.length===0;
+
+    // reviews
+    const reviewsP=all.filter(p=>p.status==='Review');
+    const reviewCards=reviewsP.map(p=>{ const pl=this.pill('Review'); const a=this.actorAvatar(p.by||p.manager,24); return { id:p.id, unit:p.unit, typeLabel:p.type, title:p.title, ...pl, by:p.by||p.manager, byInitials:a.initials, avatarStyle:a.avatarStyle, date:p.byDate||'—', taskLabel:`${p.tasks.length} of ${p.tasks.length} tasks complete`, onOpen:()=>this.setState({overlay:{type:'project',id:p.id}}), onApprove:()=>this.setStatus(p.id,'Complete','approved'), onReject:()=>this.setStatus(p.id,'In Progress','sent back') }; });
+    const reviewsEmpty=reviewCards.length===0;
+    const reviewSub=reviewsEmpty?'Nothing awaiting approval':`${reviewCards.length} awaiting your approval · ${prop.name}`;
+
+    // team
+    const countFor=(name)=>all.filter(p=>p.status!=='Complete'&&(p.manager===name||p.tasks.some(t=>t.who===name))).length;
+    const vendorCount=(v)=>all.filter(p=>p.status!=='Complete'&&p.tasks.some(t=>t.vendor===v)).length;
+    const mkMember=(name,i)=>{ const a=this.avatar(name,38); const isOwner=name==='Nathan'; const mprops=this.state.properties.filter(p=>p.managers.includes(name)).map(p=>p.name); const sub= isOwner? 'Admin · Owner · all properties' : (mprops.length? `Manager · ${mprops.join(', ')}` : 'Manager · unassigned'); const canEdit=this.isAdmin()&&!isOwner; return { name, role:sub, avatarStyle:a.avatarStyle, initials:a.initials, count:countFor(name), sep:i===0?'transparent':'#f1efe9', onClick: canEdit? ()=>this.openPersonConfig(name,'Manager'):()=>{}, rowCursor: canEdit?'pointer':'default', editable:canEdit, showCount:!canEdit }; };
+    const mkTech=(name,i)=>{ const a=this.avatar(name,38); const type=this.techType(name); const tprops=this.techProps(name); const pnames=tprops.map(id=>(s.properties.find(p=>p.id===id)||{}).name).filter(Boolean); const sub= type==='multi'? `Multi-property · ${pnames.join(', ')}` : `${pnames[0]||'—'} only`; return { name, role:sub, avatarStyle:a.avatarStyle, initials:a.initials, count:countFor(name), sep:i===0?'transparent':'#f1efe9', onClick: this.isAdmin()? ()=>this.openPersonConfig(name,'Maintenance'):()=>{}, rowCursor: this.isAdmin()?'pointer':'default', editable:this.isAdmin(), showCount:!this.isAdmin() }; };
+    const vendorsUsed=[...new Set(all.flatMap(p=>p.tasks.map(t=>t.vendor).filter(Boolean)))];
+    const vendorRoles={ 'Lima Painting':'Painting','Statewide Flooring':'Flooring','BrightHouse Cleaning':'Cleaning','Northeast Cabinetry':'Cabinetry','AquaFlow Plumbing':'Plumbing' };
+    const teamGroups=[ { label:'Project Managers', members:prop.managers.map(mkMember) }, { label:'Maintenance', members:(prop.maintenance.length?prop.maintenance:['—']).map((n,i)=> n==='—'?{name:'No maintenance assigned',role:'—',avatarStyle:'width:38px;height:38px;border-radius:50%;background:#eee;flex-shrink:0;',initials:'',count:'',sep:'transparent',onClick:()=>{},rowCursor:'default',editable:false,showCount:false}:mkTech(n,i)) }, { label:'Vendors', members:(vendorsUsed.length?vendorsUsed:['—']).map((v,i)=> v==='—'?{name:'No vendors on active work',role:'—',avatarStyle:'width:38px;height:38px;border-radius:11px;background:#eef1ee;flex-shrink:0;',initials:'',count:'',sep:'transparent',onClick:()=>{},rowCursor:'default',editable:false,showCount:false}:({ name:v, role:vendorRoles[v]||'Vendor', avatarStyle:'width:38px;height:38px;border-radius:11px;background:#eef1ee;color:#5d6157;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0;', initials:'⬡', count:vendorCount(v), sep:i===0?'transparent':'#f1efe9', onClick:()=>{}, rowCursor:'default', editable:false, showCount:true })) } ];
+
+    // messages threads
+    const threadDefs=[ {id:'all', name:'All Team'} ]; if(canApprove) threadDefs.push({id:'mgr', name:'Managers'});
+    const lastOf=(key)=>{ const arr=s.chats[key]||[]; return arr[arr.length-1]; };
+    const threads=threadDefs.map((td,i)=>{ const key=`${s.propertyId}:${td.id}`; const last=lastOf(key); const memberNames= td.id==='mgr'? prop.managers : prop.managers.concat(prop.maintenance); const iconStyle=`width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:${td.id==='mgr'?'#1e3a5f':'#2f6bd6'};`; return { id:td.id, name:td.name, iconStyle, time:last?last.time:'', preview:last?`${last.from==s.user.name?'You':last.from}: ${last.text}`:'No messages yet', members:`${memberNames.length} members · ${memberNames.slice(0,3).join(', ')}${memberNames.length>3?'…':''}`, hasUnread:false, sep:i===0?'transparent':'#f3f1eb', onOpen:()=>this.setState({overlay:{type:'thread',id:td.id}, chatInput:''}) }; });
+    const hasChatUnread=false;
+
+    // chat view
+    let chat=null;
+    if(isThread){ const td=threadDefs.find(t=>t.id===overlay.id)||{id:'all',name:'All Team'}; const key=`${s.propertyId}:${overlay.id}`; const arr=s.chats[key]||[]; const memberNames= overlay.id==='mgr'? prop.managers : prop.managers.concat(prop.maintenance); const messages=arr.map((m,i)=>{ const mine=m.from===s.user.name; const a=this.actorAvatar(m.from,30); const prev=arr[i-1]; const showName=!mine&&(!prev||prev.from!==m.from); const showAvatar=!mine; return { key:i, mine, from:m.from, text:m.text, time:m.time, initials:a.initials, avatarStyle:a.avatarStyle.replace('flex-shrink:0;','flex-shrink:0;align-self:flex-end;'), showAvatar, showName, nameColor:a.color, alignItems: mine?'align-items:flex-end;':'align-items:flex-start;', rowStyle:`display:flex;gap:8px;${mine?'justify-content:flex-end;':'justify-content:flex-start;'}margin-top:${showName?'10px':'2px'};`, bubbleStyle: mine? 'background:#2f6bd6;color:#fff;padding:9px 13px;border-radius:17px 17px 5px 17px;font-size:14px;font-weight:500;line-height:1.4;' : 'background:#fff;color:#1b1d1c;padding:9px 13px;border-radius:17px 17px 17px 5px;font-size:14px;font-weight:500;line-height:1.4;box-shadow:0 1px 2px rgba(20,20,20,.05);' }; }); chat={ name:td.name, iconStyle:`width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:${overlay.id==='mgr'?'#1e3a5f':'#2f6bd6'};`, members:`${memberNames.join(', ')}`, messages }; }
+    const sendStyle=`width:42px;height:42px;border-radius:50%;border:none;flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;background:${(s.chatInput||'').trim()?'#2f6bd6':'#c9cdc4'};transition:background .15s;`;
+
+    // notifications
+    const propNotes=s.notes.filter(n=>n.propertyId===s.propertyId);
+    const unreadCount=propNotes.filter(n=>!n.read).length;
+    const notes=propNotes.map(n=>{ const a=this.actorAvatar(n.actor,38); const target=all.find(p=>p.id===n.projectId); return { key:n.id, actor:n.actor, text:n.text, time:n.time, unread:!n.read, initials:a.initials, avatarStyle:a.avatarStyle, cursor: target?'cursor:pointer;':'', onOpen: target? ()=>this.setState({overlay:{type:'project',id:n.projectId}}) : ()=>{} }; });
+
+    // detail
+    let d=null;
+    if(isDetail){ const p=all.find(x=>x.id===overlay.id)||s.projects.find(x=>x.id===overlay.id); if(p){ const pl=this.pill(p.status); const a=this.avatar(p.manager,28); const pc=this.pct(p); const tasks=p.tasks.map((t,i)=>{ const done=t.state==='done'; const od=this.isOverdue(t.due)&&!done; let assignStyle,assignText; if(t.vendor){ assignStyle='display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#5d6157;background:#f1efe9;padding:3px 9px 3px 8px;border-radius:7px;'; assignText='⬡ '+t.vendor; } else { assignStyle='display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#74786f;background:#f4f3ef;padding:3px 9px;border-radius:7px;'; assignText=t.who; } return { id:t.id, label:t.label, done, sep:i===0?'transparent':'#f3f1eb', checkStyle:this.checkStyle(done), labelDecoration:done?'text-decoration:line-through;color:#a7aaa0;':'', assignStyle, assignText, dueLabel:'Due '+this.fmtDue(t.due), dueStyle:`font-size:11.5px;font-weight:700;color:${od?'#d04a3a':'#a7aaa0'};`, onToggle:()=>this.toggleTask(p.id,t.id) }; }); const isPunch=p.tasks.some(t=>t.cat); let catGroups=[]; if(isPunch){ const ord0=this.PUNCH.map(g=>g.cat); const byCat={}; p.tasks.forEach(t=>{ const c=t.cat||'Other'; (byCat[c]=byCat[c]||[]).push(t); }); const cats=Object.keys(byCat).sort((a,b)=>ord0.indexOf(a)-ord0.indexOf(b)); catGroups=cats.map((c,ci)=>{ const items=byCat[c]; const doneN=items.filter(t=>t.state==='done').length; const allDone=doneN===items.length; const ckey=p.id+':'+c; const collapsed=(s.collapsedCats[ckey]!==undefined)? s.collapsedCats[ckey] : allDone; const rows=items.map((t,ri)=>{ const done=t.state==='done'; const ordr=t.orderId? p.orders.find(o=>o.id===t.orderId):null; return { id:t.id, label:t.label, done, sep:ri===0?'transparent':'#f3f1eb', checkStyle:this.checkStyle(done), labelDecoration:done?'text-decoration:line-through;color:#a7aaa0;':'', onToggle:()=>this.toggleTask(p.id,t.id), photoExpanded:!!s.expandedPhotos[t.id], onPhoto:()=>this.togglePhoto(t.id), photoId:'pi-'+t.id, camColor: s.expandedPhotos[t.id]?'#2f6bd6':'#b3b6ac', canOrder: !done&&!ordr, onOrder:()=>this.openOrder(p.id,t.id,t.label,t.cat), ordered:!!ordr, orderName: ordr?ordr.name:'', orderSrc: ordr?(ordr.source==='amazon'?'Amazon':"Lowe's"):'', orderStatus: ordr?ordr.status:'', orderPillStyle: ordr?`height:30px;padding:0 10px;border-radius:9px;background:${this.ORDER[ordr.status].bg};color:${this.ORDER[ordr.status].fg};font-size:11px;font-weight:700;display:flex;align-items:center;gap:4px;flex-shrink:0;`:'' }; }); return { cat:c, iconD:this.CATICON[c]||'M5 13l4 4L19 7', doneLabel:doneN+'/'+items.length, fillStyle:this.progFill(items.length?Math.round(doneN/items.length*100):0, allDone?'#2f9e6a':'#2f6bd6'), collapsed, allDone, headSep:ci===0?'transparent':'#efece5', expanded:!collapsed, chevStyle:`transition:transform .2s;transform:rotate(${collapsed?'0':'90'}deg);`, onToggle:()=>this.toggleCat(ckey), rows }; }); } const orders=p.orders.map((o,i)=>{ const oc=this.ORDER[o.status]; const srcLabel= o.source==='amazon'?'Amazon':(o.source==='lowes'?"Lowe's":''); return { name:o.name, meta: srcLabel? (o.meta? o.meta+' · '+srcLabel : srcLabel) : o.meta, statusLabel:o.status, hasLink:!!o.link, sep:i===0?'transparent':'#f3f1eb', chipStyle:`border:none;cursor:pointer;font-family:'Manrope';font-size:11px;font-weight:700;padding:5px 11px;border-radius:8px;color:${oc.fg};background:${oc.bg};`, onCycle:()=>this.cycleOrder(p.id,i) }; }); d={ id:p.id, unit:p.unit, typeLabel:p.type, title:p.title, ...pl, backLabel:'Projects', managerName:p.manager, managerInitials:a.initials, avatarStyle:a.avatarStyle, taskLabel:`${this.doneCount(p)} of ${p.tasks.length} tasks`, pct:pc, progFillStyle:this.progFill(pc,this.STATUS[p.status].dot), dueLabel:this.fmtDue(p.due), blocked:p.status==='Blocked', blockReason:p.blockReason||'', urgent:this.priOf(p)!=='normal'&&p.status!=='Complete', priorityText: this.priOf(p)==='emergency'?'Emergency — respond immediately':'Marked urgent', beforeId:'before-'+p.id, afterId:'after-'+p.id, canSubmit: pc===100&&p.status!=='Review'&&p.status!=='Complete', showApprove: p.status==='Review'&&canApprove, awaitingNote: p.status==='Review'&&!canApprove, isPunch, isFlat:!isPunch, tasksLabel: isPunch?'Turn punch list':'Tasks', catGroups, ordersEmpty:p.orders.length===0, onSubmit:()=>this.setStatus(p.id,'Review','submitted'), onApprove:()=>this.setStatus(p.id,'Complete','approved'), onReject:()=>this.setStatus(p.id,'In Progress','sent back'), tasks, orders }; } }
+
+    // my work (maintenance)
+    let myWork=null, myWorkPropChips=[];
+    if(isMaintenance){
+      const scope = myType==='single' ? [myPropIds[0]||s.propertyId] : myPropIds;
+      const viewAll = myType==='multi' && s.myWorkAll;
+      const activeProp = s.propertyId;
+      const propName=(id)=>(s.properties.find(x=>x.id===id)||{}).name||'';
+      const inScope = s.projects.filter(p=> scope.includes(p.propertyId) && p.tasks.some(t=>t.who===s.user.name));
+      const shown = inScope.filter(p=> viewAll? true : (myType==='multi'? p.propertyId===activeProp : true));
+      const mySubject = s.myWorkSubject||'work_order';
+      const myWorkSubjectCards=['work_order','unit','project'].map(c=>{ const list=shown.filter(p=>this.catOf(p)===c); const n=list.filter(p=>p.status!=='Complete').length; const sel=mySubject===c; const urgentN= c==='work_order'? list.filter(p=>this.priOf(p)!=='normal'&&p.status!=='Complete').length:0; const overdueN=list.filter(p=>p.status!=='Complete'&&this.isOverdue(p.due)).length; let flag=false,flagText='',flagStyle=''; if(urgentN>0){flag=true;flagText=`${urgentN} urgent`;flagStyle='font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;color:#fff;background:#c0392b;';} else if(overdueN>0){flag=true;flagText=`${overdueN} late`;flagStyle='font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:6px;color:#b35309;background:#fbe9d6;';} return { label:this.CATS[c].label, count:n, onClick:()=>this.setState({myWorkSubject:c}), flag, flagText, flagStyle, numColor:sel?'#fff':'#1b1d1c', labelColor:sel?'#cdd9ea':'#74786f', style:`flex:1;min-width:0;border:none;cursor:pointer;border-radius:15px;padding:13px 13px 12px;text-align:left;${sel?'background:#1e3a5f;box-shadow:0 6px 16px rgba(30,58,95,.22);':'background:#fff;box-shadow:0 1px 2px rgba(20,20,20,.04),0 1px 3px rgba(20,20,20,.05);'}` }; });
+      const subjectShown = shown.filter(p=>this.catOf(p)===mySubject);
+      const myEmergencies=shown.filter(p=>this.isEmergency(p));
+      const rank=(p)=>{ if(this.isEmergency(p)) return -1; if(p.status==='Blocked') return 0; const myOpen=p.tasks.filter(t=>t.who===s.user.name&&t.state!=='done'); return myOpen.length? 1:2; };
+      const sorted=[...subjectShown].sort((a,b)=>rank(a)-rank(b));
+      const units=sorted.map(p=>{
+        const myTasks=p.tasks.filter(t=>t.who===s.user.name);
+        const myDone=myTasks.filter(t=>t.state==='done').length;
+        const pl=this.pill(p.status);
+        const rows=myTasks.map((t)=>{ const done=t.state==='done'; const od=this.isOverdue(t.due)&&!done; return { id:t.id, label:t.label, done, checkStyle:this.checkStyle(done), labelDecoration:done?'text-decoration:line-through;color:#a7aaa0;':'', dueLabel:done?'Done':'Due '+this.fmtDue(t.due), dueStyle:`font-size:11.5px;font-weight:700;color:${od?'#d04a3a':(done?'#b3b6ac':'#9a9d94')};white-space:nowrap;`, onToggle:(e)=>{e.stopPropagation();this.toggleTask(p.id,t.id);} }; });
+        return { key:p.id, unit:p.unit, typeLabel:p.type, title:p.title, ...pl, ...priPill(p), propName: myType==='multi'?propName(p.propertyId):'', showProp: myType==='multi', myProgLabel:`${myDone} of ${myTasks.length} done`, myFillStyle:this.progFill(myTasks.length?Math.round(myDone/myTasks.length*100):0,this.STATUS[p.status].dot), rows, blocked:p.status==='Blocked', blockReason:p.blockReason||'', onOpen:()=>this.setState({overlay:{type:'project',id:p.id}}) };
+      });
+      const openCount=subjectShown.reduce((a,p)=>a+p.tasks.filter(t=>t.who===s.user.name&&t.state!=='done').length,0);
+      const blockedCount=shown.filter(p=>p.status==='Blocked').length;
+      const unitWord=units.length===1?'unit':'units';
+      let summary= openCount===0? `No open ${this.CATS[mySubject].label.toLowerCase()} right now` : `${openCount} open task${openCount>1?'s':''} across ${units.length} ${unitWord}`;
+      if(blockedCount>0) summary += ` · ${blockedCount} blocked`;
+      if(myType==='multi'){
+        const chips=[{label:'All',val:'__all'}].concat(myPropIds.map(id=>({label:propName(id),val:id})));
+        myWorkPropChips=chips.map(c=>{ const sel= c.val==='__all'? viewAll : (!viewAll&&activeProp===c.val); return { label:c.label, style:`flex-shrink:0;height:34px;padding:0 15px;border-radius:11px;border:none;cursor:pointer;font-family:'Manrope';font-size:13px;font-weight:700;white-space:nowrap;${sel?'background:#b8770a;color:#fff;':'background:#fff;color:#74786f;box-shadow:0 1px 2px rgba(20,20,20,.05);'}`, onClick: c.val==='__all'? ()=>this.setState({myWorkAll:true}) : ()=>this.setState({myWorkAll:false, propertyId:c.val, boardWho:'All'}) }; });
+      }
+      const homeName= myType==='single'? propName(scope[0]) : (viewAll? 'All properties' : propName(activeProp));
+      myWork={ units, summary, blockedCount, subtitle: homeName, empty:units.length===0, subjectCards:myWorkSubjectCards, subjectTitle:this.CATS[mySubject].title, hasEmergency:myEmergencies.length>0, emergencyText: myEmergencies.length? `${myEmergencies[0].unit} · ${myEmergencies[0].title}`:'', emergencyLabel: myEmergencies.length>1? `${myEmergencies.length} emergencies — tap to view`:'Emergency work order', openEmergency: myEmergencies.length? ()=>this.setState({overlay:{type:'project',id:myEmergencies[0].id}}):()=>{} };
+    }
+
+    // order log (property-scoped needs list)
+    const logRows=[];
+    all.forEach(p=>{ p.orders.forEach(o=>{ logRows.push({ o, p }); }); });
+    const orderCounts={ Needed:0, Ordered:0, Received:0 };
+    logRows.forEach(({o})=>{ orderCounts[o.status]=(orderCounts[o.status]||0)+1; });
+    const orderSegs=['Needed','Ordered','Received'].map(k=>{ const sel=s.orderLogSeg===k; const oc=this.ORDER[k]; return { label:k, count:orderCounts[k]||0, onClick:()=>this.setState({orderLogSeg:k}), style:`flex:1;height:38px;border:none;border-radius:9px;cursor:pointer;font-family:'Manrope';font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;${sel?'background:#fff;color:#1b1d1c;box-shadow:0 1px 3px rgba(20,20,20,.1);':'background:transparent;color:#8b8f86;'}`, countStyle:`font-size:10px;font-weight:800;padding:1px 6px;border-radius:7px;color:${sel?oc.fg:'#9a9d94'};background:${sel?oc.bg:'rgba(0,0,0,.05)'};` }; });
+    const orderLogItems=logRows.filter(({o})=>o.status===s.orderLogSeg).map(({o,p})=>{ const oc=this.ORDER[o.status]; const srcName= o.source==='amazon'?'Amazon':(o.source==='lowes'?"Lowe's":''); return { id:o.id, name:o.name, meta:o.meta, unit:p.unit, forLabel:o.forLabel||p.title, by:o.by||p.manager, hasSrc:!!srcName, srcName, srcColor: o.source==='amazon'?'#ff9900':'#004990', hasLink:!!o.link, statusLabel:o.status, statusStyle:`border:none;cursor:pointer;font-family:'Manrope';font-size:11px;font-weight:700;padding:6px 12px;border-radius:9px;color:${oc.fg};background:${oc.bg};flex-shrink:0;`, onAdvance:()=>this.advanceOrder(p.id,o.id), onOpen:()=>this.setState({overlay:{type:'project',id:p.id}}) }; });
+    const orderLogEmpty=orderLogItems.length===0;
+    const orderLogSub=`${orderCounts.Needed||0} needed · ${orderCounts.Ordered||0} ordered · ${orderCounts.Received||0} received`;
+
+    // assign properties sheet (managers + maintenance)
+    let assignSheet=null;
+    if(s.sheet==='assign'&&s.editTech){ const a=this.avatar(s.editTech,44); const propsList=s.properties.map(p=>{ const sel=s.etProps.includes(p.id); return { name:p.name, meta:p.address, onClick:()=>this.toggleEtProp(p.id), boxStyle:`width:24px;height:24px;border-radius:7px;border:2px solid ${sel?'#1e3a5f':'#d6d3cb'};background:${sel?'#1e3a5f':'#fff'};flex-shrink:0;display:flex;align-items:center;justify-content:center;`, checked:sel, rowStyle:`display:flex;align-items:center;gap:12px;width:100%;padding:13px 14px;border-radius:13px;cursor:pointer;border:1.5px solid ${sel?'#1e3a5f':'#eae7df'};background:${sel?'#f3f6fb':'#fff'};text-align:left;` }; }); const cnt=s.etProps.length; assignSheet={ name:s.editTech, initials:a.initials, avatarStyle:a.avatarStyle, roleLabel: s.editRole==='Maintenance'?'Maintenance assignment':'Manager assignment', propsList, hint: s.editRole==='Maintenance'? (cnt>1?`Works across ${cnt} properties.`: (cnt===1?'Stationed at one property — gets the simplest view.':'Pick the properties they cover.')) : `Manages ${cnt||'no'} ${cnt===1?'property':'properties'}.` }; }
+
+    // sheet
+    const sheet=s.sheet, open=!!sheet;
+    // order sheet (order a part for a punch item)
+    let orderSheet=null;
+    if(s.sheet==='order'&&s.orderItem){ const oi=s.orderItem; const src=s.orderSource; const matchCat=this.CATALOG.filter(c=>c.cat===oi.cat); const catalog=(matchCat.length?matchCat:this.CATALOG).map((c,i)=>{ const sd=c[src]||{}; const avail=!!sd.link; return { name:c.name, price:sd.price||'—', avail, onClick: avail? ()=>this.placeOrder(c.name, sd.price?('1 · '+sd.price):'', sd.link):()=>this.flash('Not stocked on '+(src==='amazon'?'Amazon':"Lowe's")), rowStyle:`display:flex;align-items:center;gap:11px;width:100%;padding:12px 13px;border-radius:12px;border:1.5px solid #eae7df;background:${avail?'#fff':'#f6f5f1'};cursor:pointer;text-align:left;opacity:${avail?'1':'.55'};`, priceColor: avail?'#1f8a5b':'#a7aaa0' }; }); const srcBtn=(key,label)=>`flex:1;height:40px;border:none;border-radius:9px;cursor:pointer;font-family:'Manrope';font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:6px;${src===key?'background:#fff;color:#1b1d1c;box-shadow:0 1px 3px rgba(20,20,20,.12);':'background:transparent;color:#8b8f86;'}`; orderSheet={ label:oi.label, cat:oi.cat, catalog, lowesStyle:srcBtn('lowes',"Lowe's"), amazonStyle:srcBtn('amazon','Amazon'), customName:s.orderCustomName, customLink:s.orderCustomLink, canCustom:!!(s.orderCustomName||'').trim() }; }
+    const sheetStyle=`position:absolute;left:0;right:0;bottom:0;z-index:90;background:#f7f6f3;border-radius:26px 26px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.18);transition:transform .32s cubic-bezier(.32,.72,0,1);transform:translateY(${open?'0':'105%'});`;
+    const scrimStyle=`position:absolute;inset:0;z-index:85;background:rgba(20,20,20,.32);transition:opacity .3s ease;opacity:${open?'1':'0'};pointer-events:${open?'auto':'none'};`;
+    const segBtn=(act)=>`flex:1;height:36px;border:none;border-radius:9px;cursor:pointer;font-family:'Manrope';font-size:13px;font-weight:700;${act?'background:#fff;color:#1b1d1c;box-shadow:0 1px 3px rgba(20,20,20,.1);':'background:transparent;color:#8b8f86;'}`;
+    const formTypeChips=['Unit Turn','Unit Reno','Common Area','Exterior','Interior'].map(t=>({ label:t, onClick:()=>this.setState({formType:t}), style:`height:36px;padding:0 14px;border-radius:11px;border:1.5px solid ${s.formType===t?'#1e3a5f':'#e6e3db'};cursor:pointer;font-family:'Manrope';font-size:13px;font-weight:700;${s.formType===t?'background:#1e3a5f;color:#fff;':'background:#fff;color:#74786f;'}` }));
+    const mgrChip=(m,selected,onClick)=>{ const a=this.avatar(m,22); return { name:m, onClick, initials:a.initials, avatarStyle:a.avatarStyle.replace('flex-shrink:0;','flex-shrink:0;font-size:9px;'), style:`display:flex;align-items:center;gap:7px;height:42px;padding:0 14px;border-radius:12px;border:1.5px solid ${selected?'#1e3a5f':'#e6e3db'};cursor:pointer;font-family:'Manrope';font-size:13px;font-weight:700;${selected?'background:#eef2f8;color:#1e3a5f;':'background:#fff;color:#74786f;'}` }; };
+    const formManagerChips=prop.managers.map(m=>mgrChip(m, s.formManager===m, ()=>this.setState({formManager:m})));
+    const apManagerChips=['Valerie','Andrey','Marcus','Priya'].map(m=>mgrChip(m, s.apManager===m, ()=>this.setState({apManager:m})));
+
+    // property list
+    const accessible=this.isAdmin()? s.properties : s.properties.filter(p=>p.managers.includes(s.user.name)||p.maintenance.includes(s.user.name));
+    const propertyList=accessible.map(p=>{ const act=p.id===s.propertyId; const ac=s.projects.filter(x=>x.propertyId===p.id&&x.status!=='Complete').length; return { name:p.name, meta:`${p.units} units · ${ac} active projects`, current:act, onClick:()=>this.switchProperty(p.id), style:`display:flex;align-items:center;gap:10px;width:100%;padding:14px 15px;border-radius:14px;cursor:pointer;border:1.5px solid ${act?'#2f6bd6':'#eae7df'};background:${act?'#f3f7fd':'#fff'};` }; });
+    const propertyListSub=this.isAdmin()?'You manage all properties':'Properties you’re assigned to';
+
+    // personas
+    const personas=this.PERSONAS.map(p=>{ const a=this.avatar(p.name,40); const sel=s.user.name===p.name; const rc2=roleColors[p.role]||roleColors.Manager; return { name:p.name, sub:p.sub, roleLabel:p.role, initials:a.initials, avatarStyle:a.avatarStyle, onClick:()=>this.switchIdentity(p), badgeStyle:`font-size:10px;font-weight:800;padding:3px 8px;border-radius:7px;color:${rc2.fg};background:${rc2.bg};flex-shrink:0;`, style:`display:flex;align-items:center;gap:12px;width:100%;padding:11px 13px;border-radius:14px;cursor:pointer;border:1.5px solid ${sel?'#2f6bd6':'#eae7df'};background:${sel?'#f3f7fd':'#fff'};` }; });
+
+    const tc=(t)=> s.tab===t&&noOverlay?'#2f6bd6':'#a7aaa0';
+
+    return {
+      isHome, isMyWork, isBoard, isMessages, isReviews, isTeam, isOrders, isDetail, isNotifications, isThread, showTabs,
+      showManagerTabs, showMaintTabs, showTeamTab, isMaintenance,
+      myWork, myWorkPropChips, hasMyWorkChips: myWorkPropChips.length>0,
+      assignSheet, isSheetAssign:s.sheet==='assign', onSaveAssign:()=>this.savePersonConfig(),
+      orderSheet, isSheetOrder:s.sheet==='order',
+      setSrcLowes:()=>this.setState({orderSource:'lowes'}), setSrcAmazon:()=>this.setState({orderSource:'amazon'}),
+      onOrderCustomName:(e)=>this.setState({orderCustomName:e.target.value}), onOrderCustomLink:(e)=>this.setState({orderCustomLink:e.target.value}),
+      onPlaceCustom:()=>{ const n=(s.orderCustomName||'').trim(); if(!n){ this.flash('Name the item'); return; } this.placeOrder(n, '1 · custom', s.orderCustomLink||''); },
+      goMyWork:()=>this.setState({tab:'home',overlay:null}),
+      goOrders:()=>this.setState({tab:'orders',overlay:null}),
+      orderSegs, orderLogItems, orderLogEmpty, orderLogSub,
+      isModeAddUnit:s.createMode==='addunit', isModeCreateWork:s.createMode!=='addunit',
+      isModeWo:s.createMode==='wo', isModeUnit:s.createMode==='unit', isModeProject:s.createMode==='project',
+      setModeWo:()=>this.setState({createMode:'wo'}), setModeUnitCreate:()=>this.setState({createMode:'unit'}), setModeProjectCreate:()=>this.setState({createMode:'project'}), setModeAddUnit:()=>this.setState({createMode:'addunit'}),
+      modeWoStyle:segBtn(s.createMode==='wo'), modeUnitStyle:segBtn(s.createMode==='unit'), modeProjectStyle:segBtn(s.createMode==='project'),
+      woUrgent:s.woUrgent, onToggleUrgent:()=>this.setState(st=>({woUrgent:!st.woUrgent})),
+      urgentToggleStyle:`display:flex;align-items:center;justify-content:space-between;width:100%;height:54px;padding:0 15px;border-radius:13px;cursor:pointer;border:1.5px solid ${s.woUrgent?'#c0392b':'#e6e3db'};background:${s.woUrgent?'#fbeae7':'#fbfaf8'};`,
+      urgentIconColor:s.woUrgent?'#c0392b':'#9a9d94', urgentTextColor:s.woUrgent?'#a8332a':'#3a3d38',
+      urgentSwitchStyle:`width:46px;height:28px;border-radius:14px;padding:3px;display:flex;align-items:center;${s.woUrgent?'justify-content:flex-end;background:#c0392b;':'justify-content:flex-start;background:#d6d3cb;'}transition:all .15s;`,
+      urgentKnobStyle:'width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);',
+      woCreateStyle:`width:100%;height:50px;border-radius:14px;border:none;color:#fff;font-family:'Manrope';font-size:15px;font-weight:700;cursor:pointer;background:${s.woUrgent?'#c0392b':'#1e3a5f'};box-shadow:0 4px 14px ${s.woUrgent?'rgba(192,57,43,.3)':'rgba(30,58,95,.25)'};`,
+      woCreateLabel:s.woUrgent?'Log emergency work order':'Create work order',
+      woTitle:s.woTitle, onWoTitle:(e)=>this.setState({woTitle:e.target.value}),
+      unitKind:s.unitKind, unitKindLabel:s.unitKind==='reno'?'reno':'turn', kindTurnStyle:segBtn(s.unitKind==='turn'), kindRenoStyle:segBtn(s.unitKind==='reno'), setKindTurn:()=>this.setState({unitKind:'turn'}), setKindReno:()=>this.setState({unitKind:'reno'}), unitKindHint: s.unitKind==='reno'?'Renovation — upgrading/updating the unit (bigger scope).':'Turn — make ready for the next move-in.',
+      projTypeChips:['Common Area','Exterior','Interior'].map(t=>({ label:t, onClick:()=>this.setState({projType:t}), style:`height:36px;padding:0 14px;border-radius:11px;border:1.5px solid ${s.projType===t?'#1e3a5f':'#e6e3db'};cursor:pointer;font-family:'Manrope';font-size:13px;font-weight:700;${s.projType===t?'background:#1e3a5f;color:#fff;':'background:#fff;color:#74786f;'}` })),
+      woAssigneeChips: prop.maintenance.map(m=>mgrChip(m, s.formManager===m, ()=>this.setState({formManager:m}))),
+      greeting:`Good morning, ${s.user.name}`,
+      propertyName:prop.name, propertyAddress:prop.address,
+      roleLabel:s.user.role, roleChipStyle:`font-size:10px;font-weight:800;padding:2px 8px;border-radius:7px;color:${rc.fg};background:${rc.bg};text-transform:uppercase;letter-spacing:.04em;`,
+      userInitials:uo.initials, userAvatarStyle:uo.avatarStyle+'box-shadow:0 2px 6px rgba(0,0,0,.12);',
+      canCreate, showReviewsTab, isAdmin:this.isAdmin(),
+      stats, portfolioPct, portfolioFillStyle:this.progFill(portfolioPct,'#7fb0e6'), portfolioNote:`${prop.units} units · ${active} active · ${overdue} overdue · ${inReview} in review`,
+      projectCount:`${projectCards.length} shown`, typeChips, projectCards,
+      whoChips, boardSegs, boardCards, boardEmpty,
+      threads, hasChatUnread,
+      reviewCards, reviewsEmpty, reviewSub,
+      teamGroups,
+      notes, unreadCount, hasUnread:unreadCount>0,
+      chat, chatInput:s.chatInput, sendStyle,
+      onChatInput:(e)=>this.setState({chatInput:e.target.value}),
+      onChatKey:(e)=>{ if(e.key==='Enter') this.sendChat(); },
+      onSend:()=>this.sendChat(),
+      d,
+      back:()=>{ if(isNotifications){ this.setState(st=>({ overlay:null, notes:st.notes.map(n=> n.propertyId===st.propertyId? {...n,read:true}:n) })); } else { this.setState({overlay:null}); } },
+      goHome:()=>this.setState({tab:'home',overlay:null}), goBoard:()=>this.setState({tab:'board',overlay:null}), goMessages:()=>this.setState({tab:'messages',overlay:null}), goReviews:()=>this.setState({tab:'reviews',overlay:null}), goTeam:()=>this.setState({tab:'team',overlay:null}),
+      openCreate:()=>this.setState({sheet:'create',createMode:'unit'}), openProperty:()=>this.setState({sheet:'property'}), openIdentity:()=>this.setState({sheet:'identity'}),
+      openNotifications:()=>this.setState({overlay:{type:'notifications'}}),
+      openAddProperty:()=>this.setState({sheet:'addProperty'}),
+      closeSheet:()=>this.setState({sheet:null}),
+      tabHomeColor:tc('home'), tabMyWorkColor:tc('home'), tabBoardColor:tc('board'), tabMessagesColor:tc('messages'), tabReviewsColor:tc('reviews'), tabTeamColor:tc('team'), tabOrdersColor:tc('orders'),
+      hasReviews:reviewCards.length>0, reviewBadge:reviewCards.length,
+      sheetStyle, scrimStyle,
+      isSheetCreate:sheet==='create', isSheetProperty:sheet==='property', isSheetAddProperty:sheet==='addProperty', isSheetIdentity:sheet==='identity',
+
+      formTypeChips, formManagerChips, apManagerChips,
+      formBuilding:s.formBuilding, formUnit:s.formUnit, formDue:s.formDue,
+      onBuilding:(e)=>this.setState({formBuilding:e.target.value}), onUnit:(e)=>this.setState({formUnit:e.target.value}), onDue:(e)=>this.setState({formDue:e.target.value}),
+      onCreate:()=>this.createItem(), onAddUnit:()=>this.addUnit(),
+      propertyList, propertyListSub, canAddProperty:this.isAdmin(),
+      apName:s.apName, apAddress:s.apAddress, onApName:(e)=>this.setState({apName:e.target.value}), onApAddress:(e)=>this.setState({apAddress:e.target.value}), onCreateProperty:()=>this.createProperty(),
+      personas,
+      toastText:s.toast||'', toastStyle:`position:absolute;left:50%;bottom:118px;transform:translateX(-50%) translateY(${s.toast?'0':'12px'});z-index:95;background:#1b1d1c;color:#fff;font-size:13px;font-weight:600;padding:11px 20px;border-radius:13px;box-shadow:0 8px 24px rgba(0,0,0,.25);transition:all .25s ease;opacity:${s.toast?'1':'0'};pointer-events:none;white-space:nowrap;`,
+    };
+  }
+}
+</script>
+</body>
+</html>
