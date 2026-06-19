@@ -2952,10 +2952,21 @@ function(a,b,c){if(!Vd(b))throw Error(m(200));return Wd(null,a,b,!1,c)};Q.unmoun
                         <button onClick="{{ t.onPhoto }}" style="width:30px;height:30px;border-radius:9px;border:none;background:#f4f3ef;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="14" rx="2.5" stroke="{{ t.camColor }}" stroke-width="2"/><circle cx="12" cy="13" r="3.2" stroke="{{ t.camColor }}" stroke-width="2"/><path d="M8 6l1.5-2h5L16 6" stroke="{{ t.camColor }}" stroke-width="2" stroke-linejoin="round"/></svg></button>
                         <sc-if value="{{ t.canOrder }}" hint-placeholder-val="{{ false }}"><button onClick="{{ t.onOrder }}" style="height:30px;padding:0 11px;border-radius:9px;border:1.5px solid #d8e2f3;background:#eef4fd;color:#2f6bd6;font-family:'Manrope';font-size:11.5px;font-weight:700;cursor:pointer;flex-shrink:0;display:flex;align-items:center;gap:4px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 5h10M9 12h10M9 19h10" stroke="#2f6bd6" stroke-width="2" stroke-linecap="round"/><path d="M4 4.5l1 1 1.5-2M4 11.5l1 1 1.5-2M4 18.5l1 1 1.5-2" stroke="#2f6bd6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Need</button></sc-if>
                         <sc-if value="{{ t.ordered }}" hint-placeholder-val="{{ false }}"><span style="{{ t.orderPillStyle }}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 5h10M9 12h10M9 19h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 4.5l1 1 1.5-2M4 11.5l1 1 1.5-2M4 18.5l1 1 1.5-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ t.orderStatus }}</span></sc-if>
+                        <button onClick="{{ t.onRemove }}" style="width:26px;height:26px;border-radius:7px;border:none;background:#fdecea;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 18L18 6M6 6l12 12" stroke="#c0392b" stroke-width="2.5" stroke-linecap="round"/></svg></button>
                       </div>
                       <sc-if value="{{ t.photoExpanded }}" hint-placeholder-val="{{ false }}"><div style="padding:0 15px 13px 50px;"><image-slot id="{{ t.photoId }}" style="width:100%;height:120px;display:block;" shape="rounded" radius="11" placeholder="Add photo of this item"></image-slot></div></sc-if>
                     </div>
                   </sc-for>
+                  <sc-if value="{{ g.isAdding }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;align-items:center;gap:8px;padding:10px 15px;border-top:1px solid #f3f1eb;">
+                      <input value="{{ g.addText }}" onInput="{{ g.onAddInput }}" placeholder="Task name…" style="flex:1;height:36px;border-radius:10px;border:1.5px solid #d6d3cb;background:#f9f8f6;padding:0 12px;font-family:'Manrope';font-size:13px;font-weight:600;color:#1b1d1c;outline:none;" />
+                      <button onClick="{{ g.onAddSubmit }}" style="height:36px;padding:0 13px;border-radius:10px;border:none;background:#1e3a5f;color:#fff;font-family:'Manrope';font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;">Add</button>
+                      <button onClick="{{ g.onAddCancel }}" style="height:36px;padding:0 11px;border-radius:10px;border:1.5px solid #e0ddd5;background:#fff;color:#74786f;font-family:'Manrope';font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;">Cancel</button>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ g.notAdding }}" hint-placeholder-val="{{ false }}">
+                    <button onClick="{{ g.onStartAdd }}" style="display:flex;align-items:center;gap:7px;width:100%;padding:11px 15px;border:none;background:none;cursor:pointer;border-top:1px solid #f3f1eb;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#a7aaa0" stroke-width="2.3" stroke-linecap="round"/></svg><span style="font-size:13px;font-weight:600;color:#a7aaa0;">Add task</span></button>
+                  </sc-if>
                 </div>
               </sc-if>
             </div>
@@ -3283,17 +3294,124 @@ class Component extends DCLogic {
     const T=(s,st,who,vendor,due)=>({ id:Math.random().toString(36).slice(2), label:s, state:st, who, vendor:vendor||null, due });
     const O=(name,meta,status)=>({ name, meta, status });
     this.PUNCH=[
-      { cat:'Cleaning', items:['Full unit deep clean','Appliances cleaned inside & out','Cabinets & drawers wiped','Windows, sills & tracks'] },
-      { cat:'Paint', items:['Walls patched & painted','Ceilings','Trim & baseboards','Doors & frames'] },
-      { cat:'Flooring', items:['Carpet replaced / cleaned','Hard floor (LVP) installed','Tile & grout','Transitions & thresholds'] },
-      { cat:'Kitchen', items:['Appliances tested','Countertops','Cabinet doors & hardware','Sink & faucet','Garbage disposal'] },
-      { cat:'Bathroom', items:['Vanity & countertop','Toilet runs clean & seals','Tub / shower & surround','Re-caulk & seal','Mirror & fixtures'] },
-      { cat:'Electrical', items:['Outlets & switches','Light fixtures & bulbs','Smoke & CO detectors','Breaker panel labeled'] },
-      { cat:'Plumbing', items:['Faucets & aerators','Shutoffs & supply lines','Drains clear','Water heater check'] },
-      { cat:'HVAC', items:['Filter replaced','Vents & returns','Thermostat tested'] },
-      { cat:'Doors & Windows', items:['Locks rekeyed','Door hardware','Blinds','Window screens','Weatherstripping'] },
-      { cat:'Keys & Access', items:['Unit rekey','Mailbox key','Amenity fobs'] },
-      { cat:'Final', items:['Pest inspection','Final walkthrough','Move-in ready photos'] },
+      { cat:'Cleaning', items:[
+        'Trash-out & remove all left items',
+        'Walls spot-cleaned & wiped down',
+        'Baseboards & ledges dusted & wiped',
+        'Ceiling fans & light fixtures dusted',
+        'All high-touch surfaces disinfected',
+        'Range hood & filter degreased',
+        'Oven deep cleaned inside & racks',
+        'Refrigerator cleaned, coils vacuumed, drip tray emptied',
+        'Dishwasher filter & interior cleaned',
+        'Cabinets & drawers wiped inside & out',
+        'Bathroom tile & grout scrubbed, mildew treated',
+        'Toilet exterior, base & behind cleaned',
+        'Window sills, tracks & screens wiped',
+        'Closets swept & wiped',
+        'Odor treatment (enzyme / ozone)',
+        'Final mop, sweep & vacuum all floors',
+      ]},
+      { cat:'Paint', items:[
+        'Fill nail holes, dings & cracks',
+        'Sand & prime repaired areas',
+        'Walls painted (eggshell finish)',
+        'Ceilings painted (flat finish)',
+        'Trim, baseboards & door frames (semi-gloss)',
+        'Closet interiors touched up',
+        'Caulk gaps at trim & countertops',
+      ]},
+      { cat:'Flooring', items:[
+        'Carpet assessed — replace or deep clean',
+        'Subfloor checked for soft spots',
+        'Hard floor installed or cleaned & buffed',
+        'Tile & grout cleaned or regrouted',
+        'Transitions & thresholds secured',
+      ]},
+      { cat:'Kitchen', items:[
+        'Range — all burners & ignitors tested',
+        'Oven bake & broil cycle tested',
+        'Refrigerator cooling tested, ice maker checked',
+        'Dishwasher run full cycle, no leaks',
+        'Microwave / range hood fan tested',
+        'Countertops sealed & chip-free',
+        'Cabinet doors aligned, hardware tight',
+        'Sink faucet — no drips, good pressure',
+        'Garbage disposal runs & resets',
+        'Under-sink dry — no active leaks',
+      ]},
+      { cat:'Bathroom', items:[
+        'Toilet flushes, fills & shuts off',
+        'Toilet seat tight & clean',
+        'Shower & tub drain flows freely',
+        'Hot & cold water at correct handles',
+        'Caulk tub/shower surround replaced',
+        'Vanity & countertop clean & sealed',
+        'Mirror & light bar clean & secured',
+        'Exhaust fan operates & vented out',
+        'Shower rod or door in place',
+      ]},
+      { cat:'Electrical', items:[
+        'All outlets tested with plug tester',
+        'All switches operate lights & fans',
+        'GFCI outlets tested (kitchen & bath)',
+        'Ceiling fans operate (all speeds)',
+        'All light bulbs working & matching',
+        'Smoke detector — new battery, tested',
+        'CO detector — new battery, tested',
+        'Breaker panel labeled & no tripped breakers',
+      ]},
+      { cat:'Plumbing', items:[
+        'All faucets — no drips, aerators cleaned',
+        'Hot water present at all fixtures',
+        'Toilet fill valve & flapper — not running',
+        'All drains flow clear',
+        'Supply lines & shutoff valves checked',
+        'Water heater temperature set (120°F)',
+        'Washer hookups checked (if applicable)',
+      ]},
+      { cat:'HVAC', items:[
+        'Air filter replaced (note size & date)',
+        'Heat mode tested — reaches set temp',
+        'Cool mode tested — reaches set temp',
+        'All supply vents open & unobstructed',
+        'Return air grille clean',
+        'Condensate drain line clear',
+        'Exterior unit clear of debris',
+      ]},
+      { cat:'Doors & Windows', items:[
+        'Entry door seals, latches & deadbolt work',
+        'All interior door hardware secure',
+        'Windows open, close & latch properly',
+        'Window screens present & undamaged',
+        'Weatherstripping seals on all exterior doors',
+        'Blinds & window coverings operate',
+        'Closet doors on track & slide smoothly',
+        'Sliding door track clean, door glides freely',
+        'Peephole & door chain in place',
+      ]},
+      { cat:'Keys & Access', items:[
+        'Unit rekeyed (all entry doors)',
+        '2 sets of keys prepared for new resident',
+        'Mailbox key included',
+        'Amenity fob / key card activated',
+        'Parking or garage access confirmed',
+      ]},
+      { cat:'Safety & Compliance', items:[
+        'Smoke detector placement meets code',
+        'CO detector placement meets code',
+        'Fire extinguisher inspected (if provided)',
+        'GFCI locations meet code',
+        'Emergency escape windows operable',
+      ]},
+      { cat:'Final', items:[
+        'Pest inspection / preventive treatment done',
+        'Carpet flea & tick treatment (if pets in unit)',
+        'Final walkthrough completed',
+        'Move-in ready photos taken',
+        'Utility transfer confirmed',
+        'Move-in inspection report signed',
+      ]},
     ];
     this.state={
       loggedIn: false, loginFirst:'', loginLast:'', loginPhone:'', loginSubmitted:false,
@@ -3314,6 +3432,7 @@ class Component extends DCLogic {
       orderLogSeg:'Needed',
       woUrgent:false, unitKind:'turn', woTitle:'', projType:'Common Area',
       collapsedCats:{}, expandedPhotos:{}, orderItem:null, orderSource:'lowes', orderCustomName:'', orderCustomLink:'',
+      addingCat:null, addingTaskText:'',
       toast:null,
       techConfig:{
         'Beni':{ type:'multi', properties:['northwood','bradley'] },
@@ -3559,6 +3678,8 @@ class Component extends DCLogic {
   genPunch(preset){ const out=[]; this.PUNCH.forEach(g=>g.items.forEach(label=>{ const k=g.cat+'|'+label; const done=preset&&preset.done&&preset.done.includes(k); out.push({ id:Math.random().toString(36).slice(2), label, cat:g.cat, state: done?'done':'todo', who:(preset&&preset.who)||null, vendor:null, due:(preset&&preset.due)||'2026-07-15', orderId:null }); })); return out; }
   toggleCat(key){ this.setState(s=>{ const c={...(s.collapsedCats||{})}; c[key]=!c[key]; return {collapsedCats:c}; }); }
   togglePhoto(taskId){ this.setState(s=>{ const e={...(s.expandedPhotos||{})}; e[taskId]=!e[taskId]; return {expandedPhotos:e}; }); }
+  addPunchTask(pid,cat,label){ if(!label.trim()) return; const newTask={id:Math.random().toString(36).slice(2),label:label.trim(),cat,state:'todo',who:null,vendor:null,due:'2026-07-15',orderId:null}; this.setState(s=>({ projects:s.projects.map(p=>p.id!==pid?p:{...p,tasks:[...p.tasks,newTask]}), addingCat:null, addingTaskText:'' })); }
+  removePunchTask(pid,taskId){ this.setState(s=>({ projects:s.projects.map(p=>p.id!==pid?p:{...p,tasks:p.tasks.filter(t=>t.id!==taskId)}) })); }
   openOrder(pid,taskId,label,cat){ this.setState({ sheet:'order', orderItem:{pid,taskId,label,cat}, orderSource:'lowes', orderCustomName:'', orderCustomLink:'' }); }
   placeOrder(name, meta, link){ const st=this.state; const oi=st.orderItem; if(!oi) return; const p=st.projects.find(x=>x.id===oi.pid); const oid=Math.random().toString(36).slice(2); this.setState(s=>({ projects:s.projects.map(x=>{ if(x.id!==oi.pid) return x; return {...x, orders:[...x.orders, {id:oid, name, meta, status:'Needed', source:st.orderSource, link:link||'', forTask:oi.taskId, forLabel:oi.label, by:st.user.name}], tasks:x.tasks.map(t=> t.id===oi.taskId? {...t, orderId:oid}:t)}; }), sheet:null, orderItem:null })); if(p){ this.addNote(p.propertyId, st.user.name, `logged a needed item — ${name} for ${p.unit} · ${oi.label}.`, p.id); } this.flash('Added to order log'); }
   advanceOrder(pid,oid){ const ord=['Needed','Ordered','Received']; this.setState(s=>({ projects:s.projects.map(p=>{ if(p.id!==pid) return p; return {...p, orders:p.orders.map(o=> o.id===oid? {...o, status: ord[(ord.indexOf(o.status)+1)%3]}:o)}; }) })); }
@@ -3780,7 +3901,7 @@ class Component extends DCLogic {
 
     // detail
     let d=null;
-    if(isDetail){ const p=all.find(x=>x.id===overlay.id)||s.projects.find(x=>x.id===overlay.id); if(p){ const pl=this.pill(p.status); const a=this.avatar(p.manager,28); const pc=this.pct(p); const tasks=p.tasks.map((t,i)=>{ const done=t.state==='done'; const od=this.isOverdue(t.due)&&!done; let assignStyle,assignText; if(t.vendor){ assignStyle='display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#5d6157;background:#f1efe9;padding:3px 9px 3px 8px;border-radius:7px;'; assignText='⬡ '+t.vendor; } else { assignStyle='display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#74786f;background:#f4f3ef;padding:3px 9px;border-radius:7px;'; assignText=t.who; } return { id:t.id, label:t.label, done, sep:i===0?'transparent':'#f3f1eb', checkStyle:this.checkStyle(done), labelDecoration:done?'text-decoration:line-through;color:#a7aaa0;':'', assignStyle, assignText, dueLabel:'Due '+this.fmtDue(t.due), dueStyle:`font-size:11.5px;font-weight:700;color:${od?'#d04a3a':'#a7aaa0'};`, onToggle:()=>this.toggleTask(p.id,t.id) }; }); const isPunch=p.tasks.some(t=>t.cat); let catGroups=[]; if(isPunch){ const ord0=this.PUNCH.map(g=>g.cat); const byCat={}; p.tasks.forEach(t=>{ const c=t.cat||'Other'; (byCat[c]=byCat[c]||[]).push(t); }); const cats=Object.keys(byCat).sort((a,b)=>ord0.indexOf(a)-ord0.indexOf(b)); catGroups=cats.map((c,ci)=>{ const items=byCat[c]; const doneN=items.filter(t=>t.state==='done').length; const allDone=doneN===items.length; const ckey=p.id+':'+c; const collapsed=(s.collapsedCats[ckey]!==undefined)? s.collapsedCats[ckey] : allDone; const rows=items.map((t,ri)=>{ const done=t.state==='done'; const ordr=t.orderId? p.orders.find(o=>o.id===t.orderId):null; return { id:t.id, label:t.label, done, sep:ri===0?'transparent':'#f3f1eb', checkStyle:this.checkStyle(done), labelDecoration:done?'text-decoration:line-through;color:#a7aaa0;':'', onToggle:()=>this.toggleTask(p.id,t.id), photoExpanded:!!s.expandedPhotos[t.id], onPhoto:()=>this.togglePhoto(t.id), photoId:'pi-'+t.id, camColor: s.expandedPhotos[t.id]?'#2f6bd6':'#b3b6ac', canOrder: !done&&!ordr, onOrder:()=>this.openOrder(p.id,t.id,t.label,t.cat), ordered:!!ordr, orderName: ordr?ordr.name:'', orderSrc: ordr?(ordr.source==='amazon'?'Amazon':"Lowe's"):'', orderStatus: ordr?ordr.status:'', orderPillStyle: ordr?`height:30px;padding:0 10px;border-radius:9px;background:${this.ORDER[ordr.status].bg};color:${this.ORDER[ordr.status].fg};font-size:11px;font-weight:700;display:flex;align-items:center;gap:4px;flex-shrink:0;`:'' }; }); return { cat:c, iconD:this.CATICON[c]||'M5 13l4 4L19 7', doneLabel:doneN+'/'+items.length, fillStyle:this.progFill(items.length?Math.round(doneN/items.length*100):0, allDone?'#2f9e6a':'#2f6bd6'), collapsed, allDone, headSep:ci===0?'transparent':'#efece5', expanded:!collapsed, chevStyle:`transition:transform .2s;transform:rotate(${collapsed?'0':'90'}deg);`, onToggle:()=>this.toggleCat(ckey), rows }; }); } const orders=p.orders.map((o,i)=>{ const oc=this.ORDER[o.status]; const srcLabel= o.source==='amazon'?'Amazon':(o.source==='lowes'?"Lowe's":''); return { name:o.name, meta: srcLabel? (o.meta? o.meta+' · '+srcLabel : srcLabel) : o.meta, statusLabel:o.status, hasLink:!!o.link, sep:i===0?'transparent':'#f3f1eb', chipStyle:`border:none;cursor:pointer;font-family:'Manrope';font-size:11px;font-weight:700;padding:5px 11px;border-radius:8px;color:${oc.fg};background:${oc.bg};`, onCycle:()=>this.cycleOrder(p.id,i) }; }); d={ id:p.id, unit:p.unit, typeLabel:p.type, title:p.title, ...pl, backLabel:'Projects', managerName:p.manager, managerInitials:a.initials, avatarStyle:a.avatarStyle, taskLabel:`${this.doneCount(p)} of ${p.tasks.length} tasks`, pct:pc, progFillStyle:this.progFill(pc,this.STATUS[p.status].dot), dueLabel:this.fmtDue(p.due), blocked:p.status==='Blocked', blockReason:p.blockReason||'', urgent:this.priOf(p)!=='normal'&&p.status!=='Complete', priorityText: this.priOf(p)==='emergency'?'Emergency — respond immediately':'Marked urgent', beforeId:'before-'+p.id, afterId:'after-'+p.id, canSubmit: pc===100&&p.status!=='Review'&&p.status!=='Complete', showApprove: p.status==='Review'&&canApprove, awaitingNote: p.status==='Review'&&!canApprove, isPunch, isFlat:!isPunch, tasksLabel: isPunch?'Turn punch list':'Tasks', catGroups, ordersEmpty:p.orders.length===0, onSubmit:()=>this.setStatus(p.id,'Review','submitted'), onApprove:()=>this.setStatus(p.id,'Complete','approved'), onReject:()=>this.setStatus(p.id,'In Progress','sent back'), tasks, orders }; } }
+    if(isDetail){ const p=all.find(x=>x.id===overlay.id)||s.projects.find(x=>x.id===overlay.id); if(p){ const pl=this.pill(p.status); const a=this.avatar(p.manager,28); const pc=this.pct(p); const tasks=p.tasks.map((t,i)=>{ const done=t.state==='done'; const od=this.isOverdue(t.due)&&!done; let assignStyle,assignText; if(t.vendor){ assignStyle='display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#5d6157;background:#f1efe9;padding:3px 9px 3px 8px;border-radius:7px;'; assignText='⬡ '+t.vendor; } else { assignStyle='display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#74786f;background:#f4f3ef;padding:3px 9px;border-radius:7px;'; assignText=t.who; } return { id:t.id, label:t.label, done, sep:i===0?'transparent':'#f3f1eb', checkStyle:this.checkStyle(done), labelDecoration:done?'text-decoration:line-through;color:#a7aaa0;':'', assignStyle, assignText, dueLabel:'Due '+this.fmtDue(t.due), dueStyle:`font-size:11.5px;font-weight:700;color:${od?'#d04a3a':'#a7aaa0'};`, onToggle:()=>this.toggleTask(p.id,t.id) }; }); const isPunch=p.tasks.some(t=>t.cat); let catGroups=[]; if(isPunch){ const ord0=this.PUNCH.map(g=>g.cat); const byCat={}; p.tasks.forEach(t=>{ const c=t.cat||'Other'; (byCat[c]=byCat[c]||[]).push(t); }); const cats=Object.keys(byCat).sort((a,b)=>ord0.indexOf(a)-ord0.indexOf(b)); catGroups=cats.map((c,ci)=>{ const items=byCat[c]; const doneN=items.filter(t=>t.state==='done').length; const allDone=doneN===items.length; const ckey=p.id+':'+c; const collapsed=(s.collapsedCats[ckey]!==undefined)? s.collapsedCats[ckey] : allDone; const rows=items.map((t,ri)=>{ const done=t.state==='done'; const ordr=t.orderId? p.orders.find(o=>o.id===t.orderId):null; return { id:t.id, label:t.label, done, sep:ri===0?'transparent':'#f3f1eb', checkStyle:this.checkStyle(done), labelDecoration:done?'text-decoration:line-through;color:#a7aaa0;':'', onToggle:()=>this.toggleTask(p.id,t.id), onRemove:()=>this.removePunchTask(p.id,t.id), photoExpanded:!!s.expandedPhotos[t.id], onPhoto:()=>this.togglePhoto(t.id), photoId:'pi-'+t.id, camColor: s.expandedPhotos[t.id]?'#2f6bd6':'#b3b6ac', canOrder: !done&&!ordr, onOrder:()=>this.openOrder(p.id,t.id,t.label,t.cat), ordered:!!ordr, orderName: ordr?ordr.name:'', orderSrc: ordr?(ordr.source==='amazon'?'Amazon':"Lowe's"):'', orderStatus: ordr?ordr.status:'', orderPillStyle: ordr?`height:30px;padding:0 10px;border-radius:9px;background:${this.ORDER[ordr.status].bg};color:${this.ORDER[ordr.status].fg};font-size:11px;font-weight:700;display:flex;align-items:center;gap:4px;flex-shrink:0;`:'' }; }); const addKey=p.id+':add:'+c; const isAdding=s.addingCat===addKey; return { cat:c, iconD:this.CATICON[c]||'M5 13l4 4L19 7', doneLabel:doneN+'/'+items.length, fillStyle:this.progFill(items.length?Math.round(doneN/items.length*100):0, allDone?'#2f9e6a':'#2f6bd6'), collapsed, allDone, headSep:ci===0?'transparent':'#efece5', expanded:!collapsed, chevStyle:`transition:transform .2s;transform:rotate(${collapsed?'0':'90'}deg);`, onToggle:()=>this.toggleCat(ckey), rows, isAdding, notAdding:!isAdding, addText:isAdding?s.addingTaskText:'', onStartAdd:()=>this.setState({addingCat:addKey,addingTaskText:''}), onAddInput:(e)=>this.setState({addingTaskText:e.target.value}), onAddSubmit:()=>this.addPunchTask(p.id,c,s.addingTaskText), onAddCancel:()=>this.setState({addingCat:null,addingTaskText:''}) }; }); } const orders=p.orders.map((o,i)=>{ const oc=this.ORDER[o.status]; const srcLabel= o.source==='amazon'?'Amazon':(o.source==='lowes'?"Lowe's":''); return { name:o.name, meta: srcLabel? (o.meta? o.meta+' · '+srcLabel : srcLabel) : o.meta, statusLabel:o.status, hasLink:!!o.link, sep:i===0?'transparent':'#f3f1eb', chipStyle:`border:none;cursor:pointer;font-family:'Manrope';font-size:11px;font-weight:700;padding:5px 11px;border-radius:8px;color:${oc.fg};background:${oc.bg};`, onCycle:()=>this.cycleOrder(p.id,i) }; }); d={ id:p.id, unit:p.unit, typeLabel:p.type, title:p.title, ...pl, backLabel:'Projects', managerName:p.manager, managerInitials:a.initials, avatarStyle:a.avatarStyle, taskLabel:`${this.doneCount(p)} of ${p.tasks.length} tasks`, pct:pc, progFillStyle:this.progFill(pc,this.STATUS[p.status].dot), dueLabel:this.fmtDue(p.due), blocked:p.status==='Blocked', blockReason:p.blockReason||'', urgent:this.priOf(p)!=='normal'&&p.status!=='Complete', priorityText: this.priOf(p)==='emergency'?'Emergency — respond immediately':'Marked urgent', beforeId:'before-'+p.id, afterId:'after-'+p.id, canSubmit: pc===100&&p.status!=='Review'&&p.status!=='Complete', showApprove: p.status==='Review'&&canApprove, awaitingNote: p.status==='Review'&&!canApprove, isPunch, isFlat:!isPunch, tasksLabel: isPunch?'Turn punch list':'Tasks', catGroups, ordersEmpty:p.orders.length===0, onSubmit:()=>this.setStatus(p.id,'Review','submitted'), onApprove:()=>this.setStatus(p.id,'Complete','approved'), onReject:()=>this.setStatus(p.id,'In Progress','sent back'), tasks, orders }; } }
 
     // my work (maintenance)
     let myWork=null, myWorkPropChips=[];
