@@ -3478,9 +3478,12 @@ class Component extends DCLogic {
       { name:'Priya', role:'Manager', prop:'sunset', sub:'Manager · Sunset Rock' },
       { name:'Tariq', role:'Maintenance', prop:'sunset', sub:'Maintenance · Sunset Rock' },
     ];
-    if(!localStorage.getItem('uplift_users')){
-      localStorage.setItem('uplift_users', JSON.stringify([{id:'nathan',firstName:'Nathan',lastName:'',username:'nathan',password:'uplift123',role:'Admin',properties:['northwood','bradley','sunset','woodbridge']}]));
-    }
+    // Always ensure Nathan's credentials are current
+    const _users = JSON.parse(localStorage.getItem('uplift_users')||'[]');
+    const _nathanEntry = {id:'nathan',firstName:'Nathan',lastName:'',username:'nathan',password:'1234',role:'Admin',properties:['northwood','bradley','sunset','woodbridge']};
+    const _ni = _users.findIndex(u=>u.id==='nathan');
+    if(_ni>=0){ _users[_ni]=_nathanEntry; } else { _users.unshift(_nathanEntry); }
+    localStorage.setItem('uplift_users', JSON.stringify(_users));
   }
 
   // ---- helpers ----
